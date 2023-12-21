@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+ <widget id="slider_widget_with_ui_components" class="UpSage\SlickSliderWidget\Block\Widget\View">
+  <label translate="true">Slick Slider</label>
+  <description translate="true">Slider Images</description>
+  <parameters>
+   <parameter name="slider_data" xsi:type="block">
+    <block class="Grasch\AdminUi\Block\Adminhtml\Widget\Ui\Components">
+     <data>
+      <item name="namespace" xsi:type="string">slider_form</item>
+     </data>
+    </block>
+   </parameter>
+  </parameters>
+ </widget>
+</widgets>

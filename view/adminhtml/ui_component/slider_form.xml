@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+ <argument name="data" xsi:type="array">
+  <item name="js_config" xsi:type="array">
+   <item name="provider" xsi:type="string">slider_form.slider_form_data_source</item>
+  </item>
+ </argument>
+
+ <settings>
+  <namespace>slider_form</namespace>
+  <dataScope>data</dataScope>
+   <deps>
+    <dep>slider_form.slider_form_data_source</dep>
+   </deps>
+ </settings>
+
+ <dataSource name="slider_form_data_source" component="Magento_Ui/js/form/provider">
+  <dataProvider class="Grasch\AdminUi\DataProvider\Widget\DataProvider" name="slider_form_data_source" />
+ </dataSource>
+
+ <fieldset name="settings">
+ 
+  <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Information</item>
+                    <item name="collapsible" xsi:type="boolean">true</item>
+                    <item name="opened" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+
+  <field name="dots" formElement="checkbox">
+   <settings>
+    <dataType>boolean</dataType>
+    <label translate="true">Dots</label>
+    <tooltip>
+     <description translate="true">Uncheck to Disable</description>
+    </tooltip>
+   </settings>
+   <formElements>
+    <checkbox>
+     <settings>
+      <valueMap>
+       <map name="false" xsi:type="number">0</map>
+       <map name="true" xsi:type="number">1</map>
+      </valueMap>
+      <prefer>toggle</prefer>
+     </settings>
+    </checkbox>
+   </formElements>
+  </field>
+
+  <field name="infinity" formElement="checkbox">
+   <argument name="data" xsi:type="array">
+    <item name="config" xsi:type="array">
+     <item name="default" xsi:type="number">1</item>
+    </item>
+   </argument>
+   <settings>
+    <dataType>boolean</dataType>
+    <label translate="true">Infinity</label>
+    <tooltip>
+     <description translate="true">Uncheck to Disable</description>
+    </tooltip>
+   </settings>
+   <formElements>
+    <checkbox>
+     <settings>
+      <valueMap>
+       <map name="false" xsi:type="number">0</map>
+       <map name="true" xsi:type="number">1</map>
+      </valueMap>
+      <prefer>toggle</prefer>
+     </settings>
+    </checkbox>
+   </formElements>
+  </field>
+
+ </fieldset>
+
+ <fieldset name="slider">
+
+  <settings>
+   <label>Slider Items</label>
+   <collapsible>true</collapsible>
+   <opened>true</opened>
+  </settings>
+
+  <dynamicRows name="slides">
+
+   <settings>
+    <addButtonLabel translate="true">Add Record</addButtonLabel>
+    <additionalClasses>
+     <class name="admin__field-wide">true</class>
+    </additionalClasses>
+    <componentType>dynamicRows</componentType>
+   </settings>
+
+   <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+
+    <argument name="data" xsi:type="array">
+     <item name="config" xsi:type="array">
+      <item name="isTemplate" xsi:type="boolean">true</item>
+      <item name="is_collection" xsi:type="boolean">true</item>
+      <item name="componentType" xsi:type="string">container</item>
+     </item>
+    </argument>
+
+    <fieldset name="slide">
+    
+     <settings>
+      <label></label>
+      <collapsible>false</collapsible>
+      <opened>true</opened>
+     </settings>
+     
+     <field name="status" formElement="checkbox">
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="default" xsi:type="number">1</item>
+       </item>
+      </argument>
+      <settings>
+       <dataType>boolean</dataType>
+       <label translate="true">Enable</label>
+       <tooltip>
+        <description translate="true">Uncheck to Disable</description>
+       </tooltip>
+      </settings>
+      <formElements>
+       <checkbox>
+        <settings>
+         <valueMap>
+          <map name="false" xsi:type="number">0</map>
+          <map name="true" xsi:type="number">1</map>
+         </valueMap>
+         <prefer>toggle</prefer>
+        </settings>
+       </checkbox>
+      </formElements>
+     </field>
+
+     <field name="image" formElement="imageUploader">
+      <settings>
+       <label translate="true">Image</label>
+       <componentType>imageUploader</componentType>
+      </settings>
+      <formElements>
+       <imageUploader>
+        <settings>
+         <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+         <maxFileSize>2097152</maxFileSize>
+         <uploaderConfig>
+          <param xsi:type="string" name="url">pub/media/wysiwyg</param>
+         </uploaderConfig>
+        </settings>
+       </imageUploader>
+      </formElements>
+     </field>
+     
+     <field name="title" formElement="input">
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="fit" xsi:type="boolean">false</item>
+       </item>
+      </argument>
+      <settings>
+       <validation>
+        <rule name="required-entry" xsi:type="boolean">true</rule>
+       </validation>
+       <dataType>text</dataType>
+       <label>Title</label>
+      </settings>
+     </field>
+
+     <field name="caption">
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="formElement" xsi:type="string">textarea</item>
+        <item name="cols" xsi:type="number">15</item>
+        <item name="rows" xsi:type="number">5</item>
+        <item name="label" translate="true" xsi:type="string">Caption</item>
+        <item name="dataType" translate="true" xsi:type="string">text</item>
+       </item>
+      </argument>
+     </field>
+     
+     <field name="link" formElement="urlInput">
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="urlTypes" xsi:type="object">Magento\Ui\Model\UrlInput\LinksConfigProvider</item>
+       </item>
+      </argument>
+      <settings>
+       <label>Link</label>
+      </settings>
+     </field>
+
+    </fieldset>
+
+    <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
+     <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+       <item name="fit" xsi:type="boolean">true</item>
+      </item>
+     </argument>
+     <settings>
+      <dataType>text</dataType>
+      <label>Actions</label>
+      <componentType>actionDelete</componentType>
+     </settings>
+    </actionDelete>
+
+   </container>
+   
+  </dynamicRows>
+
+ </fieldset>
+
+</form>
