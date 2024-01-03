@@ -693,6 +693,12 @@
 
     </fieldset>
 
+    <field name="position" component="Magento_Catalog/js/form/element/input" formElement="input">
+     <settings>
+      <visible>false</visible>
+     </settings>
+    </field>
+
     <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
      <argument name="data" xsi:type="array">
       <item name="config" xsi:type="array">
@@ -843,7 +849,7 @@
          <allowedExtensions>jpg jpeg gif png</allowedExtensions>
          <maxFileSize>2097152</maxFileSize>
          <uploaderConfig>
-          <param xsi:type="string" name="url">pub/media/wysiwyg</param>
+          <param xsi:type="string" name="url">slicksliderwidget/index/upload</param>
          </uploaderConfig>
         </settings>
        </imageUploader>

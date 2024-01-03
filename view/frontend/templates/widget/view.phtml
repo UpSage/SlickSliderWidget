@@ -1,14 +1,13 @@
-
 <?php
-
  $data = $block->getData('slider_data');
-
+ $breakpoint = $data['breakpoints'];
+ array_multisort(array_column($breakpoint, 'position'), SORT_ASC, $breakpoint);
 ?>
 
-<pre>
-    <?php
-        print_r($data);
-        // print_r(array_keys($data));
-    ?>
-    
-</pre>
+<?php foreach($breakpoint as $item): ?>
+
+ <div>
+  <?= $item['screensize']; ?>
+ </div>
+
+<?php endforeach; ?>
