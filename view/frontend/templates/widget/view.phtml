@@ -1,13 +1,53 @@
 <?php
  $data = $block->getData('slider_data');
- $breakpoint = $data['breakpoints'];
+ $breakpoint = $data['responsive'];
  array_multisort(array_column($breakpoint, 'position'), SORT_ASC, $breakpoint);
 ?>
 
-<?php foreach($breakpoint as $item): ?>
+<?php
 
- <div>
-  <?= $item['screensize']; ?>
- </div>
 
-<?php endforeach; ?>
+foreach ($data as $key) {
+ unset($data['slides'], $data['is_responsive'], $data['responsive'], $data['']);
+}
+
+$items = array();
+foreach ($breakpoint as $key) {
+ unset(
+  $key['record_id'],
+  $key['position'],
+  $key['initialize']
+ );
+ if(!$key['autoplay'])
+  unset($key['autoplaySpeed']);
+ if(!$key['centerMode'])
+  unset($key['centerPadding']);
+ $items[] = array(
+  'breakpoint' => $key['breakpoint'],
+  'settings' => array_slice($key, 1)
+ );
+}
+
+?>
+
+<pre>
+<?= json_encode($items, JSON_PRETTY_PRINT); // print_r($items);  ?>
+</pre>
+
+<!-- <div class="slicker" data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
+  <div><h3>1</h3></div>
+  <div><h3>2</h3></div>
+  <div><h3>3</h3></div>
+  <div><h3>4</h3></div>
+  <div><h3>5</h3></div>
+  <div><h3>6</h3></div>
+</div>
+
+<script>
+
+require(['jquery', 'slick'], function($) {
+    $(document).ready(function() {
+        $(".slicker").slick();
+    });
+});
+</script> -->
