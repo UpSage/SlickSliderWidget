@@ -40,16 +40,8 @@
        <value>0</value>
        <actions>
         <action name="0">
-         <target>${ $.parentName}.mobileFirst</target>
+         <target>${ $.parentName}.button_responsive</target>
          <callback>hide</callback>
-        </action>
-        <action name="1">
-         <target>${ $.parentName}.responsive</target>
-         <callback>hide</callback>
-        </action>
-        <action name="2">
-         <target>${ $.parentName}.general</target>
-         <callback>show</callback>
         </action>
        </actions>
       </rule>
@@ -57,16 +49,8 @@
        <value>1</value>
        <actions>
         <action name="0">
-         <target>${ $.parentName}.mobileFirst</target>
+         <target>${ $.parentName}.button_responsive</target>
          <callback>show</callback>
-        </action>
-        <action name="1">
-         <target>${ $.parentName}.responsive</target>
-         <callback>show</callback>
-        </action>
-        <action name="2">
-         <target>${ $.parentName}.general</target>
-         <callback>hide</callback>
         </action>
        </actions>
       </rule>
@@ -78,8 +62,8 @@
     <checkbox>
      <settings>
       <valueMap>
-       <map name="false" xsi:type="number">0</map>
-       <map name="true" xsi:type="number">1</map>
+       <map name="false" xsi:type="boolean">false</map>
+       <map name="true" xsi:type="boolean">true</map>
       </valueMap>
       <prefer>toggle</prefer>
      </settings>
@@ -87,26 +71,434 @@
    </formElements>
   </field>
 
-  <field name="mobileFirst" formElement="checkbox">
-   <settings>
-    <dataType>boolean</dataType>
-    <label translate="true">Mobile First</label>
-    <tooltip>
-     <description translate="true">Uncheck to Disable</description>
-    </tooltip>
-   </settings>
-   <formElements>
-    <checkbox>
+  <button name="button_responsive">
+   <argument name="data" xsi:type="array">
+    <item name="config" xsi:type="array">
+     <item name="title" xsi:type="string">Advanced Settings</item>
+     <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/components/button</item>
+     <item name="actions" xsi:type="array">
+      <item name="0" xsi:type="array">
+       <item name="targetName" xsi:type="string">${ $.parentName}.modal_responsive</item>
+       <item name="actionName" xsi:type="string">openModal</item>
+      </item>
+     </item>
+    </item>
+   </argument>
+  </button>
+  
+  <modal name="modal_responsive">
+
+   <argument name="data" xsi:type="array">
+    <item name="config" xsi:type="array">
+     <item name="onCancel" xsi:type="string">actionCancel</item>
+     <item name="options" xsi:type="array">
+      <item name="buttons" xsi:type="array">
+       <item name="0" xsi:type="array">
+        <item name="text" xsi:type="string">Cancel</item>
+        <item name="class" xsi:type="string">action-secondary</item>
+        <item name="actions" xsi:type="array">
+         <item name="0" xsi:type="string">actionCancel</item>
+        </item>
+       </item>
+       <item name="1" xsi:type="array">
+        <item name="text" xsi:type="string">Done</item>
+        <item name="class" xsi:type="string">action-primary</item>
+        <item name="actions" xsi:type="array">
+         <item name="0" xsi:type="string">actionDone</item>
+        </item>
+       </item>
+      </item>
+     </item>
+    </item>
+   </argument>
+   
+   <fieldset name="modal_responsive_general">
+
+    <settings>
+     <label/>
+    </settings>
+    
+    <field name="mobileFirst" formElement="checkbox">
      <settings>
-      <valueMap>
-       <map name="false" xsi:type="number">0</map>
-       <map name="true" xsi:type="number">1</map>
-      </valueMap>
-      <prefer>toggle</prefer>
+      <dataType>boolean</dataType>
+      <label translate="true">Mobile First</label>
+      <tooltip>
+       <description translate="true">Uncheck to Disable</description>
+      </tooltip>
      </settings>
-    </checkbox>
-   </formElements>
-  </field>
+     <formElements>
+      <checkbox>
+       <settings>
+        <valueMap>
+         <map name="false" xsi:type="boolean">false</map>
+         <map name="true" xsi:type="boolean">true</map>
+        </valueMap>
+        <prefer>toggle</prefer>
+       </settings>
+      </checkbox>
+     </formElements>
+    </field>
+    
+    <dynamicRows name="responsive">
+
+     <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+       <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/dynamic-rows/dynamic-rows</item>
+      </item>
+     </argument>
+
+     <settings>
+      <addButtonLabel translate="true">Add Breakpoint</addButtonLabel>
+      <componentType>dynamicRows</componentType>
+      <columnsHeader>false</columnsHeader>
+      <defaultRecord>true</defaultRecord>
+      <label translate="true">Breakpoints</label>
+     </settings>
+
+     <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="isTemplate" xsi:type="boolean">true</item>
+        <item name="is_collection" xsi:type="boolean">true</item>
+        <item name="componentType" xsi:type="string">container</item>
+       </item>
+      </argument>
+
+      <fieldset name="screens">
+       <settings>
+        <label/>
+        <collapsible>false</collapsible>
+        <opened>true</opened>
+       </settings>
+
+       <field name="breakpoint" formElement="input">
+        <settings>
+         <validation>
+          <rule name="validate-number" xsi:type="boolean">true</rule>
+         </validation>
+         <dataType>Text</dataType>
+         <label>Screen Size</label>
+        </settings>
+       </field>
+       
+       <field name="unslick" formElement="checkbox">
+        <settings>
+         <dataType>boolean</dataType>
+         <label translate="true">Disable Slider / Unslick</label>
+         <switcherConfig>
+          <rules>
+           <rule name="0">
+            <value>0</value>
+            <actions>
+             <action name="0">
+              <target>${ $.parentName}.is_slick</target>
+              <callback>show</callback>
+             </action>
+            </actions>
+           </rule>
+           <rule name="1">
+            <value>1</value>
+            <actions>
+             <action name="0">
+              <target>${ $.parentName}.is_slick</target>
+              <callback>hide</callback>
+             </action>
+            </actions>
+           </rule>
+          </rules>
+          <enabled>true</enabled>
+         </switcherConfig>
+        </settings>
+        <formElements>
+         <checkbox>
+          <settings>
+           <valueMap>
+            <map name="false" xsi:type="boolean">false</map>
+            <map name="true" xsi:type="boolean">true</map>
+           </valueMap>
+           <prefer>toggle</prefer>
+          </settings>
+         </checkbox>
+        </formElements>
+       </field>
+       
+       <fieldset name="is_slick">
+
+        <argument name="data" xsi:type="array">
+         <item name="config" xsi:type="array">
+          <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/components/fieldset</item>
+         </item>
+        </argument>
+
+        <settings>
+         <label/>
+         <collapsible>false</collapsible>
+         <opened>true</opened>
+        </settings>
+        
+        <field name="arrows" formElement="checkbox">
+         <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+           <item name="default" xsi:type="boolean">true</item>
+          </item>
+         </argument>
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Arrows</label>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        
+        <field name="dots" formElement="checkbox">
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Dots</label>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        
+        <field name="autoplay" formElement="checkbox">
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Autoplay</label>
+          <switcherConfig>
+           <rules>
+            <rule name="0">
+             <value>0</value>
+             <actions>
+              <action name="0">
+               <target>${ $.parentName}.autoplaySpeed</target>
+               <callback>hide</callback>
+              </action>
+             </actions>
+            </rule>
+            <rule name="1">
+             <value>1</value>
+             <actions>
+              <action name="0">
+               <target>${ $.parentName}.autoplaySpeed</target>
+               <callback>show</callback>
+              </action>
+             </actions>
+            </rule>
+           </rules>
+           <enabled>true</enabled>
+          </switcherConfig>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        
+        <field name="autoplaySpeed" formElement="input">
+         <settings>
+          <validation>
+           <rule name="validate-number" xsi:type="boolean">true</rule>
+          </validation>
+          <dataType>Text</dataType>
+          <label>Autoplay Speed</label>
+         </settings>
+        </field>
+        
+        <field name="infinite" formElement="checkbox">
+         <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+           <item name="default" xsi:type="boolean">true</item>
+          </item>
+         </argument>
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Infinite</label>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        
+        <field name="fade" formElement="checkbox">
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Fade</label>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        
+        <field name="speed" formElement="input">
+         <settings>
+          <validation>
+           <rule name="validate-number" xsi:type="boolean">true</rule>
+          </validation>
+          <dataType>Text</dataType>
+          <label>Animation Speed</label>
+         </settings>
+        </field>
+        
+        <field name="slidesToShow" formElement="input">
+         <settings>
+          <validation>
+           <rule name="validate-number" xsi:type="boolean">true</rule>
+          </validation>
+          <dataType>Text</dataType>
+          <label>Slides to Show</label>
+         </settings>
+        </field>
+        
+        <field name="slidesToScroll" formElement="input">
+         <settings>
+          <validation>
+           <rule name="validate-number" xsi:type="boolean">true</rule>
+          </validation>
+          <dataType>Text</dataType>
+          <label>Slides to Scroll</label>
+         </settings>
+        </field>
+        
+        <field name="centerMode" formElement="checkbox">
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Center Mode</label>
+          <switcherConfig>
+           <rules>
+            <rule name="0">
+             <value>0</value>
+             <actions>
+              <action name="0">
+               <target>${ $.parentName}.centerPadding</target>
+               <callback>hide</callback>
+              </action>
+             </actions>
+            </rule>
+            <rule name="1">
+             <value>1</value>
+             <actions>
+              <action name="0">
+               <target>${ $.parentName}.centerPadding</target>
+               <callback>show</callback>
+              </action>
+             </actions>
+            </rule>
+           </rules>
+           <enabled>true</enabled>
+          </switcherConfig>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        
+        <field name="centerPadding" formElement="input">
+         <settings>
+          <validation>
+           <rule name="validate-number" xsi:type="boolean">true</rule>
+          </validation>
+          <dataType>Text</dataType>
+          <label>Center Padding</label>
+         </settings>
+        </field>
+        
+        <field name="adaptiveHeight" formElement="checkbox">
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Adaptive Height</label>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        
+       </fieldset>
+       
+      </fieldset>
+      
+      <!-- <field name="position" component="Magento_Catalog/js/form/element/input" formElement="input">
+       <settings>
+        <visible>false</visible>
+       </settings>
+      </field> -->
+      
+      <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
+       <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+         <item name="fit" xsi:type="boolean">true</item>
+        </item>
+       </argument>
+       <settings>
+        <dataType>text</dataType>
+        <label>Actions</label>
+        <componentType>actionDelete</componentType>
+       </settings>
+      </actionDelete>
+      
+     </container>
+     
+    </dynamicRows>
+    
+   </fieldset>
+   
+  </modal>
   
   <fieldset name="general">
 
@@ -125,7 +517,7 @@
    <field name="arrows" formElement="checkbox">
     <argument name="data" xsi:type="array">
      <item name="config" xsi:type="array">
-      <item name="default" xsi:type="number">1</item>
+      <item name="default" xsi:type="boolean">true</item>
      </item>
     </argument>
     <settings>
@@ -136,8 +528,8 @@
      <checkbox>
       <settings>
        <valueMap>
-        <map name="false" xsi:type="number">0</map>
-        <map name="true" xsi:type="number">1</map>
+        <map name="false" xsi:type="boolean">false</map>
+        <map name="true" xsi:type="boolean">true</map>
        </valueMap>
        <prefer>toggle</prefer>
       </settings>
@@ -154,8 +546,8 @@
      <checkbox>
       <settings>
        <valueMap>
-        <map name="false" xsi:type="number">0</map>
-        <map name="true" xsi:type="number">1</map>
+        <map name="false" xsi:type="boolean">false</map>
+        <map name="true" xsi:type="boolean">true</map>
        </valueMap>
        <prefer>toggle</prefer>
       </settings>
@@ -195,8 +587,8 @@
      <checkbox>
       <settings>
        <valueMap>
-        <map name="false" xsi:type="number">0</map>
-        <map name="true" xsi:type="number">1</map>
+        <map name="false" xsi:type="boolean">false</map>
+        <map name="true" xsi:type="boolean">true</map>
        </valueMap>
        <prefer>toggle</prefer>
       </settings>
@@ -217,7 +609,7 @@
    <field name="infinite" formElement="checkbox">
     <argument name="data" xsi:type="array">
      <item name="config" xsi:type="array">
-      <item name="default" xsi:type="number">1</item>
+      <item name="default" xsi:type="boolean">true</item>
      </item>
     </argument>
     <settings>
@@ -228,8 +620,8 @@
      <checkbox>
       <settings>
        <valueMap>
-        <map name="false" xsi:type="number">0</map>
-        <map name="true" xsi:type="number">1</map>
+        <map name="false" xsi:type="boolean">false</map>
+        <map name="true" xsi:type="boolean">true</map>
        </valueMap>
        <prefer>toggle</prefer>
       </settings>
@@ -246,8 +638,8 @@
      <checkbox>
       <settings>
        <valueMap>
-        <map name="false" xsi:type="number">0</map>
-        <map name="true" xsi:type="number">1</map>
+        <map name="false" xsi:type="boolean">false</map>
+        <map name="true" xsi:type="boolean">true</map>
        </valueMap>
        <prefer>toggle</prefer>
       </settings>
@@ -317,8 +709,8 @@
      <checkbox>
       <settings>
        <valueMap>
-        <map name="false" xsi:type="number">0</map>
-        <map name="true" xsi:type="number">1</map>
+        <map name="false" xsi:type="boolean">false</map>
+        <map name="true" xsi:type="boolean">true</map>
        </valueMap>
        <prefer>toggle</prefer>
       </settings>
@@ -345,8 +737,8 @@
      <checkbox>
       <settings>
        <valueMap>
-        <map name="false" xsi:type="number">0</map>
-        <map name="true" xsi:type="number">1</map>
+        <map name="false" xsi:type="boolean">false</map>
+        <map name="true" xsi:type="boolean">true</map>
        </valueMap>
        <prefer>toggle</prefer>
       </settings>
@@ -355,366 +747,6 @@
    </field>
    
   </fieldset>
-
-  <dynamicRows name="responsive">
-
-   <argument name="data" xsi:type="array">
-    <item name="config" xsi:type="array">
-     <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/dynamic-rows/dynamic-rows</item>
-    </item>
-   </argument>
-
-   <settings>
-    <addButtonLabel translate="true">Add Slide</addButtonLabel>
-    <additionalClasses>
-     <class name="admin__field-wide">true</class>
-    </additionalClasses>
-    <componentType>dynamicRows</componentType>
-    <columnsHeader>false</columnsHeader>
-    <defaultRecord>true</defaultRecord>
-   </settings>
-
-   <container name="record" component="Magento_Ui/js/dynamic-rows/record">
-
-    <argument name="data" xsi:type="array">
-     <item name="config" xsi:type="array">
-      <item name="isTemplate" xsi:type="boolean">true</item>
-      <item name="is_collection" xsi:type="boolean">true</item>
-      <item name="componentType" xsi:type="string">container</item>
-     </item>
-    </argument>
-
-    <fieldset name="screens">
-    
-     <settings>
-      <label/>
-      <collapsible>false</collapsible>
-      <opened>true</opened>
-     </settings>
-
-     <field name="breakpoint" formElement="input">
-      <settings>
-       <validation>
-        <rule name="validate-number" xsi:type="boolean">true</rule>
-       </validation>
-       <dataType>Text</dataType>
-       <label>Screen Size</label>
-      </settings>
-     </field>
-
-     <field name="unslick" formElement="checkbox">
-      <settings>
-       <dataType>boolean</dataType>
-       <label translate="true">Disable Slider / Unslick</label>
-       <switcherConfig>
-        <rules>
-         <rule name="0">
-          <value>0</value>
-          <actions>
-           <action name="0">
-            <target>${ $.parentName}.is_slick</target>
-            <callback>show</callback>
-           </action>
-          </actions>
-         </rule>
-         <rule name="1">
-          <value>1</value>
-          <actions>
-           <action name="0">
-            <target>${ $.parentName}.is_slick</target>
-            <callback>hide</callback>
-           </action>
-          </actions>
-         </rule>
-        </rules>
-        <enabled>true</enabled>
-       </switcherConfig>
-      </settings>
-      <formElements>
-       <checkbox>
-        <settings>
-         <valueMap>
-          <map name="false" xsi:type="boolean">false</map>
-          <map name="true" xsi:type="boolean">true</map>
-         </valueMap>
-         <prefer>toggle</prefer>
-        </settings>
-       </checkbox>
-      </formElements>
-     </field>
-
-     <fieldset name="is_slick">
-     
-      <argument name="data" xsi:type="array">
-       <item name="config" xsi:type="array">
-        <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/components/fieldset</item>
-       </item>
-      </argument>
-      
-      <settings>
-       <label/>
-       <collapsible>false</collapsible>
-       <opened>true</opened>
-      </settings>
-      
-      <field name="arrows" formElement="checkbox">
-       <argument name="data" xsi:type="array">
-        <item name="config" xsi:type="array">
-         <item name="default" xsi:type="boolean">true</item>
-        </item>
-       </argument>
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Arrows</label>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
-     
-      <field name="dots" formElement="checkbox">
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Dots</label>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
-     
-      <field name="autoplay" formElement="checkbox">
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Autoplay</label>
-        <switcherConfig>
-         <rules>
-          <rule name="0">
-           <value>0</value>
-           <actions>
-            <action name="0">
-             <target>${ $.parentName}.autoplaySpeed</target>
-             <callback>hide</callback>
-            </action>
-           </actions>
-          </rule>
-          <rule name="1">
-           <value>1</value>
-           <actions>
-            <action name="0">
-             <target>${ $.parentName}.autoplaySpeed</target>
-             <callback>show</callback>
-            </action>
-           </actions>
-          </rule>
-         </rules>
-         <enabled>true</enabled>
-        </switcherConfig>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
-     
-      <field name="autoplaySpeed" formElement="input">
-       <settings>
-        <validation>
-         <rule name="validate-number" xsi:type="boolean">true</rule>
-        </validation>
-        <dataType>Text</dataType>
-        <label>Autoplay Speed</label>
-       </settings>
-      </field>
-     
-      <field name="infinite" formElement="checkbox">
-       <argument name="data" xsi:type="array">
-        <item name="config" xsi:type="array">
-         <item name="default" xsi:type="boolean">true</item>
-        </item>
-       </argument>
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Infinite</label>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
-     
-      <field name="fade" formElement="checkbox">
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Fade</label>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
-     
-      <field name="speed" formElement="input">
-       <settings>
-        <validation>
-         <rule name="validate-number" xsi:type="boolean">true</rule>
-        </validation>
-        <dataType>Text</dataType>
-        <label>Animation Speed</label>
-       </settings>
-      </field>
-     
-      <field name="slidesToShow" formElement="input">
-       <settings>
-        <validation>
-         <rule name="validate-number" xsi:type="boolean">true</rule>
-        </validation>
-        <dataType>Text</dataType>
-        <label>Slides to Show</label>
-       </settings>
-      </field>
-     
-      <field name="slidesToScroll" formElement="input">
-       <settings>
-        <validation>
-         <rule name="validate-number" xsi:type="boolean">true</rule>
-        </validation>
-        <dataType>Text</dataType>
-        <label>Slides to Scroll</label>
-       </settings>
-      </field>
-     
-      <field name="centerMode" formElement="checkbox">
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Center Mode</label>
-        <switcherConfig>
-         <rules>
-          <rule name="0">
-           <value>0</value>
-           <actions>
-            <action name="0">
-             <target>${ $.parentName}.centerPadding</target>
-             <callback>hide</callback>
-            </action>
-           </actions>
-          </rule>
-          <rule name="1">
-           <value>1</value>
-           <actions>
-            <action name="0">
-             <target>${ $.parentName}.centerPadding</target>
-             <callback>show</callback>
-            </action>
-           </actions>
-          </rule>
-         </rules>
-         <enabled>true</enabled>
-        </switcherConfig>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
-     
-      <field name="centerPadding" formElement="input">
-       <settings>
-        <validation>
-         <rule name="validate-number" xsi:type="boolean">true</rule>
-        </validation>
-        <dataType>Text</dataType>
-        <label>Center Padding</label>
-       </settings>
-      </field>
-     
-      <field name="adaptiveHeight" formElement="checkbox">
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Adaptive Height</label>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
-      
-     </fieldset>
-
-    </fieldset>
-
-    <field name="position" component="Magento_Catalog/js/form/element/input" formElement="input">
-     <settings>
-      <visible>false</visible>
-     </settings>
-    </field>
-
-    <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
-     <argument name="data" xsi:type="array">
-      <item name="config" xsi:type="array">
-       <item name="fit" xsi:type="boolean">true</item>
-      </item>
-     </argument>
-     <settings>
-      <dataType>text</dataType>
-      <label>Actions</label>
-      <componentType>actionDelete</componentType>
-     </settings>
-    </actionDelete>
-
-   </container>
-   
-  </dynamicRows>
 
  </fieldset>
 
@@ -725,63 +757,6 @@
    <collapsible>true</collapsible>
    <opened>true</opened>
   </settings>
-
-  <!-- <modal name="test_modal">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="onCancel" xsi:type="string">actionCancel</item>
-                    <item name="options" xsi:type="array">
-                        <item name="buttons" xsi:type="array">
-                            <item name="0" xsi:type="array">
-                                <item name="text" xsi:type="string">Cancel</item>
-                                <item name="class" xsi:type="string">action-secondary</item>
-                                <item name="actions" xsi:type="array">
-                                    <item name="0" xsi:type="string">actionCancel</item>
-                                </item>
-                            </item>
-                            
-                            <item name="1" xsi:type="array">
-                                <item name="text" xsi:type="string">Done</item>
-                                <item name="class" xsi:type="string">action-primary</item>
-                                <item name="actions" xsi:type="array">
-                                    <item name="0" xsi:type="string">actionDone</item>
-                                </item>
-                            </item>
-                        </item>
-                    </item>
-                </item>
-            </argument>
-            <fieldset name="general">
-
-                <settings>
-                    <label/>
-                </settings>
-
-                <field name="testField" formElement="input">
-                    <settings>
-                        <dataType>text</dataType>
-                        <label translate="true">Test Field</label>
-                    </settings>
-                </field>
-                
-            </fieldset>
-        </modal>
-
-
-        <button name="modal_button">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="title" xsi:type="string">Open modal</item>
-                    <item name="actions" xsi:type="array">
-                        <item name="0" xsi:type="array">
-                            <item name="targetName" xsi:type="string">${ $.parentName}.test_modal</item>
-                            <item name="actionName" xsi:type="string">openModal</item>
-                        </item>
-                    </item>
-                </item>
-            </argument>
-        </button> -->
-
 
   <dynamicRows name="slides">
   
