@@ -352,7 +352,7 @@
          </formElements>
         </field>
         
-        <field name="fade" formElement="checkbox">
+        <!-- <field name="fade" formElement="checkbox">
          <settings>
           <dataType>boolean</dataType>
           <label translate="true">Fade</label>
@@ -368,7 +368,7 @@
            </settings>
           </checkbox>
          </formElements>
-        </field>
+        </field> -->
         
         <field name="speed" formElement="input">
          <settings>
@@ -629,7 +629,7 @@
     </formElements>
    </field>
 
-   <field name="fade" formElement="checkbox">
+   <!-- <field name="fade" formElement="checkbox">
     <settings>
      <dataType>boolean</dataType>
      <label translate="true">Fade</label>
@@ -645,7 +645,7 @@
       </settings>
      </checkbox>
     </formElements>
-   </field>
+   </field> -->
 
    <field name="speed" formElement="input">
     <settings>

@@ -1,6 +1,6 @@
+<pre><?= $block->getSettings($block->getData('slider_data')) ?></pre>
 
-
-<div class="slicker" data-slick='{"arrows":true,"dots":false,"infinite":true,"fade":false,"speed":1000,"autoplay":false,"centerMode":false,"adaptiveHeight":false,"slidesToShow":1,"slidesToScroll":1,"responsive":[{"breakpoint":"768","settings":{"arrows":true,"dots":true,"autoplay":false,"infinite":false,"fade":false,"speed":500,"slidesToShow":3,"slidesToScroll":1,"centerMode":false,"adaptiveHeight":false}}],"mobileFirst":true}'>
+<div class="slicker" data-slick='<?= $block->getSettings($block->getData('slider_data')) ?>'>
  <div><h3>1</h3></div>
  <div><h3>2</h3></div>
  <div><h3>3</h3></div>

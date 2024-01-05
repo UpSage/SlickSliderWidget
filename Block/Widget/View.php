@@ -8,25 +8,36 @@
     
   protected $_template = 'widget/view.phtml';
 
+  private function _basicSettings($item){
+   return array(
+    'arrows' => $item['arrows'],
+    'dots' => $item['dots'],
+    'infinite' => $item['infinite'],
+    'speed' => intval($item['speed']),
+    'autoplay' => $item['autoplay'],
+    'autoplaySpeed' => intval($item['autoplaySpeed']),
+    'centerMode' => $item['centerMode'],
+    'centerPadding' => $item['centerPadding'] . 'px',
+    'adaptiveHeight' => $item['adaptiveHeight'],
+    'slidesToShow' => intval($item['slidesToShow']),
+    'slidesToScroll' => intval($item['slidesToScroll'])
+   );
+  }
+
   public function getBreakpoints($data) {
    //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
    $breakpoints = array();
    foreach($data as $item) {
     $settings = 'unslick';
-    unset(
-     $item['record_id'],
-     $item['position'],
-     $item['initialize']
-    );
-    $item['centerPadding'] = $item['centerPadding'] . 'px';
-    if(!$item['autoplay'])
-     unset($item['autoplaySpeed']);
-    if(!$item['centerMode'])
-     unset($item['centerPadding']);
-    if(!$item['unslick'])
-     $settings = array_slice($item, 2);
+    if(!$item['unslick']) {
+     $settings = $this->_basicSettings($item);
+     if(!$settings['autoplay'])
+      unset($settings['autoplaySpeed']);
+     if(!$settings['centerMode'])
+      unset($settings['centerPadding']);
+    }
     $breakpoints[] = array(
-     'breakpoint' => $item['breakpoint'],
+     'breakpoint' => intval($item['breakpoint']),
      'settings' => $settings
     );
    }
@@ -34,29 +45,17 @@
   }
 
   public function getSettings($data) {
-   $settings = array(
-    'arrows' => $data['arrows'],
-    'dots' => $data['dots'],
-    'infinite' => $data['infinite'],
-    'fade' => $data['fade'],
-    'speed' => intval($data['speed']),
-    'autoplay' => $data['autoplay'],
-    'autoplaySpeed' => intval($data['autoplaySpeed']),
-    'centerMode' => $data['centerMode'],
-    'centerPadding' => $data['centerPadding'] . 'px',
-    'adaptiveHeight' => $data['adaptiveHeight'],
-    'slidesToShow' => intval($data['slidesToShow']),
-    'slidesToScroll' => intval($data['slidesToScroll']),
-    'responsive' => $this->getBreakpoints($data['responsive']),
-    'mobileFirst' => $data['mobileFirst']
-   );
+   $settings = array();
+   $settings = $this->_basicSettings($data);
+   $settings['responsive'] = $this->getBreakpoints($data['responsive']);
+   $settings['mobileFirst'] = $data['mobileFirst'];
    if(!$settings['autoplay'])
     unset($settings['autoplaySpeed']);
    if(!$settings['centerMode'])
     unset($settings['centerPadding']);
    if(!$data['is_responsive'])
     unset($settings['responsive'], $settings['mobileFirst']);
-   return json_encode($settings);
+   return json_encode($settings, JSON_PRETTY_PRINT);
   }
 
  }
