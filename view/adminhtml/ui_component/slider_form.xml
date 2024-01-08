@@ -841,7 +841,14 @@
       </settings>
      </field>
 
-     <field name="caption">
+     <field name="alt" formElement="input">
+      <settings>
+       <dataType>text</dataType>
+       <label>Alt</label>
+      </settings>
+     </field>
+
+     <!-- <field name="caption">
       <argument name="data" xsi:type="array">
        <item name="config" xsi:type="array">
         <item name="formElement" xsi:type="string">textarea</item>
@@ -851,7 +858,7 @@
         <item name="dataType" translate="true" xsi:type="string">text</item>
        </item>
       </argument>
-     </field>
+     </field> -->
      
      <field name="link" formElement="urlInput">
       <argument name="data" xsi:type="array">

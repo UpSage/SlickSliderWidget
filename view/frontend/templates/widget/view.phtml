@@ -1,6 +1,18 @@
-<pre><?= $block->getSettings($block->getData('slider_data')) ?></pre>
+<?php
 
-<div class="slicker" data-slick='<?= $block->getSettings($block->getData('slider_data')) ?>'>
+ $data = $block->getData('slider_data');
+
+?>
+
+<pre><?= print_r($data) ?></pre>
+
+<?php foreach($block->getSlides($data) as $item): ?>
+
+ <?= $item['title'] ?> | <?= $block->getSlideLink($item['link']) ?><br />
+
+<?php endforeach; ?>
+
+<div class="slicker" data-slick='<?= $block->getSettings($data) ?>'>
  <div><h3>1</h3></div>
  <div><h3>2</h3></div>
  <div><h3>3</h3></div>
