@@ -12,7 +12,8 @@
   public function __construct(
    \Magento\Store\Model\StoreManagerInterface $_storeManager,
    \Magento\Catalog\Model\CategoryRepository $_categoryRepository,
-   \Magento\Catalog\Api\ProductRepositoryInterface $_productRepository,
+   \Magento\Catalog\Model\ProductRepository $_productRepository,
+   \Magento\Cms\Model\PageRepository $_pageRepository,
    \Magento\Framework\View\Element\Template\Context $context,
    \Grasch\AdminUi\Model\DecodeComponentValue $decodeComponentValue,
    array $data = []
@@ -20,6 +21,7 @@
    parent::__construct($context, $decodeComponentValue, $data);
    $this->_categoryRepository = $_categoryRepository;
    $this->_productRepository = $_productRepository;
+   $this->_pageRepository = $_pageRepository;
    $this->_storeManager = $_storeManager;
   }
 
@@ -60,13 +62,18 @@
   }
 
   private function _getCategoryUrl($id){
-   $_category = $this->_categoryRepository->get($id,$this->_storeManager->getStore()->getId());
+   $_category = $this->_categoryRepository->get($id, $this->_storeManager->getStore()->getId());
    return $_category->getUrl();
   }
 
   private function _getProductUrl($id) {
    $_product = $this->_productRepository->getById($id, false, $this->_storeManager->getStore()->getId());
-   return $_product->setStoreId($this->_storeManager->getStore()->getId())->getUrlModel()->getUrlInStore($_product, ['_escape' => true]);
+   return $_product->getProductUrl(); 
+  }
+
+  private function _getPageUrl($id) {
+   $_page = $this->_pageRepository->getById($id);
+   return $this->_storeManager->getStore()->getUrl($_page->getIdentifier()); 
   }
 
   public function getSettings($data) {
@@ -80,25 +87,39 @@
     unset($settings['centerPadding']);
    if(!$data['is_responsive'])
     unset($settings['responsive'], $settings['mobileFirst']);
-   return json_encode($settings, JSON_PRETTY_PRINT);
+   return json_encode($settings);
   }
 
   public function getSlides($data) {
    return $data['slides'];
   }
 
-  public function getSlideLink($link) {
+  public function getLink($link) {
    $url = '';
-   if($link['type'] == 'page') {
-    $url = $link['page'];
-   } elseif($link['type'] == 'product') {
+   if($link['type'] == 'page' && $link['page']) {
+    $url = $this->_getPageUrl($link['page']);
+   } elseif($link['type'] == 'product' && $link['product']) {
     $url = $this->_getProductUrl($link['product']);
-   } elseif($link['type'] == 'category') {
+   } elseif($link['type'] == 'category' && $link['category']) {
     $url = $this->_getCategoryUrl($link['category']);
    } else {
     $url = $link['default'];
    }
    return $url;
+  }
+
+  public function getImage($image) {
+   if(!$image) {
+    return '';
+   } else {
+    foreach($image as $item) {
+     return $this->_storeManager->getStore()->getBaseUrl() . ltrim($item['url'], '/');
+    }
+   }
+  }
+
+  public function isNewTab($link) {
+   return $link['setting'];
   }
 
  }

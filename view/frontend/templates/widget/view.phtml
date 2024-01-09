@@ -1,30 +1,47 @@
 <?php
-
  $data = $block->getData('slider_data');
-
 ?>
 
-<pre><?= print_r($data) ?></pre>
+<pre><?= json_encode($data['slides'], JSON_PRETTY_PRINT); ?></pre>
 
-<?php foreach($block->getSlides($data) as $item): ?>
+<?php if(count($block->getSlides($data))): ?>
 
- <?= $item['title'] ?> | <?= $block->getSlideLink($item['link']) ?><br />
+ <div class="usslick__slider" data-slick='<?= $block->getSettings($data) ?>'>
 
-<?php endforeach; ?>
+  <?php
+   foreach($block->getSlides($data) as $item):
+    $status = $item['status'];
+    $title = $item['title'];
+    $alt = $item['alt'];
+    $link = $item['link'];
+    $image = $item['image'];
+    $getLink = $block->getLink($link);
+    $getImage = $block->getImage($image);
+    $isNewTab = $block->isNewTab($link);
+   ?>
+   
+  <?php if($status && $image): ?>
+  <div class="usslick__slide">
+    
+   <?php if($getLink) : ?>
+   <a href="<?= $getLink ?>" title="<?= $title ?>" class="usslick__slide--link" <?= ($isNewTab) ? 'target="_blank"': '' ?>>
+   <?php else: ?>
+   <div class="usslick__slide--unlink">
+   <?php endif; ?>
 
-<div class="slicker" data-slick='<?= $block->getSettings($data) ?>'>
- <div><h3>1</h3></div>
- <div><h3>2</h3></div>
- <div><h3>3</h3></div>
- <div><h3>4</h3></div>
- <div><h3>5</h3></div>
- <div><h3>6</h3></div>
-</div>
+    <img src="<?= $getImage ?>" alt="<?= $alt ?>" title="<?= $title ?>" class="usslick__slide--image" />
 
-<script>
- require(['jquery', 'slick'], function($) {
-  $(document).ready(function() {
-   $(".slicker").slick();
-  });
- });
-</script>
+   <?php if($getLink) : ?>
+   </a>
+   <?php else: ?>
+   </div>
+   <?php endif; ?>
+
+  </div>
+  <?php endif; ?>
+
+  <?php endforeach; ?>
+
+ </div>
+
+<?php endif; ?>
