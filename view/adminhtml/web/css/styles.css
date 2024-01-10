@@ -1,0 +1,8 @@
+.us-admin__fieldset-parent { border: none !important; }
+.us-admin__fieldset-parent > .admin__fieldset-wrapper-content > .admin__fieldset { padding: 0 !important; }
+.us-admin__fieldset-child { margin-top: 0 !important; margin-bottom: 0 !important; margin-left: 0 !important; border-bottom-width: 1px !important; }
+.us-admin__fieldset-child:last-child { border-top: none !important; }
+.us-admin__fieldset-child > .fieldset-wrapper-title { background: #f5f5f5 !important; }
+.us-admin__fieldset-child > .fieldset-wrapper-title > .admin__collapsible-title { padding-left: 0 !important; }
+.us-admin__fieldset-child > .fieldset-wrapper-title > .admin__collapsible-title:before { right: 1.3rem; left: auto; }
+.us-admin__button { margin-bottom: 3rem; }

@@ -70,11 +70,12 @@
     </checkbox>
    </formElements>
   </field>
-
+  
   <button name="button_responsive">
    <argument name="data" xsi:type="array">
     <item name="config" xsi:type="array">
-     <item name="title" xsi:type="string">Advanced Settings</item>
+     <item name="title" xsi:type="string">Responsive Settings</item>
+     <item name="buttonClasses" xsi:type="string">us-admin__button</item>
      <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/components/button</item>
      <item name="actions" xsi:type="array">
       <item name="0" xsi:type="array">
@@ -746,84 +747,205 @@
     <fieldset name="slide">
     
      <settings>
-      <label/>
+      <label />
       <collapsible>false</collapsible>
       <opened>true</opened>
+      <additionalClasses>
+       <class name="us-admin__fieldset-parent">true</class>
+      </additionalClasses>
      </settings>
      
-     <field name="status" formElement="checkbox">
-      <argument name="data" xsi:type="array">
-       <item name="config" xsi:type="array">
-        <item name="default" xsi:type="number">1</item>
-       </item>
-      </argument>
-      <settings>
-       <dataType>boolean</dataType>
-       <label translate="true">Enable</label>
-       <tooltip>
-        <description translate="true">Uncheck to Disable</description>
-       </tooltip>
-      </settings>
-      <formElements>
-       <checkbox>
-        <settings>
-         <valueMap>
-          <map name="false" xsi:type="number">0</map>
-          <map name="true" xsi:type="number">1</map>
-         </valueMap>
-         <prefer>toggle</prefer>
-        </settings>
-       </checkbox>
-      </formElements>
-     </field>
-
-     <field name="image" formElement="imageUploader">
-      <settings>
-       <label translate="true">Image</label>
-       <componentType>imageUploader</componentType>
-      </settings>
-      <formElements>
-       <imageUploader>
-        <settings>
-         <allowedExtensions>jpg jpeg gif png</allowedExtensions>
-         <maxFileSize>2097152</maxFileSize>
-         <uploaderConfig>
-          <param xsi:type="string" name="url">slicksliderwidget/index/upload</param>
-         </uploaderConfig>
-        </settings>
-       </imageUploader>
-      </formElements>
-     </field>
-
-     <field name="title" formElement="input">
-      <settings>
-       <validation>
-        <rule name="required-entry" xsi:type="boolean">true</rule>
-       </validation>
-       <dataType>text</dataType>
-       <label>Title</label>
-      </settings>
-     </field>
-
-     <field name="alt" formElement="input">
-      <settings>
-       <dataType>text</dataType>
-       <label>Alt</label>
-      </settings>
-     </field>
+     <fieldset name="slide_item">
      
-     <field name="link" formElement="urlInput">
-      <argument name="data" xsi:type="array">
-       <item name="config" xsi:type="array">
-        <item name="urlTypes" xsi:type="object">Magento\Ui\Model\UrlInput\LinksConfigProvider</item>
-       </item>
-      </argument>
       <settings>
-       <label>Link</label>
+       <label>Item</label>
+       <collapsible>true</collapsible>
+       <opened>true</opened>
+       <additionalClasses>
+        <class name="us-admin__fieldset-child">true</class>
+       </additionalClasses>
       </settings>
-     </field>
+      
+      <field name="status" formElement="checkbox">
+       <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+         <item name="default" xsi:type="number">1</item>
+        </item>
+       </argument>
+       <settings>
+        <dataType>boolean</dataType>
+        <label translate="true">Enable</label>
+        <tooltip>
+         <description translate="true">Uncheck to Disable</description>
+        </tooltip>
+       </settings>
+       <formElements>
+        <checkbox>
+         <settings>
+          <valueMap>
+           <map name="false" xsi:type="number">0</map>
+           <map name="true" xsi:type="number">1</map>
+          </valueMap>
+          <prefer>toggle</prefer>
+         </settings>
+        </checkbox>
+       </formElements>
+      </field>
+      
+      <field name="image" formElement="imageUploader">
+       <settings>
+        <label translate="true">Image</label>
+        <componentType>imageUploader</componentType>
+       </settings>
+       <formElements>
+        <imageUploader>
+         <settings>
+          <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+          <maxFileSize>2097152</maxFileSize>
+          <uploaderConfig>
+           <param xsi:type="string" name="url">slicksliderwidget/index/upload</param>
+          </uploaderConfig>
+         </settings>
+        </imageUploader>
+       </formElements>
+      </field>
+      
+      <field name="title" formElement="input">
+       <settings>
+        <validation>
+         <rule name="required-entry" xsi:type="boolean">true</rule>
+        </validation>
+        <dataType>text</dataType>
+        <label>Title</label>
+       </settings>
+      </field>
+      
+      <field name="alt" formElement="input">
+       <settings>
+        <dataType>text</dataType>
+        <label>Alt</label>
+       </settings>
+      </field>
+      
+      <field name="link" formElement="urlInput">
+       <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+         <item name="urlTypes" xsi:type="object">Magento\Ui\Model\UrlInput\LinksConfigProvider</item>
+        </item>
+       </argument>
+       <settings>
+        <label>Link</label>
+       </settings>
+      </field>
+      
+     </fieldset>
+
+     <fieldset name="slide_settings">
+     
+      <settings>
+       <label>Image Settings</label>
+       <collapsible>true</collapsible>
+       <opened>false</opened>
+       <additionalClasses>
+        <class name="us-admin__fieldset-child">true</class>
+       </additionalClasses>
+      </settings>
+
+      <field name="height" formElement="input">
+       <settings>
+        <validation>
+         <rule name="validate-number" xsi:type="boolean">true</rule>
+        </validation>
+        <dataType>Text</dataType>
+        <label>Height</label>
+       </settings>
+      </field>
+
+      <field name="size" formElement="select">
+       <settings>
+        <dataType>text</dataType>
+        <label translate="true">Size</label>
+       </settings>
+       <formElements>
+        <select>
+         <settings>
+          <options>
+           <option name="1" xsi:type="array">
+            <item name="value" xsi:type="string">fill</item>
+            <item name="label" xsi:type="string">Fill</item>
+           </option>
+           <option name="2" xsi:type="array">
+            <item name="value" xsi:type="string">contain</item>
+            <item name="label" xsi:type="string">Contain</item>
+           </option>
+           <option name="3" xsi:type="array">
+            <item name="value" xsi:type="string">cover</item>
+            <item name="label" xsi:type="string">Cover</item>
+           </option>
+           <option name="4" xsi:type="array">
+            <item name="value" xsi:type="string">none</item>
+            <item name="label" xsi:type="string">None</item>
+           </option>
+           <option name="5" xsi:type="array">
+            <item name="value" xsi:type="string">scale-down</item>
+            <item name="label" xsi:type="string">Scale down</item>
+           </option>
+          </options>
+          <caption translate="true">Please Select</caption>
+         </settings>
+        </select>
+       </formElements>
+      </field>
+
+      <field name="position-x" formElement="input">
+       <settings>
+        <validation>
+         <rule name="validate-number" xsi:type="boolean">true</rule>
+        </validation>
+        <dataType>Text</dataType>
+        <label>Position X</label>
+       </settings>
+      </field>
+
+      <field name="position-y" formElement="input">
+       <settings>
+        <validation>
+         <rule name="validate-number" xsi:type="boolean">true</rule>
+        </validation>
+        <dataType>Text</dataType>
+        <label>Position Y</label>
+       </settings>
+      </field>
+
+      <field name="position-unit" formElement="select">
+       <settings>
+        <dataType>text</dataType>
+        <label translate="true">Position unit</label>
+       </settings>
+       <formElements>
+        <select>
+         <settings>
+          <options>
+           <option name="1" xsi:type="array">
+            <item name="value" xsi:type="string">px</item>
+            <item name="label" xsi:type="string">px</item>
+           </option>
+           <option name="2" xsi:type="array">
+            <item name="value" xsi:type="string">%</item>
+            <item name="label" xsi:type="string">%</item>
+           </option>
+          </options>
+          <caption translate="true">Please Select</caption>
+         </settings>
+        </select>
+       </formElements>
+      </field>
+
+     </fieldset>
 
     </fieldset>
+
+    
 
     <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
      <argument name="data" xsi:type="array">

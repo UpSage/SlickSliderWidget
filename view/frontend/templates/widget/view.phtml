@@ -1,23 +1,20 @@
 <?php
- $data = $block->getData('slider_data');
+ $slides = $block->getSlides();
+ if(count($slides)):
 ?>
 
-<pre><?= json_encode($data['slides'], JSON_PRETTY_PRINT); ?></pre>
-
-<?php if(count($block->getSlides($data))): ?>
-
- <div class="usslick__slider" data-slick='<?= $block->getSettings($data) ?>'>
+ <div class="usslick__slider" data-slick='<?= $block->getSettings() ?>'>
 
   <?php
-   foreach($block->getSlides($data) as $item):
-    $status = $item['status'];
-    $title = $item['title'];
-    $alt = $item['alt'];
-    $link = $item['link'];
-    $image = $item['image'];
-    $getLink = $block->getLink($link);
-    $getImage = $block->getImage($image);
-    $isNewTab = $block->isNewTab($link);
+   foreach($slides as $slide):
+    $status = $slide['status'];
+    $title = $slide['title'];
+    $alt = $slide['alt'];
+    $link = $slide['link'];
+    $image = $slide['image'];
+    $getLink = $block->getSlideLink($link);
+    $getImage = $block->getSlideImage($image);
+    $isNewTab = $block->getSlideTarget($link);
    ?>
    
   <?php if($status && $image): ?>

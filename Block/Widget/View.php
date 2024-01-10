@@ -7,6 +7,7 @@
   protected $_template = 'widget/view.phtml';
   protected $_categoryRepository;
   protected $_productRepository;
+  protected $_pageRepository;
   protected $_storeManager;
   
   public function __construct(
@@ -41,10 +42,10 @@
    );
   }
 
-  private function _breakpoints($data) {
+  private function _breakpoints($items) {
    //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
    $breakpoints = array();
-   foreach($data as $item) {
+   foreach($items as $item) {
     $settings = 'unslick';
     if(!$item['unslick']) {
      $settings = $this->_basicSettings($item);
@@ -76,7 +77,12 @@
    return $this->_storeManager->getStore()->getUrl($_page->getIdentifier()); 
   }
 
-  public function getSettings($data) {
+  public function getRawData() {
+   return $this->getData('slider_data');
+  }
+
+  public function getSettings(){
+   $data = $this->getRawData();
    $settings = array();
    $settings = $this->_basicSettings($data);
    $settings['responsive'] = $this->_breakpoints($data['responsive']);
@@ -90,11 +96,11 @@
    return json_encode($settings);
   }
 
-  public function getSlides($data) {
-   return $data['slides'];
+  public function getSlides() {
+   return $this->getRawData()['slides'];
   }
 
-  public function getLink($link) {
+  public function getSlideLink($link) {
    $url = '';
    if($link['type'] == 'page' && $link['page']) {
     $url = $this->_getPageUrl($link['page']);
@@ -108,7 +114,11 @@
    return $url;
   }
 
-  public function getImage($image) {
+  public function getSlideTarget($link) {
+   return $link['setting'];
+  }
+
+  public function getSlideImage($image) {
    if(!$image) {
     return '';
    } else {
@@ -116,10 +126,6 @@
      return $this->_storeManager->getStore()->getBaseUrl() . ltrim($item['url'], '/');
     }
    }
-  }
-
-  public function isNewTab($link) {
-   return $link['setting'];
   }
 
  }
