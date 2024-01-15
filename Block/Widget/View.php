@@ -26,41 +26,41 @@
    $this->_storeManager = $_storeManager;
   }
 
-  private function _basicSettings($item){
-   return array(
-    'arrows' => $item['arrows'],
-    'dots' => $item['dots'],
-    'infinite' => $item['infinite'],
-    'speed' => intval($item['speed']),
-    'autoplay' => $item['autoplay'],
-    'autoplaySpeed' => intval($item['autoplaySpeed']),
-    'centerMode' => $item['centerMode'],
-    'centerPadding' => $item['centerPadding'] . 'px',
-    'adaptiveHeight' => $item['adaptiveHeight'],
-    'slidesToShow' => intval($item['slidesToShow']),
-    'slidesToScroll' => intval($item['slidesToScroll'])
-   );
-  }
+  // private function _basicSettings($item){
+  //  return array(
+  //   'arrows' => $item['arrows'],
+  //   'dots' => $item['dots'],
+  //   'infinite' => $item['infinite'],
+  //   'speed' => intval($item['speed']),
+  //   'autoplay' => $item['autoplay'],
+  //   'autoplaySpeed' => intval($item['autoplaySpeed']),
+  //   'centerMode' => $item['centerMode'],
+  //   'centerPadding' => $item['centerPadding'] . 'px',
+  //   'adaptiveHeight' => $item['adaptiveHeight'],
+  //   'slidesToShow' => intval($item['slidesToShow']),
+  //   'slidesToScroll' => intval($item['slidesToScroll'])
+  //  );
+  // }
 
-  private function _breakpoints($items) {
-   //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
-   $breakpoints = array();
-   foreach($items as $item) {
-    $settings = 'unslick';
-    if(!$item['unslick']) {
-     $settings = $this->_basicSettings($item);
-     if(!$settings['autoplay'])
-      unset($settings['autoplaySpeed']);
-     if(!$settings['centerMode'])
-      unset($settings['centerPadding']);
-    }
-    $breakpoints[] = array(
-     'breakpoint' => intval($item['breakpoint']),
-     'settings' => $settings
-    );
-   }
-   return $breakpoints;
-  }
+  // private function _breakpoints($items) {
+  //  //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
+  //  $breakpoints = array();
+  //  foreach($items as $item) {
+  //   $settings = 'unslick';
+  //   if(!$item['unslick']) {
+  //    $settings = $this->_basicSettings($item);
+  //    if(!$settings['autoplay'])
+  //     unset($settings['autoplaySpeed']);
+  //    if(!$settings['centerMode'])
+  //     unset($settings['centerPadding']);
+  //   }
+  //   $breakpoints[] = array(
+  //    'breakpoint' => intval($item['breakpoint']),
+  //    'settings' => $settings
+  //   );
+  //  }
+  //  return $breakpoints;
+  // }
 
   private function _getCategoryUrl($id){
    $_category = $this->_categoryRepository->get($id, $this->_storeManager->getStore()->getId());
