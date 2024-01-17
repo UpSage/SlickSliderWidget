@@ -39,47 +39,13 @@
       <div><h3>6</h3></div>
     </div>
 
-<?php
- $slides = $block->getSlides();
- if(count($slides)):
-?>
 
- <div class="usslick__slider">
+<pre><?= json_encode($block->getItems('data'),JSON_PRETTY_PRINT) ?></pre>
+<br/>
+<pre><?= json_encode($block->getItems('styles'),JSON_PRETTY_PRINT) ?></pre>
+<br/>
+<pre><?= $block->getColumns('styles') ?></pre>
+<pre><?= $block->getStyles(); ?></pre>
+<br/>
+<pre><?= $block->getSettings() ?></pre>
 
-  <?php
-   foreach($slides as $slide):
-    $status = $slide['status'];
-    $title = $slide['title'];
-    $alt = $slide['alt'];
-    $link = $slide['link'];
-    $image = $slide['image'];
-    $getLink = $block->getSlideLink($link);
-    $getImage = $block->getSlideImage($image);
-    $isNewTab = $block->getSlideTarget($link);
-   ?>
-   
-  <?php if($status && $image): ?>
-  <div class="usslick__slide">
-    
-   <?php if($getLink) : ?>
-   <a href="<?= $getLink ?>" title="<?= $title ?>" class="usslick__slide--link" <?= ($isNewTab) ? 'target="_blank"': '' ?>>
-   <?php else: ?>
-   <div class="usslick__slide--unlink">
-   <?php endif; ?>
-
-    <img src="<?= $getImage ?>" alt="<?= $alt ?>" title="<?= $title ?>" class="usslick__slide--image" />
-
-   <?php if($getLink) : ?>
-   </a>
-   <?php else: ?>
-   </div>
-   <?php endif; ?>
-
-  </div>
-  <?php endif; ?>
-
-  <?php endforeach; ?>
-
- </div>
-
-<?php endif; ?>

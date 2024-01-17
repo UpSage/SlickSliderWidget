@@ -26,21 +26,21 @@
    $this->_storeManager = $_storeManager;
   }
 
-  // private function _basicSettings($item){
-  //  return array(
-  //   'arrows' => $item['arrows'],
-  //   'dots' => $item['dots'],
-  //   'infinite' => $item['infinite'],
-  //   'speed' => intval($item['speed']),
-  //   'autoplay' => $item['autoplay'],
-  //   'autoplaySpeed' => intval($item['autoplaySpeed']),
-  //   'centerMode' => $item['centerMode'],
-  //   'centerPadding' => $item['centerPadding'] . 'px',
-  //   'adaptiveHeight' => $item['adaptiveHeight'],
-  //   'slidesToShow' => intval($item['slidesToShow']),
-  //   'slidesToScroll' => intval($item['slidesToScroll'])
-  //  );
-  // }
+  private function _basicSettings($item){
+   return array(
+    'arrows' => $item['arrows'],
+    'dots' => $item['dots'],
+    'infinite' => $item['infinite'],
+    'speed' => intval($item['speed']),
+    'autoplay' => $item['autoplay'],
+    'autoplaySpeed' => intval($item['autoplaySpeed']),
+    'centerMode' => $item['centerMode'],
+    'centerPadding' => $item['centerPadding']['value']['length'] . $item['centerPadding']['value']['unit'],
+    'adaptiveHeight' => $item['adaptiveHeight'],
+    'slidesToShow' => intval($item['slidesToShow']),
+    'slidesToScroll' => intval($item['slidesToScroll'])
+   );
+  }
 
   // private function _breakpoints($items) {
   //  //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
@@ -81,23 +81,100 @@
    return $this->getData('slider_data');
   }
 
+  /* Helper */
+
+  public function getCssUnitValue($prop) {
+   $value = 'auto';
+   if($prop['type'] == 'length') {
+    $value = $prop['value']['length'] . $prop['value']['unit'];
+   }
+   return $value;
+  }
+
+  /* Slider */
+
+  public function isUnslick() {
+   return $this->getRawData()['unslick'];
+  }
+
+  public function isResponsive() {
+   return $this->getRawData()['is_responsive'];
+  }
+
+  public function getId(){
+   return $this->getRawData()['identifier'];
+  }
+
+  public function getStyles() {
+   $width = $this->getRawData()['styles']['width'];
+   $margin = $this->getRawData()['styles']['margin'];
+   return
+    'width: ' . $this->getCssUnitValue($width) .
+    '; margin: '
+     . $this->getCssUnitValue($margin['top']) . ' '
+     . $this->getCssUnitValue($margin['right']) . ' '
+     . $this->getCssUnitValue($margin['bottom']) . ' '
+     . $this->getCssUnitValue($margin['left']) .
+    ';'
+   ;
+  }
+
   public function getSettings(){
-   $data = $this->getRawData();
+   $data = $this->getRawData()['settings'];
    $settings = array();
    $settings = $this->_basicSettings($data);
-   $settings['responsive'] = $this->_breakpoints($data['responsive']);
+//    $settings['responsive'] = $this->_breakpoints($data['responsive']);
    $settings['mobileFirst'] = $data['mobileFirst'];
    if(!$settings['autoplay'])
     unset($settings['autoplaySpeed']);
    if(!$settings['centerMode'])
     unset($settings['centerPadding']);
-   if(!$data['is_responsive'])
-    unset($settings['responsive'], $settings['mobileFirst']);
-   return json_encode($settings);
+//    if(!$data['is_responsive'])
+//     unset($settings['responsive'], $settings['mobileFirst']);
+   return json_encode($settings,JSON_PRETTY_PRINT);
   }
 
-  public function getSlides() {
-   return $this->getRawData()['slides'];
+  /* Columns / UnSlicked */
+
+  public function getColumns($type) {
+   $count = $this->getRawData()['columns']['count'];
+   $styles = $this->getRawData()['columns']['styles'];
+   switch($type){
+    case 'count':
+     return intval($count);
+     break;
+    case 'styles':
+     $margin = $styles['margin'];
+     $padding = $styles['padding'];
+     return
+      'margin: '
+       . $this->getCssUnitValue($margin['top']) . ' '
+       . $this->getCssUnitValue($margin['right']) . ' '
+       . $this->getCssUnitValue($margin['bottom']) . ' '
+       . $this->getCssUnitValue($margin['left']) .
+      '; padding: ' 
+       . $this->getCssUnitValue($padding['top']) . ' '
+       . $this->getCssUnitValue($padding['right']) . ' '
+       . $this->getCssUnitValue($padding['bottom']) . ' '
+       . $this->getCssUnitValue($padding['left']) . ';'
+     ;
+    break;
+   }
+  }
+
+  public function getItems($type){
+   $data = array();
+   foreach($this->getRawData()['slides'] as $key=>$slide){
+    switch($type){
+     case 'data':
+      $data[] = $slide['slide']['data'];
+      break;
+     case 'styles':
+      $data[] = $slide['slide']['styles'];
+      break;
+    }
+   }
+   return $data;
   }
 
   public function getSlideLink($link) {

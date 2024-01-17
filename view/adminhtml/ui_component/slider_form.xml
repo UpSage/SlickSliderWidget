@@ -4142,6 +4142,11 @@
      </item>
     </argument>
     <fieldset name="slide">
+     <argument name="data" xsi:type="array">
+      <item name="config" xsi:type="array">
+       <item name="dataScope" xsi:type="string">slide</item>
+      </item>
+     </argument>
      <settings>
       <label />
       <collapsible>false</collapsible>
@@ -4150,7 +4155,12 @@
        <class name="us-admin__fieldset-parent">true</class>
       </additionalClasses>
      </settings>
-     <fieldset name="slide_item">
+     <fieldset name="item">
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="dataScope" xsi:type="string">data</item>
+       </item>
+      </argument>
       <settings>
        <label>Item</label>
        <collapsible>true</collapsible>
@@ -4241,15 +4251,15 @@
         <class name="us-admin__fieldset-child">true</class>
        </additionalClasses>
       </settings>
-      <button name="button_responsive">
+      <button name="button_breakpoints">
        <argument name="data" xsi:type="array">
         <item name="config" xsi:type="array">
-         <item name="title" xsi:type="string">Responsive Settings</item>
+         <item name="title" xsi:type="string">Breakpoint Settings</item>
          <item name="buttonClasses" xsi:type="string">us-admin__button</item>
          <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/components/button</item>
          <item name="actions" xsi:type="array">
           <item name="0" xsi:type="array">
-           <item name="targetName" xsi:type="string">${ $.parentName}.modal_responsive</item>
+           <item name="targetName" xsi:type="string">${ $.parentName}.modal_breakpoints</item>
            <item name="actionName" xsi:type="string">openModal</item>
           </item>
          </item>
@@ -4259,54 +4269,6 @@
         <displayAsLink>true</displayAsLink>
        </settings>
       </button>
-      <field name="is_responsive" formElement="checkbox">
-       <argument name="data" xsi:type="array">
-        <item name="config" xsi:type="array">
-         <item name="dataScope" xsi:type="string">is_responsive</item>
-        </item>
-       </argument>
-       <settings>
-        <dataType>boolean</dataType>
-        <label translate="true">Responsive</label>
-        <tooltip>
-         <description translate="true">Uncheck to Disable</description>
-        </tooltip>
-        <switcherConfig>
-         <rules>
-          <rule name="0">
-           <value>0</value>
-           <actions>
-            <action name="0">
-             <target>${ $.parentName}.button_responsive</target>
-             <callback>hide</callback>
-            </action>
-           </actions>
-          </rule>
-          <rule name="1">
-           <value>1</value>
-           <actions>
-            <action name="0">
-             <target>${ $.parentName}.button_responsive</target>
-             <callback>show</callback>
-            </action>
-           </actions>
-          </rule>
-         </rules>
-         <enabled>true</enabled>
-        </switcherConfig>
-       </settings>
-       <formElements>
-        <checkbox>
-         <settings>
-          <valueMap>
-           <map name="false" xsi:type="boolean">false</map>
-           <map name="true" xsi:type="boolean">true</map>
-          </valueMap>
-          <prefer>toggle</prefer>
-         </settings>
-        </checkbox>
-       </formElements>
-      </field>
       <fieldset name="image">
        <settings>
         <label>Image</label>
@@ -4716,7 +4678,7 @@
         </field>
        </container>
       </fieldset>
-      <modal name="modal_responsive">
+      <modal name="modal_breakpoints">
        <argument name="data" xsi:type="array">
         <item name="config" xsi:type="array">
          <item name="onCancel" xsi:type="string">actionCancel</item>
@@ -4740,6 +4702,556 @@
          </item>
         </item>
        </argument>
+       <fieldset name="modal_breakpoints_options">
+        <settings>
+         <label>Options</label>
+        </settings>
+        <field name="mobileFirst" formElement="checkbox">
+         <settings>
+          <dataType>boolean</dataType>
+          <label translate="true">Mobile First</label>
+          <tooltip>
+           <description translate="true">Uncheck to Disable</description>
+          </tooltip>
+         </settings>
+         <formElements>
+          <checkbox>
+           <settings>
+            <valueMap>
+             <map name="false" xsi:type="boolean">false</map>
+             <map name="true" xsi:type="boolean">true</map>
+            </valueMap>
+            <prefer>toggle</prefer>
+           </settings>
+          </checkbox>
+         </formElements>
+        </field>
+        <dynamicRows name="breakpoints">
+         <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+           <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/dynamic-rows/dynamic-rows</item>
+          </item>
+         </argument>
+         <settings>
+          <addButtonLabel translate="true">Add Breakpoint</addButtonLabel>
+          <componentType>dynamicRows</componentType>
+          <columnsHeader>false</columnsHeader>
+          <defaultRecord>true</defaultRecord>
+          <label translate="true">Breakpoints</label>
+         </settings>
+         <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+          <argument name="data" xsi:type="array">
+           <item name="config" xsi:type="array">
+            <item name="isTemplate" xsi:type="boolean">true</item>
+            <item name="is_collection" xsi:type="boolean">true</item>
+            <item name="componentType" xsi:type="string">container</item>
+           </item>
+          </argument>
+          <fieldset name="breakpoints">
+           <settings>
+            <label />
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+           </settings>
+           <container name="breakpoint" component="Magento_Ui/js/form/components/group">
+            <argument name="data" xsi:type="array">
+             <item name="type" xsi:type="string">group</item>
+             <item name="config" xsi:type="array">
+              <item name="label" xsi:type="string" translate="true">Breakpoint</item>
+              <item name="additionalClasses" xsi:type="array">
+               <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+              </item>
+              <item name="dataScope" xsi:type="string">breakpoint</item>
+             </item>
+            </argument>
+            <field name="length" formElement="input">
+             <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+               <item name="additionalClasses" xsi:type="array">
+                <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+               </item>
+               <item name="default" xsi:type="string">0</item>
+               <item name="dataScope" xsi:type="string">value.length</item>
+              </item>
+             </argument>
+             <settings>
+              <label />
+              <validation>
+               <rule name="validate-number" xsi:type="boolean">true</rule>
+              </validation>
+              <dataType>Text</dataType>
+             </settings>
+            </field>
+            <field name="unit" formElement="select">
+             <argument name="data" xsi:type="array">
+              <item name="config" xsi:type="array">
+               <item name="default" xsi:type="string">px</item>
+               <item name="dataScope" xsi:type="string">value.unit</item>
+              </item>
+             </argument>
+             <settings>
+              <label />
+              <dataType>text</dataType>
+             </settings>
+             <formElements>
+              <select>
+               <settings>
+                <options>
+                 <option name="2" xsi:type="array">
+                  <item name="value" xsi:type="string">px</item>
+                  <item name="label" xsi:type="string">px</item>
+                 </option>
+                 <option name="1" xsi:type="array">
+                  <item name="value" xsi:type="string">%</item>
+                  <item name="label" xsi:type="string">%</item>
+                 </option>
+                </options>
+               </settings>
+              </select>
+             </formElements>
+            </field>
+           </container>
+           <fieldset name="styles">
+            <argument name="data" xsi:type="array">
+             <item name="config" xsi:type="array">
+              <item name="dataScope" xsi:type="string">breakpoint.styles</item>
+             </item>
+            </argument>
+            <settings>
+             <label>Styles</label>
+             <collapsible>true</collapsible>
+             <opened>true</opened>
+             <additionalClasses>
+              <class name="us-admin__fieldset-modal">true</class>
+             </additionalClasses>
+            </settings>
+            <fieldset name="image">
+             <settings>
+              <label>Image</label>
+              <collapsible>false</collapsible>
+              <opened>true</opened>
+              <additionalClasses>
+               <class name="us-admin__fieldset-modal-neph">true</class>
+              </additionalClasses>
+             </settings>
+             <container name="width" component="Magento_Ui/js/form/components/group">
+              <argument name="data" xsi:type="array">
+               <item name="type" xsi:type="string">group</item>
+               <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Width</item>
+                <item name="additionalClasses" xsi:type="array">
+                 <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+                </item>
+                <item name="dataScope" xsi:type="string">width</item>
+               </item>
+              </argument>
+              <field name="type" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="default" xsi:type="string">auto</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+                <switcherConfig>
+                 <rules>
+                  <rule name="0">
+                   <value>auto</value>
+                   <actions>
+                    <action name="0">
+                     <target>${ $.parentName}.length</target>
+                     <callback>hide</callback>
+                    </action>
+                    <action name="1">
+                     <target>${ $.parentName}.unit</target>
+                     <callback>hide</callback>
+                    </action>
+                   </actions>
+                  </rule>
+                  <rule name="1">
+                   <value>length</value>
+                   <actions>
+                    <action name="0">
+                     <target>${ $.parentName}.length</target>
+                     <callback>show</callback>
+                    </action>
+                    <action name="1">
+                     <target>${ $.parentName}.unit</target>
+                     <callback>show</callback>
+                    </action>
+                   </actions>
+                  </rule>
+                 </rules>
+                 <enabled>true</enabled>
+                </switcherConfig>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">auto</item>
+                    <item name="label" xsi:type="string">Auto</item>
+                   </option>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">length</item>
+                    <item name="label" xsi:type="string">Length</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+              <field name="length" formElement="input">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="additionalClasses" xsi:type="array">
+                  <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+                 </item>
+                 <item name="default" xsi:type="string">100</item>
+                 <item name="dataScope" xsi:type="string">value.length</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <validation>
+                 <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>Text</dataType>
+               </settings>
+              </field>
+              <field name="unit" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="default" xsi:type="string">%</item>
+                 <item name="dataScope" xsi:type="string">value.unit</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">px</item>
+                    <item name="label" xsi:type="string">px</item>
+                   </option>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">%</item>
+                    <item name="label" xsi:type="string">%</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+             </container>
+             <container name="height" component="Magento_Ui/js/form/components/group">
+              <argument name="data" xsi:type="array">
+               <item name="type" xsi:type="string">group</item>
+               <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Height</item>
+                <item name="additionalClasses" xsi:type="array">
+                 <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+                </item>
+                <item name="dataScope" xsi:type="string">height</item>
+               </item>
+              </argument>
+              <field name="type" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="default" xsi:type="string">auto</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+                <switcherConfig>
+                 <rules>
+                  <rule name="0">
+                   <value>auto</value>
+                   <actions>
+                    <action name="0">
+                     <target>${ $.parentName}.length</target>
+                     <callback>hide</callback>
+                    </action>
+                    <action name="1">
+                     <target>${ $.parentName}.unit</target>
+                     <callback>hide</callback>
+                    </action>
+                   </actions>
+                  </rule>
+                  <rule name="1">
+                   <value>length</value>
+                   <actions>
+                    <action name="0">
+                     <target>${ $.parentName}.length</target>
+                     <callback>show</callback>
+                    </action>
+                    <action name="1">
+                     <target>${ $.parentName}.unit</target>
+                     <callback>show</callback>
+                    </action>
+                   </actions>
+                  </rule>
+                 </rules>
+                 <enabled>true</enabled>
+                </switcherConfig>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">auto</item>
+                    <item name="label" xsi:type="string">Auto</item>
+                   </option>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">length</item>
+                    <item name="label" xsi:type="string">Length</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+              <field name="length" formElement="input">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="additionalClasses" xsi:type="array">
+                  <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+                 </item>
+                 <item name="default" xsi:type="string">100</item>
+                 <item name="dataScope" xsi:type="string">value.length</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <validation>
+                 <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>Text</dataType>
+               </settings>
+              </field>
+              <field name="unit" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="default" xsi:type="string">%</item>
+                 <item name="dataScope" xsi:type="string">value.unit</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">px</item>
+                    <item name="label" xsi:type="string">px</item>
+                   </option>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">%</item>
+                    <item name="label" xsi:type="string">%</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+             </container>
+             <container name="object-fit" component="Magento_Ui/js/form/components/group">
+              <argument name="data" xsi:type="array">
+               <item name="type" xsi:type="string">group</item>
+               <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Object Fit</item>
+                <item name="additionalClasses" xsi:type="array">
+                 <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+                </item>
+                <item name="dataScope" xsi:type="string">object-fit</item>
+               </item>
+              </argument>
+              <field name="value" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="default" xsi:type="string">fill</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">fill</item>
+                    <item name="label" xsi:type="string">Fill</item>
+                   </option>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">contain</item>
+                    <item name="label" xsi:type="string">Contain</item>
+                   </option>
+                   <option name="3" xsi:type="array">
+                    <item name="value" xsi:type="string">cover</item>
+                    <item name="label" xsi:type="string">Cover</item>
+                   </option>
+                   <option name="4" xsi:type="array">
+                    <item name="value" xsi:type="string">none</item>
+                    <item name="label" xsi:type="string">None</item>
+                   </option>
+                   <option name="5" xsi:type="array">
+                    <item name="value" xsi:type="string">scale-down</item>
+                    <item name="label" xsi:type="string">Scale Down</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+             </container>
+             <container name="object-position-x" component="Magento_Ui/js/form/components/group">
+              <argument name="data" xsi:type="array">
+               <item name="type" xsi:type="string">group</item>
+               <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Object Position X</item>
+                <item name="additionalClasses" xsi:type="array">
+                 <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+                </item>
+                <item name="dataScope" xsi:type="string">object-position.x</item>
+               </item>
+              </argument>
+              <field name="length" formElement="input">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="additionalClasses" xsi:type="array">
+                  <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+                 </item>
+                 <item name="default" xsi:type="string">0</item>
+                 <item name="dataScope" xsi:type="string">value.length</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <validation>
+                 <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>Text</dataType>
+               </settings>
+              </field>
+              <field name="unit" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="default" xsi:type="string">px</item>
+                 <item name="dataScope" xsi:type="string">value.unit</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">px</item>
+                    <item name="label" xsi:type="string">px</item>
+                   </option>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">%</item>
+                    <item name="label" xsi:type="string">%</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+             </container>
+             <container name="object-position-y" component="Magento_Ui/js/form/components/group">
+              <argument name="data" xsi:type="array">
+               <item name="type" xsi:type="string">group</item>
+               <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Object Position Y</item>
+                <item name="additionalClasses" xsi:type="array">
+                 <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+                </item>
+                <item name="dataScope" xsi:type="string">object-position.y</item>
+               </item>
+              </argument>
+              <field name="length" formElement="input">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="additionalClasses" xsi:type="array">
+                  <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+                 </item>
+                 <item name="default" xsi:type="string">0</item>
+                 <item name="dataScope" xsi:type="string">value.length</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <validation>
+                 <rule name="validate-number" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>Text</dataType>
+               </settings>
+              </field>
+              <field name="unit" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="default" xsi:type="string">px</item>
+                 <item name="dataScope" xsi:type="string">value.unit</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">px</item>
+                    <item name="label" xsi:type="string">px</item>
+                   </option>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">%</item>
+                    <item name="label" xsi:type="string">%</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+             </container>
+            </fieldset>
+           </fieldset>
+          </fieldset>
+          <!-- <field name="position" component="Magento_Catalog/js/form/element/input" formElement="input"><settings><visible>false</visible></settings></field> -->
+          <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
+           <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+             <item name="fit" xsi:type="boolean">true</item>
+            </item>
+           </argument>
+           <settings>
+            <dataType>text</dataType>
+            <label>Actions</label>
+            <componentType>actionDelete</componentType>
+           </settings>
+          </actionDelete>
+         </container>
+        </dynamicRows>
+       </fieldset>
       </modal>
      </fieldset>
     </fieldset>
