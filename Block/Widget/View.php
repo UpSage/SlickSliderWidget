@@ -42,26 +42,6 @@
    );
   }
 
-  // private function _breakpoints($items) {
-  //  //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
-  //  $breakpoints = array();
-  //  foreach($items as $item) {
-  //   $settings = 'unslick';
-  //   if(!$item['unslick']) {
-  //    $settings = $this->_basicSettings($item);
-  //    if(!$settings['autoplay'])
-  //     unset($settings['autoplaySpeed']);
-  //    if(!$settings['centerMode'])
-  //     unset($settings['centerPadding']);
-  //   }
-  //   $breakpoints[] = array(
-  //    'breakpoint' => intval($item['breakpoint']),
-  //    'settings' => $settings
-  //   );
-  //  }
-  //  return $breakpoints;
-  // }
-
   private function _getCategoryUrl($id){
    $_category = $this->_categoryRepository->get($id, $this->_storeManager->getStore()->getId());
    return $_category->getUrl();
@@ -81,25 +61,52 @@
    return $this->getData('slider_data');
   }
 
+  public function getParentContainerData(){
+   $source = $this->getRawData();
+   return array(
+    'identifier' => $source['identifier'],
+    'unslick' => $source['unslick'],
+    'is_responsive' => $source['is_responsive'],
+    'columns' => $source['columns'],
+    'settings' => $source['settings'],
+    'styles' => $source['styles']
+   );
+  }
+
+  public function getResponsiveContainerData(){
+   $data = array();
+   foreach($this->getRawData()['responsive'] as $key=>$item){
+    $data[] = array(
+     'id' => $item['record_id'],
+     'breakpoint' => $item['breakpoint'],
+     'unslick' => $item['unslick'],
+     'columns' => $item['columns'],
+     'settings' => $item['settings'],
+     'styles' => $item['styles']
+    );
+   }
+   return $data;
+  }
+
   /* Helper */
 
-  public function getCssUnitValue($prop) {
-   $value = 'auto';
+  private function _getCssUnitValue($prop) {
+   $value = $prop['type'];
    if($prop['type'] == 'length') {
     $value = $prop['value']['length'] . $prop['value']['unit'];
    }
    return $value;
   }
 
-  /* Slider */
+  public function isSliderResponsive() {
+   return $this->getRawData()['is_responsive'];
+  }
 
-  public function isUnslick() {
+  public function isSliderUnslick() {
    return $this->getRawData()['unslick'];
   }
 
-  public function isResponsive() {
-   return $this->getRawData()['is_responsive'];
-  }
+  /* Slider / Slicked */
 
   public function getId(){
    return $this->getRawData()['identifier'];
@@ -109,12 +116,12 @@
    $width = $this->getRawData()['styles']['width'];
    $margin = $this->getRawData()['styles']['margin'];
    return
-    'width: ' . $this->getCssUnitValue($width) .
+    'width: ' . $this->_getCssUnitValue($width) .
     '; margin: '
-     . $this->getCssUnitValue($margin['top']) . ' '
-     . $this->getCssUnitValue($margin['right']) . ' '
-     . $this->getCssUnitValue($margin['bottom']) . ' '
-     . $this->getCssUnitValue($margin['left']) .
+     . $this->_getCssUnitValue($margin['top']) . ' '
+     . $this->_getCssUnitValue($margin['right']) . ' '
+     . $this->_getCssUnitValue($margin['bottom']) . ' '
+     . $this->_getCssUnitValue($margin['left']) .
     ';'
    ;
   }
@@ -123,15 +130,36 @@
    $data = $this->getRawData()['settings'];
    $settings = array();
    $settings = $this->_basicSettings($data);
-//    $settings['responsive'] = $this->_breakpoints($data['responsive']);
    $settings['mobileFirst'] = $data['mobileFirst'];
    if(!$settings['autoplay'])
     unset($settings['autoplaySpeed']);
    if(!$settings['centerMode'])
     unset($settings['centerPadding']);
-//    if(!$data['is_responsive'])
-//     unset($settings['responsive'], $settings['mobileFirst']);
+   // if(!$data['is_responsive'])
+   // unset($settings['responsive'], $settings['mobileFirst']);
    return json_encode($settings,JSON_PRETTY_PRINT);
+  }
+
+  public function getResponsiveSettings() {
+   //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
+   $data = $this->getRawData()['responsive']['settings'];
+   $unslick = $this->getRawData()['responsive']['unslick'];
+   $breakpoints = array();
+   foreach($data as $item) {
+    $settings = 'unslick';
+    if(!$item['unslick']) {
+     $settings = $this->_basicSettings($item);
+     if(!$settings['autoplay'])
+      unset($settings['autoplaySpeed']);
+     if(!$settings['centerMode'])
+      unset($settings['centerPadding']);
+    }
+    $breakpoints[] = array(
+     'breakpoint' => intval($item['breakpoint']),
+     'settings' => $settings
+    );
+   }
+   return $breakpoints;
   }
 
   /* Columns / UnSlicked */
@@ -148,15 +176,15 @@
      $padding = $styles['padding'];
      return
       'margin: '
-       . $this->getCssUnitValue($margin['top']) . ' '
-       . $this->getCssUnitValue($margin['right']) . ' '
-       . $this->getCssUnitValue($margin['bottom']) . ' '
-       . $this->getCssUnitValue($margin['left']) .
+       . $this->_getCssUnitValue($margin['top']) . ' '
+       . $this->_getCssUnitValue($margin['right']) . ' '
+       . $this->_getCssUnitValue($margin['bottom']) . ' '
+       . $this->_getCssUnitValue($margin['left']) .
       '; padding: ' 
-       . $this->getCssUnitValue($padding['top']) . ' '
-       . $this->getCssUnitValue($padding['right']) . ' '
-       . $this->getCssUnitValue($padding['bottom']) . ' '
-       . $this->getCssUnitValue($padding['left']) . ';'
+       . $this->_getCssUnitValue($padding['top']) . ' '
+       . $this->_getCssUnitValue($padding['right']) . ' '
+       . $this->_getCssUnitValue($padding['bottom']) . ' '
+       . $this->_getCssUnitValue($padding['left']) . ';'
      ;
     break;
    }
