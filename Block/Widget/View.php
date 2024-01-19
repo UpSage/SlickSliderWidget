@@ -61,7 +61,7 @@
    return $this->getData('slider_data');
   }
 
-  public function getParentContainerData(){
+  public function getParentData(){
    $source = $this->getRawData();
    return array(
     'identifier' => $source['identifier'],
@@ -73,7 +73,7 @@
    );
   }
 
-  public function getResponsiveContainerData(){
+  public function getResponsiveData(){
    $data = array();
    foreach($this->getRawData()['responsive'] as $key=>$item){
     $data[] = array(
@@ -98,34 +98,54 @@
    return $value;
   }
 
-  public function isSliderResponsive() {
-   return $this->getRawData()['is_responsive'];
+  public function isResponsive() {
+   return $this->getParentData()['is_responsive'];
   }
 
-  public function isSliderUnslick() {
-   return $this->getRawData()['unslick'];
+  public function isMobileFirst() {
+   return $this->getParentData()['settings']['mobileFirst'];
+  }
+
+  public function isUnslick() {
+   return $this->getParentData()['unslick'];
   }
 
   /* Slider / Slicked */
 
   public function getId(){
-   return $this->getRawData()['identifier'];
+   return $this->getParentData()['identifier'];
   }
 
-  public function getStyles() {
-   $width = $this->getRawData()['styles']['width'];
-   $margin = $this->getRawData()['styles']['margin'];
+  public function getSliderStyle($width, $margin) {
    return
-    'width: ' . $this->_getCssUnitValue($width) .
-    '; margin: '
+   '#' . $this->getId() . '{' .
+    'width: ' . $this->_getCssUnitValue($width) . '; margin: '
      . $this->_getCssUnitValue($margin['top']) . ' '
      . $this->_getCssUnitValue($margin['right']) . ' '
      . $this->_getCssUnitValue($margin['bottom']) . ' '
      . $this->_getCssUnitValue($margin['left']) .
-    ';'
-   ;
+    ';}';
   }
 
+  public function getSliderResponsiveStyle() {
+   $breakpoints = array();
+   if($this->isResponsive()){
+    $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
+    foreach($this->getResponsiveData() as $breakpoint){
+     $breakpoints[] = '@media('.$mediafeature.':' . $breakpoint['breakpoint'] . 'px){'
+      .
+       $this->getSliderStyle(
+        $breakpoint['styles']['width'],
+        $breakpoint['styles']['margin']
+       )
+      .
+     '}';
+    }
+   }
+   return implode('', $breakpoints);
+  }
+
+  
   public function getSettings(){
    $data = $this->getRawData()['settings'];
    $settings = array();
@@ -142,8 +162,8 @@
 
   public function getResponsiveSettings() {
    //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
-   $data = $this->getRawData()['responsive']['settings'];
-   $unslick = $this->getRawData()['responsive']['unslick'];
+   $data = $this->getResponsiveData()['settings'];
+   $unslick = $this->getResponsiveData()['unslick'];
    $breakpoints = array();
    foreach($data as $item) {
     $settings = 'unslick';
@@ -164,43 +184,76 @@
 
   /* Columns / UnSlicked */
 
-  public function getColumns($type) {
-   $count = $this->getRawData()['columns']['count'];
-   $styles = $this->getRawData()['columns']['styles'];
-   switch($type){
-    case 'count':
-     return intval($count);
-     break;
-    case 'styles':
-     $margin = $styles['margin'];
-     $padding = $styles['padding'];
-     return
-      'margin: '
-       . $this->_getCssUnitValue($margin['top']) . ' '
-       . $this->_getCssUnitValue($margin['right']) . ' '
-       . $this->_getCssUnitValue($margin['bottom']) . ' '
-       . $this->_getCssUnitValue($margin['left']) .
-      '; padding: ' 
-       . $this->_getCssUnitValue($padding['top']) . ' '
-       . $this->_getCssUnitValue($padding['right']) . ' '
-       . $this->_getCssUnitValue($padding['bottom']) . ' '
-       . $this->_getCssUnitValue($padding['left']) . ';'
-     ;
-    break;
-   }
+  public function getColumnCount($source){
+   return intval($source['columns']['count']);
   }
 
-  public function getItems($type){
+  public function getColumnStyles($margin, $padding) {
+  //  $this->getColumnCount($this->getParentData());
+   return
+   '#' . $this->getId() . ' > div {' .
+    'width: calc(100%/' . $this->getColumnCount($this->getParentData()) . ');'.
+    'margin: '
+     . $this->_getCssUnitValue($margin['top']) . ' '
+     . $this->_getCssUnitValue($margin['right']) . ' '
+     . $this->_getCssUnitValue($margin['bottom']) . ' '
+     . $this->_getCssUnitValue($margin['left']) .
+    ';padding:'
+    . $this->_getCssUnitValue($padding['top']) . ' '
+    . $this->_getCssUnitValue($padding['right']) . ' '
+    . $this->_getCssUnitValue($padding['bottom']) . ' '
+    . $this->_getCssUnitValue($padding['left']) .
+   ';}';
+  }
+
+  public function getStyles(){
+    return
+     '<style>'
+      .
+       $this->getSliderStyle(
+        $this->getParentData()['styles']['width'],
+        $this->getParentData()['styles']['margin']
+       )
+      . $this->getSliderResponsiveStyle() .
+       $this->getColumnStyles(
+        $this->getParentData()['columns']['styles']['margin'],
+        $this->getParentData()['columns']['styles']['padding']
+       )
+      .
+     '</style>';
+   }
+ 
+
+  // public function getColumns($type) {
+  //  $count = $this->getRawData()['columns']['count'];
+  //  $styles = $this->getRawData()['columns']['styles'];
+  //  switch($type){
+  //   case 'count':
+  //    return intval($count);
+  //    break;
+  //   case 'styles':
+  //    $margin = $styles['margin'];
+  //    $padding = $styles['padding'];
+  //    return
+  //     'margin: '
+  //      . $this->_getCssUnitValue($margin['top']) . ' '
+  //      . $this->_getCssUnitValue($margin['right']) . ' '
+  //      . $this->_getCssUnitValue($margin['bottom']) . ' '
+  //      . $this->_getCssUnitValue($margin['left']) .
+  //     '; padding: ' 
+  //      . $this->_getCssUnitValue($padding['top']) . ' '
+  //      . $this->_getCssUnitValue($padding['right']) . ' '
+  //      . $this->_getCssUnitValue($padding['bottom']) . ' '
+  //      . $this->_getCssUnitValue($padding['left']) . ';'
+  //    ;
+  //   break;
+  //  }
+  // }
+
+  public function getSlides(){
    $data = array();
    foreach($this->getRawData()['slides'] as $key=>$slide){
-    switch($type){
-     case 'data':
-      $data[] = $slide['slide']['data'];
-      break;
-     case 'styles':
-      $data[] = $slide['slide']['styles'];
-      break;
-    }
+    $data[] = $slide['slide']['data'];
    }
    return $data;
   }
