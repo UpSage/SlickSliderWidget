@@ -207,21 +207,23 @@
   }
 
   public function getStyles(){
-    return
-     '<style>'
-      .
-       $this->getSliderStyle(
-        $this->getParentData()['styles']['width'],
-        $this->getParentData()['styles']['margin']
-       )
-      . $this->getSliderResponsiveStyle() .
-       $this->getColumnStyles(
-        $this->getParentData()['columns']['styles']['margin'],
-        $this->getParentData()['columns']['styles']['padding']
-       )
-      .
-     '</style>';
-   }
+   return
+    '<style>'
+     .
+      $this->getSliderStyle(
+       $this->getParentData()['styles']['width'],
+       $this->getParentData()['styles']['margin']
+      )
+     .
+      $this->getSliderResponsiveStyle()
+     .
+      $this->getColumnStyles(
+       $this->getParentData()['columns']['styles']['margin'],
+       $this->getParentData()['columns']['styles']['padding']
+      )
+     .
+    '</style>';
+  }
  
 
   // public function getColumns($type) {

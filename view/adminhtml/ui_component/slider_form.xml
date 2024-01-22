@@ -43,9 +43,9 @@
    <settings>
     <validation>
      <rule name="required-entry" xsi:type="boolean">true</rule>
-     <rule name="no-whitespace" xsi:type="boolean">true</rule>
      <rule name="validate-alphanum" xsi:type="boolean">true</rule>
-     <rule name="min_text_length" xsi:type="number">8</rule>
+     <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+     <rule name="no-whitespace" xsi:type="boolean">true</rule>
     </validation>
     <dataType>text</dataType>
     <label>Identifier</label>
@@ -165,6 +165,8 @@
    <settings>
     <validation>
      <rule name="validate-number" xsi:type="boolean">true</rule>
+     <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+     <rule name="validate-no-empty" xsi:type="boolean">true</rule>
     </validation>
     <dataType>Text</dataType>
     <label>Columns</label>
@@ -565,6 +567,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -636,7 +640,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -649,6 +653,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -670,10 +687,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -688,7 +709,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -696,6 +717,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -752,7 +775,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -765,6 +788,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -786,10 +822,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -804,7 +844,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -812,6 +852,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -868,7 +910,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -881,6 +923,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -902,10 +957,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -920,7 +979,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -928,6 +987,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -984,7 +1045,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -997,6 +1058,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -1018,10 +1092,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -1036,7 +1114,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1044,6 +1122,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1131,7 +1211,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1144,6 +1224,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -1165,10 +1258,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -1183,7 +1280,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1191,6 +1288,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1247,7 +1346,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1260,6 +1359,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -1281,10 +1393,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -1299,7 +1415,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1307,6 +1423,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1363,7 +1481,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1376,6 +1494,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -1397,10 +1528,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -1415,7 +1550,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1423,6 +1558,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1479,7 +1616,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1492,6 +1629,19 @@
           </actions>
          </rule>
          <rule name="1">
+          <value>auto</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.length</target>
+            <callback>hide</callback>
+           </action>
+           <action name="1">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="2">
           <value>length</value>
           <actions>
            <action name="0">
@@ -1513,10 +1663,14 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
+          </option>
+          <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">auto</item>
            <item name="label" xsi:type="string">Auto</item>
           </option>
-          <option name="2" xsi:type="array">
+          <option name="3" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
            <item name="label" xsi:type="string">Length</item>
           </option>
@@ -1531,7 +1685,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1539,6 +1693,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1601,7 +1757,7 @@
      <field name="type" formElement="select">
       <argument name="data" xsi:type="array">
        <item name="config" xsi:type="array">
-        <item name="default" xsi:type="string">auto</item>
+        <item name="default" xsi:type="string">0</item>
        </item>
       </argument>
       <settings>
@@ -1610,7 +1766,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1644,8 +1800,8 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
-           <item name="value" xsi:type="string">auto</item>
-           <item name="label" xsi:type="string">Auto</item>
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
           </option>
           <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
@@ -1662,7 +1818,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1670,6 +1826,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1717,7 +1875,7 @@
      <field name="type" formElement="select">
       <argument name="data" xsi:type="array">
        <item name="config" xsi:type="array">
-        <item name="default" xsi:type="string">auto</item>
+        <item name="default" xsi:type="string">0</item>
        </item>
       </argument>
       <settings>
@@ -1726,7 +1884,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1760,8 +1918,8 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
-           <item name="value" xsi:type="string">auto</item>
-           <item name="label" xsi:type="string">Auto</item>
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
           </option>
           <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
@@ -1778,7 +1936,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1786,6 +1944,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1833,7 +1993,7 @@
      <field name="type" formElement="select">
       <argument name="data" xsi:type="array">
        <item name="config" xsi:type="array">
-        <item name="default" xsi:type="string">auto</item>
+        <item name="default" xsi:type="string">0</item>
        </item>
       </argument>
       <settings>
@@ -1842,7 +2002,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1876,8 +2036,8 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
-           <item name="value" xsi:type="string">auto</item>
-           <item name="label" xsi:type="string">Auto</item>
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
           </option>
           <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
@@ -1894,7 +2054,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -1902,6 +2062,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1949,7 +2111,7 @@
      <field name="type" formElement="select">
       <argument name="data" xsi:type="array">
        <item name="config" xsi:type="array">
-        <item name="default" xsi:type="string">auto</item>
+        <item name="default" xsi:type="string">0</item>
        </item>
       </argument>
       <settings>
@@ -1958,7 +2120,7 @@
        <switcherConfig>
         <rules>
          <rule name="0">
-          <value>auto</value>
+          <value>0</value>
           <actions>
            <action name="0">
             <target>${ $.parentName}.length</target>
@@ -1992,8 +2154,8 @@
         <settings>
          <options>
           <option name="1" xsi:type="array">
-           <item name="value" xsi:type="string">auto</item>
-           <item name="label" xsi:type="string">Auto</item>
+           <item name="value" xsi:type="string">0</item>
+           <item name="label" xsi:type="string">None</item>
           </option>
           <option name="2" xsi:type="array">
            <item name="value" xsi:type="string">length</item>
@@ -2010,7 +2172,7 @@
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
         </item>
-        <item name="default" xsi:type="string">0</item>
+        <item name="default" xsi:type="string">1</item>
         <item name="dataScope" xsi:type="string">value.length</item>
        </item>
       </argument>
@@ -2018,6 +2180,8 @@
        <label />
        <validation>
         <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="validate-no-empty" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -2134,9 +2298,16 @@
         <opened>true</opened>
        </settings>
        <field name="breakpoint" formElement="input">
+        <argument name="data" xsi:type="array">
+         <item name="config" xsi:type="array">
+          <item name="default" xsi:type="string">768</item>
+         </item>
+        </argument>
         <settings>
          <validation>
           <rule name="validate-number" xsi:type="boolean">true</rule>
+          <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+          <rule name="validate-no-empty" xsi:type="boolean">true</rule>
          </validation>
          <dataType>Text</dataType>
          <label>Screen Size</label>
@@ -2208,6 +2379,8 @@
         <settings>
          <validation>
           <rule name="validate-number" xsi:type="boolean">true</rule>
+          <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+          <rule name="validate-no-empty" xsi:type="boolean">true</rule>
          </validation>
          <dataType>Text</dataType>
          <label>Columns</label>
@@ -2608,6 +2781,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -2680,7 +2855,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -2693,6 +2868,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -2714,10 +2902,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -2732,7 +2924,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -2740,6 +2932,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -2797,7 +2991,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -2810,6 +3004,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -2831,10 +3038,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -2849,7 +3060,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -2857,6 +3068,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -2914,7 +3127,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -2927,6 +3140,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -2948,10 +3174,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -2966,7 +3196,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -2974,6 +3204,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3030,7 +3262,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3043,6 +3275,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -3064,10 +3309,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -3082,7 +3331,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3090,6 +3339,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3177,7 +3428,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3190,6 +3441,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -3211,10 +3475,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -3229,7 +3497,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3237,6 +3505,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3293,7 +3563,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3306,6 +3576,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -3327,10 +3610,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -3345,7 +3632,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3353,6 +3640,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3409,7 +3698,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3422,6 +3711,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -3443,10 +3745,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -3461,7 +3767,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3469,6 +3775,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3525,7 +3833,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3538,6 +3846,19 @@
                </actions>
               </rule>
               <rule name="1">
+               <value>auto</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.length</target>
+                 <callback>hide</callback>
+                </action>
+                <action name="1">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="2">
                <value>length</value>
                <actions>
                 <action name="0">
@@ -3559,10 +3880,14 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
+               </option>
+               <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">auto</item>
                 <item name="label" xsi:type="string">Auto</item>
                </option>
-               <option name="2" xsi:type="array">
+               <option name="3" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
                 <item name="label" xsi:type="string">Length</item>
                </option>
@@ -3577,7 +3902,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3585,6 +3910,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3647,7 +3974,7 @@
           <field name="type" formElement="select">
            <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-             <item name="default" xsi:type="string">auto</item>
+             <item name="default" xsi:type="string">0</item>
             </item>
            </argument>
            <settings>
@@ -3656,7 +3983,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3690,8 +4017,8 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">auto</item>
-                <item name="label" xsi:type="string">Auto</item>
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
                </option>
                <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
@@ -3708,7 +4035,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3716,6 +4043,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3763,7 +4092,7 @@
           <field name="type" formElement="select">
            <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-             <item name="default" xsi:type="string">auto</item>
+             <item name="default" xsi:type="string">0</item>
             </item>
            </argument>
            <settings>
@@ -3772,7 +4101,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3806,8 +4135,8 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">auto</item>
-                <item name="label" xsi:type="string">Auto</item>
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
                </option>
                <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
@@ -3824,7 +4153,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3832,6 +4161,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3879,7 +4210,7 @@
           <field name="type" formElement="select">
            <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-             <item name="default" xsi:type="string">auto</item>
+             <item name="default" xsi:type="string">0</item>
             </item>
            </argument>
            <settings>
@@ -3888,7 +4219,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -3922,8 +4253,8 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">auto</item>
-                <item name="label" xsi:type="string">Auto</item>
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
                </option>
                <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
@@ -3940,7 +4271,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -3948,6 +4279,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3995,7 +4328,7 @@
           <field name="type" formElement="select">
            <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-             <item name="default" xsi:type="string">auto</item>
+             <item name="default" xsi:type="string">0</item>
             </item>
            </argument>
            <settings>
@@ -4004,7 +4337,7 @@
             <switcherConfig>
              <rules>
               <rule name="0">
-               <value>auto</value>
+               <value>0</value>
                <actions>
                 <action name="0">
                  <target>${ $.parentName}.length</target>
@@ -4038,8 +4371,8 @@
              <settings>
               <options>
                <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">auto</item>
-                <item name="label" xsi:type="string">Auto</item>
+                <item name="value" xsi:type="string">0</item>
+                <item name="label" xsi:type="string">None</item>
                </option>
                <option name="2" xsi:type="array">
                 <item name="value" xsi:type="string">length</item>
@@ -4056,7 +4389,7 @@
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
              </item>
-             <item name="default" xsi:type="string">0</item>
+             <item name="default" xsi:type="string">1</item>
              <item name="dataScope" xsi:type="string">value.length</item>
             </item>
            </argument>
@@ -4064,6 +4397,8 @@
             <label />
             <validation>
              <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
