@@ -52,11 +52,6 @@
    </settings>
   </field>
   <field name="is_responsive" formElement="checkbox">
-   <argument name="data" xsi:type="array">
-    <item name="config" xsi:type="array">
-     <item name="dataScope" xsi:type="string">is_responsive</item>
-    </item>
-   </argument>
    <settings>
     <dataType>boolean</dataType>
     <label translate="true">Responsive</label>
@@ -72,6 +67,10 @@
          <target>${ $.parentName}.button_responsive</target>
          <callback>hide</callback>
         </action>
+        <action name="1">
+         <target>${ $.parentName}.is_mobile_first</target>
+         <callback>hide</callback>
+        </action>
        </actions>
       </rule>
       <rule name="1">
@@ -79,6 +78,10 @@
        <actions>
         <action name="0">
          <target>${ $.parentName}.button_responsive</target>
+         <callback>show</callback>
+        </action>
+        <action name="1">
+         <target>${ $.parentName}.is_mobile_first</target>
          <callback>show</callback>
         </action>
        </actions>
@@ -99,7 +102,27 @@
     </checkbox>
    </formElements>
   </field>
-  <field name="unslick" formElement="checkbox">
+  <field name="is_mobile_first" formElement="checkbox">
+   <settings>
+    <dataType>boolean</dataType>
+    <label translate="true">Mobile First</label>
+    <tooltip>
+     <description translate="true">Uncheck to Disable</description>
+    </tooltip>
+   </settings>
+   <formElements>
+    <checkbox>
+     <settings>
+      <valueMap>
+       <map name="false" xsi:type="boolean">false</map>
+       <map name="true" xsi:type="boolean">true</map>
+      </valueMap>
+      <prefer>toggle</prefer>
+     </settings>
+    </checkbox>
+   </formElements>
+  </field>
+  <field name="is_unslick" formElement="checkbox">
    <settings>
     <dataType>boolean</dataType>
     <label translate="true">Disable Slider / Unslick</label>
@@ -167,6 +190,7 @@
      <rule name="validate-number" xsi:type="boolean">true</rule>
      <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
      <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+     <rule name="no-whitespace" xsi:type="boolean">true</rule>
     </validation>
     <dataType>Text</dataType>
     <label>Columns</label>
@@ -275,6 +299,9 @@
     <settings>
      <validation>
       <rule name="validate-number" xsi:type="boolean">true</rule>
+      <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+      <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+      <rule name="no-whitespace" xsi:type="boolean">true</rule>
      </validation>
      <dataType>Text</dataType>
      <label>Autoplay Speed</label>
@@ -311,6 +338,9 @@
     <settings>
      <validation>
       <rule name="validate-number" xsi:type="boolean">true</rule>
+      <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+      <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+      <rule name="no-whitespace" xsi:type="boolean">true</rule>
      </validation>
      <dataType>Text</dataType>
      <label>Animation Speed</label>
@@ -325,6 +355,9 @@
     <settings>
      <validation>
       <rule name="validate-number" xsi:type="boolean">true</rule>
+      <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+      <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+      <rule name="no-whitespace" xsi:type="boolean">true</rule>
      </validation>
      <dataType>Text</dataType>
      <label>Slides to Show</label>
@@ -339,6 +372,9 @@
     <settings>
      <validation>
       <rule name="validate-number" xsi:type="boolean">true</rule>
+      <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+      <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+      <rule name="no-whitespace" xsi:type="boolean">true</rule>
      </validation>
      <dataType>Text</dataType>
      <label>Slides to Scroll</label>
@@ -409,6 +445,9 @@
       <label />
       <validation>
        <rule name="validate-number" xsi:type="boolean">true</rule>
+       <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+       <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+       <rule name="no-whitespace" xsi:type="boolean">true</rule>
       </validation>
       <dataType>Text</dataType>
      </settings>
@@ -569,6 +608,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -719,6 +759,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -854,6 +895,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -989,6 +1031,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1124,6 +1167,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1290,6 +1334,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1425,6 +1470,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1560,6 +1606,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1695,6 +1742,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1828,6 +1876,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -1946,6 +1995,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -2064,6 +2114,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -2182,6 +2233,7 @@
         <rule name="validate-number" xsi:type="boolean">true</rule>
         <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
        </validation>
        <dataType>Text</dataType>
       </settings>
@@ -2245,31 +2297,6 @@
     <settings>
      <label>Options</label>
     </settings>
-    <field name="mobileFirst" formElement="checkbox">
-     <argument name="data" xsi:type="array">
-      <item name="config" xsi:type="array">
-       <item name="dataScope" xsi:type="string">settings.mobileFirst</item>
-      </item>
-     </argument>
-     <settings>
-      <dataType>boolean</dataType>
-      <label translate="true">Mobile First</label>
-      <tooltip>
-       <description translate="true">Uncheck to Disable</description>
-      </tooltip>
-     </settings>
-     <formElements>
-      <checkbox>
-       <settings>
-        <valueMap>
-         <map name="false" xsi:type="boolean">false</map>
-         <map name="true" xsi:type="boolean">true</map>
-        </valueMap>
-        <prefer>toggle</prefer>
-       </settings>
-      </checkbox>
-     </formElements>
-    </field>
     <dynamicRows name="responsive">
      <argument name="data" xsi:type="array">
       <item name="config" xsi:type="array">
@@ -2280,7 +2307,7 @@
       <addButtonLabel translate="true">Add Breakpoint</addButtonLabel>
       <componentType>dynamicRows</componentType>
       <columnsHeader>false</columnsHeader>
-      <defaultRecord>true</defaultRecord>
+      <defaultRecord>false</defaultRecord>
       <label translate="true">Breakpoints</label>
      </settings>
      <container name="record" component="Magento_Ui/js/dynamic-rows/record">
@@ -2308,12 +2335,13 @@
           <rule name="validate-number" xsi:type="boolean">true</rule>
           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+          <rule name="no-whitespace" xsi:type="boolean">true</rule>
          </validation>
          <dataType>Text</dataType>
          <label>Screen Size</label>
         </settings>
        </field>
-       <field name="unslick" formElement="checkbox">
+       <field name="is_unslick" formElement="checkbox">
         <settings>
          <dataType>boolean</dataType>
          <label translate="true">Disable Slider / Unslick</label>
@@ -2381,6 +2409,7 @@
           <rule name="validate-number" xsi:type="boolean">true</rule>
           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+          <rule name="no-whitespace" xsi:type="boolean">true</rule>
          </validation>
          <dataType>Text</dataType>
          <label>Columns</label>
@@ -2489,6 +2518,9 @@
          <settings>
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
           <label>Autoplay Speed</label>
@@ -2525,6 +2557,9 @@
          <settings>
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
           <label>Animation Speed</label>
@@ -2539,6 +2574,9 @@
          <settings>
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
           <label>Slides to Show</label>
@@ -2553,6 +2591,9 @@
          <settings>
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
           <label>Slides to Scroll</label>
@@ -2623,6 +2664,9 @@
            <label />
            <validation>
             <rule name="validate-number" xsi:type="boolean">true</rule>
+            <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+            <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+            <rule name="no-whitespace" xsi:type="boolean">true</rule>
            </validation>
            <dataType>Text</dataType>
           </settings>
@@ -2783,6 +2827,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -2934,6 +2979,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3070,6 +3116,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3206,6 +3253,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3341,6 +3389,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3507,6 +3556,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3642,6 +3692,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3777,6 +3828,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -3912,6 +3964,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -4045,6 +4098,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -4163,6 +4217,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -4281,6 +4336,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -4399,6 +4455,7 @@
              <rule name="validate-number" xsi:type="boolean">true</rule>
              <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
             </validation>
             <dataType>Text</dataType>
            </settings>
@@ -4696,6 +4753,9 @@
           <label />
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
          </settings>
@@ -4812,6 +4872,9 @@
           <label />
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
          </settings>
@@ -4921,6 +4984,9 @@
           <label />
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
          </settings>
@@ -4979,6 +5045,9 @@
           <label />
           <validation>
            <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>
+           <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
           </validation>
           <dataType>Text</dataType>
          </settings>
@@ -5041,7 +5110,7 @@
         <settings>
          <label>Options</label>
         </settings>
-        <field name="mobileFirst" formElement="checkbox">
+        <field name="is_mobile_first" formElement="checkbox">
          <settings>
           <dataType>boolean</dataType>
           <label translate="true">Mobile First</label>
@@ -5071,7 +5140,7 @@
           <addButtonLabel translate="true">Add Breakpoint</addButtonLabel>
           <componentType>dynamicRows</componentType>
           <columnsHeader>false</columnsHeader>
-          <defaultRecord>true</defaultRecord>
+          <defaultRecord>false</defaultRecord>
           <label translate="true">Breakpoints</label>
          </settings>
          <container name="record" component="Magento_Ui/js/dynamic-rows/record">
@@ -5105,7 +5174,7 @@
                <item name="additionalClasses" xsi:type="array">
                 <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
                </item>
-               <item name="default" xsi:type="string">0</item>
+               <item name="default" xsi:type="string">768</item>
                <item name="dataScope" xsi:type="string">value.length</item>
               </item>
              </argument>
@@ -5113,6 +5182,9 @@
               <label />
               <validation>
                <rule name="validate-number" xsi:type="boolean">true</rule>
+               <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+               <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+               <rule name="no-whitespace" xsi:type="boolean">true</rule>
               </validation>
               <dataType>Text</dataType>
              </settings>
@@ -5252,6 +5324,9 @@
                 <label />
                 <validation>
                  <rule name="validate-number" xsi:type="boolean">true</rule>
+                 <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                 <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                 <rule name="no-whitespace" xsi:type="boolean">true</rule>
                 </validation>
                 <dataType>Text</dataType>
                </settings>
@@ -5368,6 +5443,9 @@
                 <label />
                 <validation>
                  <rule name="validate-number" xsi:type="boolean">true</rule>
+                 <rule name="validate-greater-than-zero" xsi:type="boolean">true</rule>
+                 <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                 <rule name="no-whitespace" xsi:type="boolean">true</rule>
                 </validation>
                 <dataType>Text</dataType>
                </settings>
@@ -5477,6 +5555,9 @@
                 <label />
                 <validation>
                  <rule name="validate-number" xsi:type="boolean">true</rule>
+                 <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>
+                 <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                 <rule name="no-whitespace" xsi:type="boolean">true</rule>
                 </validation>
                 <dataType>Text</dataType>
                </settings>
@@ -5535,6 +5616,9 @@
                 <label />
                 <validation>
                  <rule name="validate-number" xsi:type="boolean">true</rule>
+                 <rule name="validate-zero-or-greater" xsi:type="boolean">true</rule>
+                 <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                 <rule name="no-whitespace" xsi:type="boolean">true</rule>
                 </validation>
                 <dataType>Text</dataType>
                </settings>
