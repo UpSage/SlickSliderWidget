@@ -1,9 +1,10 @@
+<pre><?= $block->getResponsiveSlickSettings(); ?></pre>
 <?php
  $slides = $block->getSlides();
  if(count($slides)):
 ?>
 
- <div id="<?= $block->getId() ?>" class="usslick__slider">
+ <div id="<?= $block->getId() ?>" class="usslick__slider" <?php if($block->isResponsive()) :?>data-slick='<?= $block->getResponsiveSlickSettings(); ?>'<?php endif; ?>>
 
   <?php
    foreach($slides as $slide):
@@ -52,39 +53,33 @@
   'slick'
  ], function($, mediaCheck, slick) {
 
-   var $slick_slider = $('#hellloooo03');
-   $slick_slider.slick({ "mobileFirst": true, "dots": true, "infinite": false, "speed": 300, "slidesToShow": 1, "slidesToScroll": 1 });
+   var $slick_slider = $('#<?= $block->getId() ?>');
+   $slick_slider.slick(<?= $block->getSlickSettings(); ?>);
 
 
-   mediaCheck({
-    media: '(max-width: 699px)',
-    entry: function() {
+  //  mediaCheck({
+  //   media: '(max-width: 699px)',
+  //   entry: function() {
      
-     if($slick_slider.hasClass('slick-initialized'))
-      $slick_slider.slick('unslick');
-     return
-    },
-    exit: function() {
-     if(!$slick_slider.hasClass('slick-initialized'))
-      return $slick_slider.slick("resize");;
-     }
-   });
+  //    if($slick_slider.hasClass('slick-initialized'))
+  //     $slick_slider.slick('unslick');
+  //    return
+  //   },
+  //   exit: function() {
+  //    if(!$slick_slider.hasClass('slick-initialized'))
+  //     return $slick_slider.slick("resize");;
+  //    }
+  //  });
 
 
 
  });
 </script>
 
-<div id="hellloooo03" class="usslick__slider" data-slick='{ "responsive": [ { "breakpoint": 1200, "settings": "unslick" }, { "breakpoint": 1024, "settings": { "slidesToShow": 3, "slidesToScroll": 3, "infinite": true, "dots": true } }, { "breakpoint": 700, "settings": { "slidesToShow": 2, "slidesToScroll": 2 } } ] }'>
-      <div><h3>1</h3></div>
-      <div><h3>2</h3></div>
-      <div><h3>3</h3></div>
-      <div><h3>4</h3></div>
-      <div><h3>5</h3></div>
-      <div><h3>6</h3></div>
-    </div>
-
 <pre><?= $block->getStylesheets(); ?></pre>
+
+
+
 
 
 

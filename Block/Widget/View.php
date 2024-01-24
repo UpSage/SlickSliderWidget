@@ -36,7 +36,7 @@
    return $value;
   }
 
-  private function _basicSettings($item) {
+  private function _slick($item) {
    return array(
     'arrows' => $item['arrows'],
     'dots' => $item['dots'],
@@ -87,6 +87,10 @@
    return $source['columns'];
   }
 
+  public function getSettings($source) {
+   return $source['settings'];
+  }
+
   public function isUnslick($source) {
    return $source['is_unslick'];
   }
@@ -100,60 +104,73 @@
   }
 
   /* Styles */
-
-  public function getContainerStyle($source) {
+  public function getContainerStyle($data) {
    return
     '#' . $this->getId() . '{
-      width:' . $this->_getCssUnitValue($source['width']) . ';
-      margin:'
-       . $this->_getCssUnitValue($source['margin']['top']) . ' '
-       . $this->_getCssUnitValue($source['margin']['right']) . ' '
-       . $this->_getCssUnitValue($source['margin']['bottom']) . ' '
-       . $this->_getCssUnitValue($source['margin']['left']) . ';
+     width:' . $this->_getCssUnitValue($data['width']) . ';
+     margin:'
+      . $this->_getCssUnitValue($data['margin']['top']) . ' '
+      . $this->_getCssUnitValue($data['margin']['right']) . ' '
+      . $this->_getCssUnitValue($data['margin']['bottom']) . ' '
+      . $this->_getCssUnitValue($data['margin']['left']) . ';
     }';
   }
 
-  public function getColumnStyles($source) {
-   $count = $source['count'];
-   $styles = $source['styles'];
+  public function getColumnStyles($data) {
+   $count = $data['count'];
+   $styles = $data['styles'];
    return
-   '#' . $this->getId() . ' > div {' .
-    'width: calc(100%/' . $count . ');'.
-    'flex: 0 0 auto;
-    margin:'
-     . $this->_getCssUnitValue($styles['margin']['top']) . ' '
-     . $this->_getCssUnitValue($styles['margin']['right']) . ' '
-     . $this->_getCssUnitValue($styles['margin']['bottom']) . ' '
-     . $this->_getCssUnitValue($styles['margin']['left']) .
-    ';padding:'
-     . $this->_getCssUnitValue($styles['padding']['top']) . ' '
-     . $this->_getCssUnitValue($styles['padding']['right']) . ' '
-     . $this->_getCssUnitValue($styles['padding']['bottom']) . ' '
-     . $this->_getCssUnitValue($styles['padding']['left']) .';
-   }';
+    '#' . $this->getId() . ' > div {' . '
+      width: calc(100%/' . $count . ');
+      flex: 0 0 auto;
+      margin:'
+       . $this->_getCssUnitValue($styles['margin']['top']) . ' '
+       . $this->_getCssUnitValue($styles['margin']['right']) . ' '
+       . $this->_getCssUnitValue($styles['margin']['bottom']) . ' '
+       . $this->_getCssUnitValue($styles['margin']['left']) .';
+      padding:'
+       . $this->_getCssUnitValue($styles['padding']['top']) . ' '
+       . $this->_getCssUnitValue($styles['padding']['right']) . ' '
+       . $this->_getCssUnitValue($styles['padding']['bottom']) . ' '
+       . $this->_getCssUnitValue($styles['padding']['left']) .';
+    }';
   }
 
   public function getStylesheets() {
-   /* Parent */
-   $parentData = $this->getRawData();
-   $parent_columns = ($this->isUnslick($parentData)) ? '#'.$this->getId().'{display:flex;flex-wrap:wrap;}' . $this->getColumnStyles($this->getColumns($parentData)) : '';
-   /* Breakpoints */
-   $breakpoints = array();
-   if($this->isResponsive()) {
-    $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
-    foreach($this->getResponsiveData() as $responsiveData){
-     $responsive_columns = ($this->isUnslick($responsiveData)) ? $this->getColumnStyles($this->getColumns($responsiveData)) : '';
-     $breakpoints[] = '@media('.$mediafeature.':' . $responsiveData['breakpoint'] . 'px){' . $this->getContainerStyle($this->getStyles($responsiveData)) . $responsive_columns . '}';
-    }
-   }
-   return '<style>' . $this->getContainerStyle($this->getStyles($parentData)) . $parent_columns . implode('', $breakpoints) . '</style>';
+   
   }
+
+  // public function getStylesheets() {
+  //  /* Parent */
+  //  $parentData = $this->getRawData();
+  //  $parent_columns = ($this->isUnslick($parentData)) ?  $this->getColumnStyles($this->getColumns($parentData)) : '';
+  //  /* Breakpoints */
+  //  $breakpoints = array();
+  //  if($this->isResponsive()) {
+  //   $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
+  //   foreach($this->getResponsiveData() as $responsiveData){
+  //    $responsive_columns = ($this->isUnslick($responsiveData)) ? $this->getColumnStyles($this->getColumns($responsiveData)) : '';
+  //    $breakpoints[] = '
+  //     @media('.$mediafeature.':' . $responsiveData['breakpoint'] . 'px){'
+  //      . $this->getContainerStyle($this->getStyles($responsiveData))
+  //      . $responsive_columns . '
+  //     }';
+  //   }
+  //  }
+  //  return '
+  //   <style>'
+  //    . $this->getContainerStyle($this->getStyles($parentData))
+  //    . $parent_columns
+  //    . implode('', $breakpoints) . '
+  //   </style>
+  //  ';
+  // }
   
-  public function getSettings() {
-   $data = $this->getRawData()['settings'];
+  public function getSlickSettings() {
+   $data = $this->getSettings($this->getRawData());
    $settings = array();
-   $settings = $this->_basicSettings($data);
-   $settings['mobileFirst'] = $data['mobileFirst'];
+   $settings = $this->_slick($data);
+   $settings['mobileFirst'] = $this->isMobileFirst();
    if(!$settings['autoplay'])
     unset($settings['autoplaySpeed']);
    if(!$settings['centerMode'])
@@ -161,15 +178,14 @@
    return json_encode($settings,JSON_PRETTY_PRINT);
   }
 
-  public function getResponsiveSettings() {
+  public function getResponsiveSlickSettings() {
    //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
-   $data = $this->getResponsiveData()['settings'];
-   $unslick = $this->getResponsiveData()['unslick'];
+   $data = $this->getResponsiveData();
    $breakpoints = array();
    foreach($data as $item) {
     $settings = 'unslick';
-    if(!$item['unslick']) {
-     $settings = $this->_basicSettings($item);
+    if(!$this->isUnslick($item)) {
+     $settings = $this->_slick($this->getSettings($item));
      if(!$settings['autoplay'])
       unset($settings['autoplaySpeed']);
      if(!$settings['centerMode'])
@@ -179,8 +195,11 @@
      'breakpoint' => intval($item['breakpoint']),
      'settings' => $settings
     );
+    $responsive = array(
+     'responsive' => $breakpoints
+    );
    }
-   return $breakpoints;
+   return json_encode($responsive);
   }
 
   public function getSlides() {
