@@ -142,7 +142,7 @@
         <action name="2">
          <target>${ $.parentName}.columns-styles</target>
          <callback>hide</callback>
-        </action>
+        </action>    
        </actions>
       </rule>
       <rule name="1">
@@ -159,7 +159,7 @@
         <action name="2">
          <target>${ $.parentName}.columns-styles</target>
          <callback>show</callback>
-        </action>
+        </action> 
        </actions>
       </rule>
      </rules>

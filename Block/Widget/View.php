@@ -36,8 +36,8 @@
    return $value;
   }
 
-  private function _slick($item) {
-   return array(
+  private function _getSlickSetup($item) {
+   $settings = array(
     'arrows' => $item['arrows'],
     'dots' => $item['dots'],
     'infinite' => $item['infinite'],
@@ -50,6 +50,11 @@
     'slidesToShow' => intval($item['slidesToShow']),
     'slidesToScroll' => intval($item['slidesToScroll'])
    );
+   if(!$settings['autoplay'])
+    unset($settings['autoplaySpeed']);
+   if(!$settings['centerMode'])
+    unset($settings['centerPadding']);
+   return $settings;
   }
 
   private function _getCategoryUrl($id) {
@@ -71,12 +76,32 @@
    return $this->getData('slider_data');
   }
 
+  public function getParentData() {
+   $source = $this->getRawData();
+   unset(
+    $source['identifier'],
+    $source['is_responsive'],
+    $source['responsive'],
+    $source['is_mobile_first'],
+    $source['slides']
+   );
+   return $source;
+  }
+
   public function getResponsiveData() {
    return $this->getRawData()['responsive'];
   }
 
   public function getId() {
    return $this->getRawData()['identifier'];
+  }
+
+  public function getSlides() {
+   $data = array();
+   foreach($this->getRawData()['slides'] as $key=>$slide){
+    $data[] = $slide['slide']['data'];
+   }
+   return $data;
   }
 
   public function getStyles($source) {
@@ -166,69 +191,56 @@
   //  ';
   // }
   
-  public function getSlickSettings() {
-   $data = $this->getSettings($this->getRawData());
+  public function getParentSlickSettings() {
+   $source = $this->getSettings($this->getParentData());
    $settings = array();
-   $settings = $this->_slick($data);
+   $settings = $this->_getSlickSetup($source);
    $settings['mobileFirst'] = $this->isMobileFirst();
-   if(!$settings['autoplay'])
-    unset($settings['autoplaySpeed']);
-   if(!$settings['centerMode'])
-    unset($settings['centerPadding']);
-   return json_encode($settings,JSON_PRETTY_PRINT);
+   return $settings;
   }
 
   public function getResponsiveSlickSettings() {
    //array_multisort(array_column($data, 'position'), SORT_ASC, $data);
-   $data = $this->getResponsiveData();
+   $source = $this->getResponsiveData();
    $breakpoints = array();
-   foreach($data as $item) {
+   foreach($source as $data) {
     $settings = 'unslick';
-    if(!$this->isUnslick($item)) {
-     $settings = $this->_slick($this->getSettings($item));
-     if(!$settings['autoplay'])
-      unset($settings['autoplaySpeed']);
-     if(!$settings['centerMode'])
-      unset($settings['centerPadding']);
+    if(!$this->isUnslick($data)) {
+     $settings = $this->_getSlickSetup($this->getSettings($data));
     }
     $breakpoints[] = array(
-     'breakpoint' => intval($item['breakpoint']),
+     'breakpoint' => intval($data['breakpoint']),
      'settings' => $settings
     );
-    $responsive = array(
-     'responsive' => $breakpoints
-    );
    }
-   return json_encode($responsive);
+   return $breakpoints;
   }
 
-  public function getSlides() {
-   $data = array();
-   foreach($this->getRawData()['slides'] as $key=>$slide){
-    $data[] = $slide['slide']['data'];
+  public function getSlickSettings() {
+   $settings = $this->getParentSlickSettings();
+   if($this->isResponsive()) {
+    $settings['responsive'] = $this->getResponsiveSlickSettings();
    }
-   return $data;
+   return $settings;
   }
 
-  public function getSlideLink($link) {
-   $url = '';
+  public function getLink($link) {
+   $url = $link['default'];
    if($link['type'] == 'page' && $link['page']) {
     $url = $this->_getPageUrl($link['page']);
    } elseif($link['type'] == 'product' && $link['product']) {
     $url = $this->_getProductUrl($link['product']);
    } elseif($link['type'] == 'category' && $link['category']) {
     $url = $this->_getCategoryUrl($link['category']);
-   } else {
-    $url = $link['default'];
    }
    return $url;
   }
 
-  public function getSlideTarget($link) {
-   return $link['setting'];
+  public function getTarget($link) {
+   return ($link['setting']) ? 'target="_blank"': '';
   }
 
-  public function getSlideImage($image) {
+  public function getImage($image) {
    if(!$image) {
     return '';
    } else {
