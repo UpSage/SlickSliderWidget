@@ -3,10 +3,16 @@
  if(count($slides)):
 ?>
 
- <div id="<?= $block->getId() ?>" class="usslick__slider">
+ <style>
+  .usslick__slide--link,
+  .usslick__slide--image { display: block; }
+ </style>
+ <?= $block->getStylesheets(); ?>
+
+ <div id="<?= $block->getId() ?>" class="usslick__slider" data-slick='<?= json_encode($block->getSlickSettings()) ?>'>
 
   <?php
-   foreach($slides as $slide):
+   foreach($slides as $index=>$slide):
     $status = $slide['status'];
     $title = $slide['title'];
     $alt = $slide['alt'];
@@ -26,7 +32,7 @@
    <div class="usslick__slide--unlink">
    <?php endif; ?>
 
-    <img src="<?= $getImage ?>" alt="<?= $alt ?>" title="<?= $title ?>" class="usslick__slide--image" />
+    <img id="usslick__slide--image<?= $index ?>" src="<?= $getImage ?>" alt="<?= $alt ?>" title="<?= $title ?>" class="usslick__slide--image" />
 
    <?php if($getLink) : ?>
    </a>
@@ -43,92 +49,12 @@
 
 <?php endif; ?>
 
-<pre><?= json_encode($block->getParentData(),JSON_PRETTY_PRINT) ?></pre>
-<br/>
-<pre><?= json_encode($block->getResponsiveData(),JSON_PRETTY_PRINT) ?></pre>
+<pre><?= json_encode($block->getSlidesStyles(),JSON_PRETTY_PRINT) ?></pre>
 
-<br/>
-<pre><?= json_encode($block->getResponsiveSlickSettings(),JSON_PRETTY_PRINT) ?></pre>
+<pre>
+ <?= $block->getSlideImageStyles() ?>
+</pre>
 
-<br/>
-<pre><?= json_encode($block->getSlickSettings(),JSON_PRETTY_PRINT) ?></pre>
-
-
-<script>
- require([
-  'jquery',
-  'slick'
- ], function($, slick) {
-  var $window = $(window);
-  var $slick_slider = $('#<?= $block->getId() ?>');
-  var settings = {
-    "arrows": true,
-    "dots": false,
-    "infinite": true,
-    "speed": 300,
-    "autoplay": false,
-    "centerMode": false,
-    "adaptiveHeight": true,
-    "slidesToShow": 4,
-    "slidesToScroll": 1,
-    "responsive": [    
-      {
-            "breakpoint": 768,
-            "settings": "unslick"
-        },
-        {
-            "breakpoint": 992,
-            "settings": {
-                "arrows": true,
-                "dots": false,
-                "infinite": true,
-                "speed": 300,
-                "autoplay": true,
-                "autoplaySpeed": 4000,
-                "slidesToShow": 2,
-                "slidesToScroll": 1
-            }
-        },
-        
-    
-        {
-            "breakpoint": 1200,
-            "settings": {
-                "arrows": true,
-                "dots": false,
-                "infinite": true,
-                "speed": 300,
-                "autoplay": false,
-                "centerMode": false,
-                "slidesToShow": 3,
-                "slidesToScroll": 1
-            }
-        }
-    ]
-};
-
-
-
-
-$slick_slider.slick(settings);
-
-$window.on('resize', function() {
-  if ($window.width() < 640) {
-    if ($slick_slider.hasClass('slick-initialized'))
-    setTimeout(function(){ $slick_slider.slick('unslick'); },100);
-    return
-  }
-  if (!$slick_slider.hasClass('slick-initialized'))
-    return setTimeout(function(){$slick_slider.slick(settings)},100);
-});  
-
- 
-
-
- });
-</script>
-
-<pre><?= $block->getStylesheets(); ?></pre>
 
 
 

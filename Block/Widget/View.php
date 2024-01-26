@@ -26,7 +26,7 @@
    $this->_storeManager = $_storeManager;
   }
 
-  /* Helper */
+  /* Helpers */
 
   private function _getCssUnitValue($prop) {
    $value = $prop['type'];
@@ -72,6 +72,8 @@
    return $this->_storeManager->getStore()->getUrl($_page->getIdentifier()); 
   }
 
+  /* Data */
+
   public function getRawData() {
    return $this->getData('slider_data');
   }
@@ -94,14 +96,6 @@
 
   public function getId() {
    return $this->getRawData()['identifier'];
-  }
-
-  public function getSlides() {
-   $data = array();
-   foreach($this->getRawData()['slides'] as $key=>$slide){
-    $data[] = $slide['slide']['data'];
-   }
-   return $data;
   }
 
   public function getStyles($source) {
@@ -128,68 +122,109 @@
    return $this->getRawData()['is_mobile_first'];
   }
 
+  /* Slides */
+  
+  public function getSlides() {
+   $data = array();
+   foreach($this->getRawData()['slides'] as $key=>$slide){
+    $data[] = $slide['slide']['data'];
+   }
+   return $data;
+  }
+  
+  public function getSlidesStyles() {
+   $data = array();
+   foreach($this->getRawData()['slides'] as $key=>$slide){
+    $data[] = $slide['slide']['styles'];
+   }
+   return $data;
+  }
+ 
   /* Styles */
-  public function getContainerStyle($data) {
+
+  public function getContainerStyles($data, $styles) {
+   $display = 'display:block;';
+   if($this->isUnslick($data)) {
+    $display = 'display:flex; flex-wrap:wrap;';
+   }
    return
-    '#' . $this->getId() . '{
-     width:' . $this->_getCssUnitValue($data['width']) . ';
+    '#' . $this->getId() . '{'
+     . $display . '
+     width:' . $this->_getCssUnitValue($styles['width']) . ';
      margin:'
-      . $this->_getCssUnitValue($data['margin']['top']) . ' '
-      . $this->_getCssUnitValue($data['margin']['right']) . ' '
-      . $this->_getCssUnitValue($data['margin']['bottom']) . ' '
-      . $this->_getCssUnitValue($data['margin']['left']) . ';
+      . $this->_getCssUnitValue($styles['margin']['top']) . ' '
+      . $this->_getCssUnitValue($styles['margin']['right']) . ' '
+      . $this->_getCssUnitValue($styles['margin']['bottom']) . ' '
+      . $this->_getCssUnitValue($styles['margin']['left']) . ';
     }';
   }
 
-  public function getColumnStyles($data) {
-   $count = $data['count'];
-   $styles = $data['styles'];
+  public function getColumnStyles($data, $styles) {
+   $width = 'width: 100%;';
+   if($this->isUnslick($data)) {
+    $width = 'width: calc(100%/' . $styles['count'] . '); flex: 0 0 auto;';
+   }
+   $style = $styles['styles'];
    return
-    '#' . $this->getId() . ' > div {' . '
-      width: calc(100%/' . $count . ');
-      flex: 0 0 auto;
+    '#' . $this->getId() . ' > div {' . 
+      $width . '
       margin:'
-       . $this->_getCssUnitValue($styles['margin']['top']) . ' '
-       . $this->_getCssUnitValue($styles['margin']['right']) . ' '
-       . $this->_getCssUnitValue($styles['margin']['bottom']) . ' '
-       . $this->_getCssUnitValue($styles['margin']['left']) .';
+       . $this->_getCssUnitValue($style['margin']['top']) . ' '
+       . $this->_getCssUnitValue($style['margin']['right']) . ' '
+       . $this->_getCssUnitValue($style['margin']['bottom']) . ' '
+       . $this->_getCssUnitValue($style['margin']['left']) .';
       padding:'
-       . $this->_getCssUnitValue($styles['padding']['top']) . ' '
-       . $this->_getCssUnitValue($styles['padding']['right']) . ' '
-       . $this->_getCssUnitValue($styles['padding']['bottom']) . ' '
-       . $this->_getCssUnitValue($styles['padding']['left']) .';
+       . $this->_getCssUnitValue($style['padding']['top']) . ' '
+       . $this->_getCssUnitValue($style['padding']['right']) . ' '
+       . $this->_getCssUnitValue($style['padding']['bottom']) . ' '
+       . $this->_getCssUnitValue($style['padding']['left']) .';
     }';
+  }
+
+  public function getSlideImageStyles() {
+   $images = array();
+   foreach($this->getSlidesStyles() as $index=>$responsive){
+    $x = $responsive['object-position']['x']['value'];
+    $y = $responsive['object-position']['y']['value'];
+    $images[] = '
+     ' . '#usslick__slide--image' . $index . '{
+      width:' . $this->_getCssUnitValue($responsive['width']) . ';
+      height:' . $this->_getCssUnitValue($responsive['height']) . ';
+      object-fit:' . $responsive['object-fit']['value'] . ';
+      object-position:'. $x['length'] . $x['unit'] .' '. $y['length'] . $y['unit'] .';
+     }
+    ';
+   }
+   return '
+    <style>'
+     . implode('', $images) . '
+    </style>
+   ';
   }
 
   public function getStylesheets() {
-   
+   $data = $this->getParentData();
+   $breakpoints = array();
+   if($this->isResponsive()) {
+    $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
+    foreach($this->getResponsiveData() as $responsive){
+     $breakpoints[] = '
+      @media('.$mediafeature.':' . $responsive['breakpoint'] . 'px){'
+       . $this->getContainerStyles($responsive, $this->getStyles($responsive))
+       . $this->getColumnStyles($responsive, $this->getColumns($responsive)) . '
+      }';
+    }
+   }
+   return '
+    <style>'
+     . $this->getContainerStyles($data, $this->getStyles($data))
+     . $this->getColumnStyles($data, $this->getColumns($data))
+     . implode('', $breakpoints) . '
+    </style>
+   ';
   }
 
-  // public function getStylesheets() {
-  //  /* Parent */
-  //  $parentData = $this->getRawData();
-  //  $parent_columns = ($this->isUnslick($parentData)) ?  $this->getColumnStyles($this->getColumns($parentData)) : '';
-  //  /* Breakpoints */
-  //  $breakpoints = array();
-  //  if($this->isResponsive()) {
-  //   $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
-  //   foreach($this->getResponsiveData() as $responsiveData){
-  //    $responsive_columns = ($this->isUnslick($responsiveData)) ? $this->getColumnStyles($this->getColumns($responsiveData)) : '';
-  //    $breakpoints[] = '
-  //     @media('.$mediafeature.':' . $responsiveData['breakpoint'] . 'px){'
-  //      . $this->getContainerStyle($this->getStyles($responsiveData))
-  //      . $responsive_columns . '
-  //     }';
-  //   }
-  //  }
-  //  return '
-  //   <style>'
-  //    . $this->getContainerStyle($this->getStyles($parentData))
-  //    . $parent_columns
-  //    . implode('', $breakpoints) . '
-  //   </style>
-  //  ';
-  // }
+  /* Scripts */
   
   public function getParentSlickSettings() {
    $source = $this->getSettings($this->getParentData());
@@ -213,6 +248,20 @@
      'settings' => $settings
     );
    }
+   if($this->isUnslick($this->getParentData())) {
+    $settings = 'unslick';
+    if($this->isMobileFirst()) {
+     $breakpoints[] = array(
+      'breakpoint' => 0,
+      'settings' => $settings
+     ); 
+    } else {
+     $breakpoints[] = array(
+      'breakpoint' => 99999,
+      'settings' => $settings
+     ); 
+    }
+   }
    return $breakpoints;
   }
 
@@ -223,6 +272,8 @@
    }
    return $settings;
   }
+
+  /* Slides */
 
   public function getLink($link) {
    $url = $link['default'];
