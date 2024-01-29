@@ -6,11 +6,12 @@
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+ <head>
+  <css src="UpSage_SlickSliderWidget::css/styles.css"/>
+ </head>
  <body>
-
   <referenceContainer name="head.additional">
    <block class="Magento\Framework\View\Element\Template" template="UpSage_SlickSliderWidget::header/head.phtml"/>
   </referenceContainer>
-
  </body>
 </page>

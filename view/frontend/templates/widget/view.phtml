@@ -1,12 +1,8 @@
 <?php
- $slides = $block->getSlides();
+ $slides = $block->getSlidesData();
  if(count($slides)):
 ?>
 
- <style>
-  .usslick__slide--link,
-  .usslick__slide--image { display: block; }
- </style>
  <?= $block->getStylesheets(); ?>
 
  <div id="<?= $block->getId() ?>" class="usslick__slider" data-slick='<?= json_encode($block->getSlickSettings()) ?>'>
@@ -48,17 +44,3 @@
  </div>
 
 <?php endif; ?>
-
-<pre><?= json_encode($block->getSlidesStyles(),JSON_PRETTY_PRINT) ?></pre>
-
-<pre>
- <?= $block->getSlideImageStyles() ?>
-</pre>
-
-
-
-
-
-
-
-

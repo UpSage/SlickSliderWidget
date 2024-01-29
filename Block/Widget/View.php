@@ -29,9 +29,13 @@
   /* Helpers */
 
   private function _getCssUnitValue($prop) {
+   return $prop['value']['length'] . $prop['value']['unit'];
+  }
+
+  private function _getCssPropValue($prop) {
    $value = $prop['type'];
    if($prop['type'] == 'length') {
-    $value = $prop['value']['length'] . $prop['value']['unit'];
+    $value = $this->_getCssUnitValue($prop);
    }
    return $value;
   }
@@ -121,23 +125,40 @@
   public function isMobileFirst() {
    return $this->getRawData()['is_mobile_first'];
   }
-
-  /* Slides */
   
   public function getSlides() {
+   return $this->getRawData()['slides'];
+  }
+
+  /* Slides */
+
+  public function getSlidesData() {
    $data = array();
-   foreach($this->getRawData()['slides'] as $key=>$slide){
+   foreach($this->getSlides() as $key=>$slide){
     $data[] = $slide['slide']['data'];
    }
    return $data;
   }
-  
+
   public function getSlidesStyles() {
    $data = array();
-   foreach($this->getRawData()['slides'] as $key=>$slide){
-    $data[] = $slide['slide']['styles'];
+   foreach($this->getSlides() as $key=>$slide){
+    $data[] = $this->getStyles($slide['slide']);
    }
    return $data;
+  }
+
+  public function getSlideImageStyle($key, $index) {
+   $x = $key['object-position']['x']['value'];
+   $y = $key['object-position']['y']['value'];
+   return '
+    '. '#usslick__slide--image' . $index . ' {
+     width:' . $this->_getCssPropValue($key['width']) . ';
+     height:' . $this->_getCssPropValue($key['height']) . ';
+     object-fit:' . $key['object-fit']['value'] . ';
+     object-position:'. $x['length'] . $x['unit'] .' '. $y['length'] . $y['unit'] .';
+    }
+   ';
   }
  
   /* Styles */
@@ -150,12 +171,12 @@
    return
     '#' . $this->getId() . '{'
      . $display . '
-     width:' . $this->_getCssUnitValue($styles['width']) . ';
+     width:' . $this->_getCssPropValue($styles['width']) . ';
      margin:'
-      . $this->_getCssUnitValue($styles['margin']['top']) . ' '
-      . $this->_getCssUnitValue($styles['margin']['right']) . ' '
-      . $this->_getCssUnitValue($styles['margin']['bottom']) . ' '
-      . $this->_getCssUnitValue($styles['margin']['left']) . ';
+      . $this->_getCssPropValue($styles['margin']['top']) . ' '
+      . $this->_getCssPropValue($styles['margin']['right']) . ' '
+      . $this->_getCssPropValue($styles['margin']['bottom']) . ' '
+      . $this->_getCssPropValue($styles['margin']['left']) . ';
     }';
   }
 
@@ -169,37 +190,37 @@
     '#' . $this->getId() . ' > div {' . 
       $width . '
       margin:'
-       . $this->_getCssUnitValue($style['margin']['top']) . ' '
-       . $this->_getCssUnitValue($style['margin']['right']) . ' '
-       . $this->_getCssUnitValue($style['margin']['bottom']) . ' '
-       . $this->_getCssUnitValue($style['margin']['left']) .';
+       . $this->_getCssPropValue($style['margin']['top']) . ' '
+       . $this->_getCssPropValue($style['margin']['right']) . ' '
+       . $this->_getCssPropValue($style['margin']['bottom']) . ' '
+       . $this->_getCssPropValue($style['margin']['left']) .';
       padding:'
-       . $this->_getCssUnitValue($style['padding']['top']) . ' '
-       . $this->_getCssUnitValue($style['padding']['right']) . ' '
-       . $this->_getCssUnitValue($style['padding']['bottom']) . ' '
-       . $this->_getCssUnitValue($style['padding']['left']) .';
+       . $this->_getCssPropValue($style['padding']['top']) . ' '
+       . $this->_getCssPropValue($style['padding']['right']) . ' '
+       . $this->_getCssPropValue($style['padding']['bottom']) . ' '
+       . $this->_getCssPropValue($style['padding']['left']) .';
     }';
   }
 
-  public function getSlideImageStyles() {
+  public function getSlideStyles() {
    $images = array();
-   foreach($this->getSlidesStyles() as $index=>$responsive){
-    $x = $responsive['object-position']['x']['value'];
-    $y = $responsive['object-position']['y']['value'];
-    $images[] = '
-     ' . '#usslick__slide--image' . $index . '{
-      width:' . $this->_getCssUnitValue($responsive['width']) . ';
-      height:' . $this->_getCssUnitValue($responsive['height']) . ';
-      object-fit:' . $responsive['object-fit']['value'] . ';
-      object-position:'. $x['length'] . $x['unit'] .' '. $y['length'] . $y['unit'] .';
-     }
-    ';
+   $breakpoints = array();
+   foreach($this->getSlidesStyles() as $index=>$key){
+    $images[] = $this->getSlideImageStyle($key,$index);
+    $isResponsive = $key['is_responsive'];
+    $isMobileFirst = $key['is_mobile_first'];
+    $responsive = $key['responsive'];
+    if($isResponsive) {
+    $mediafeature = ($isMobileFirst) ? 'min-width' : 'max-width';
+    foreach($responsive as $i=>$res){
+     $breakpoints[] = ' 
+      @media('.$mediafeature.':' . $this->_getCssUnitValue($res['breakpoint']) . '){'
+       . $this->getSlideImageStyle($res['styles'],$i) . '
+      }';
+    }
    }
-   return '
-    <style>'
-     . implode('', $images) . '
-    </style>
-   ';
+   }
+   return implode('', $images) . implode('', $breakpoints);
   }
 
   public function getStylesheets() {
@@ -215,13 +236,14 @@
       }';
     }
    }
-   return '
+   $style = '
     <style>'
      . $this->getContainerStyles($data, $this->getStyles($data))
      . $this->getColumnStyles($data, $this->getColumns($data))
-     . implode('', $breakpoints) . '
-    </style>
-   ';
+     . implode('', $breakpoints)
+     . $this->getSlideStyles() .
+    '</style>';
+   return trim(preg_replace('/\s+/', ' ', $style));
   }
 
   /* Scripts */
