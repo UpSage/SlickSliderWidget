@@ -20,7 +20,7 @@
    ?>
    
   <?php if($status && $image): ?>
-  <div class="usslick__slide">
+  <div class="usslick__slide<?= $index ?> usslick__slide">
     
    <?php if($getLink) : ?>
    <a href="<?= $getLink ?>" title="<?= $title ?>" class="usslick__slide--link" <?= $getTarget ?>>
@@ -28,7 +28,7 @@
    <div class="usslick__slide--unlink">
    <?php endif; ?>
 
-    <img id="usslick__slide--image<?= $index ?>" src="<?= $getImage ?>" alt="<?= $alt ?>" title="<?= $title ?>" class="usslick__slide--image" />
+    <img src="<?= $getImage ?>" alt="<?= $alt ?>" title="<?= $title ?>" class="usslick__slide--image" />
 
    <?php if($getLink) : ?>
    </a>
