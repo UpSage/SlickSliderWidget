@@ -4591,9 +4591,14 @@
        </formElements>
       </field>
       <field name="image" formElement="imageUploader">
+       <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+         <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/image-uploader</item>
+        </item>
+       </argument>
        <settings>
         <label translate="true">Image</label>
-        <componentType>imageUploader</componentType>
+        <componentType>imageUploader</componentType>     
        </settings>
        <formElements>
         <imageUploader>
@@ -4601,7 +4606,7 @@
           <allowedExtensions>jpg jpeg gif png</allowedExtensions>
           <maxFileSize>2097152</maxFileSize>
           <uploaderConfig>
-           <param xsi:type="string" name="url">slicksliderwidget/index/upload</param>
+           <param xsi:type="string" name="url">path/to/save</param>
           </uploaderConfig>
          </settings>
         </imageUploader>
