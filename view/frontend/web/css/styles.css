@@ -1,2 +1,4 @@
 .usslick__slide--link,
 .usslick__slide--image { display: block; }
+.usslick__slide--link,
+.usslick__slide--unlink { height: 100%; }
