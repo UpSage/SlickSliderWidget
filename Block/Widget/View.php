@@ -33,7 +33,11 @@
    foreach($source as $key=>$item){
     $data[] = $item;
    }
-   array_multisort(array_column($data, 'position'), SORT_ASC, $data);
+   array_multisort(
+    array_column($data, 'position'),
+    SORT_ASC,
+    $data
+   );
    return $data;
   }
 

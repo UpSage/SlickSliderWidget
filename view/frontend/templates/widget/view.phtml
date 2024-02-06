@@ -1,10 +1,8 @@
-<pre><?= json_encode($block->getSlides(),JSON_PRETTY_PRINT); ?></pre>
+<pre><?= json_encode($block->getRawData(),JSON_PRETTY_PRINT); ?></pre>
 <?php
  $slides = $block->getSlidesData();
  if(count($slides)):
 ?>
-
- <?= $block->getStylesheets(); ?>
 
  <div id="<?= $block->getId() ?>" class="usslick__slider" data-slick='<?= json_encode($block->getSlickSettings()) ?>'>
 
