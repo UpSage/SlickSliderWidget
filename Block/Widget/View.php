@@ -5,6 +5,7 @@
  class View extends \Grasch\AdminUi\Block\Widget\AbstractWidget {
     
   protected $_template = 'widget/view.phtml';
+  protected $_timezoneInterface;
   protected $_categoryRepository;
   protected $_productRepository;
   protected $_pageRepository;
@@ -12,6 +13,7 @@
   
   public function __construct(
    \Magento\Store\Model\StoreManagerInterface $_storeManager,
+   \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezoneInterface,
    \Magento\Catalog\Model\CategoryRepository $_categoryRepository,
    \Magento\Catalog\Model\ProductRepository $_productRepository,
    \Magento\Cms\Model\PageRepository $_pageRepository,
@@ -20,6 +22,7 @@
    array $data = []
   ) {
    parent::__construct($context, $decodeComponentValue, $data);
+   $this->_timezoneInterface = $timezoneInterface;
    $this->_categoryRepository = $_categoryRepository;
    $this->_productRepository = $_productRepository;
    $this->_pageRepository = $_pageRepository;
@@ -41,16 +44,40 @@
    return $data;
   }
 
-  private function _getCssUnitValue($prop) {
-   return $prop['value']['length'] . $prop['value']['unit'];
-  }
-
-  private function _getCssPropValue($prop) {
-   $value = $prop['type'];
-   if($prop['type'] == 'length') {
-    $value = $this->_getCssUnitValue($prop);
+  private function _unitValue($prop) {
+   $length = $prop['length'];
+   $unit = $prop['unit'];
+   $value = $length . $unit;
+   if($length == '0') {
+    $value = 0;
+   } elseif(!$length) {
+    $value = 'auto';
    }
    return $value;
+  }
+
+  private function _colorValue($prop) {
+   $color = $prop;
+   if(!$color) {
+    $color = 'transparent';;
+   }
+   return $color;
+  }
+
+  private function _borderValue($width, $style, $color) {
+   $value = $this->_unitValue($width).' '.$style.' '.$color.'';
+   if($style == 'none') {
+    $value = $style;
+   }
+   return $value;
+  }
+
+  private function _getBoxValue($top, $right, $bottom, $left) {
+   return
+    $this->_unitValue($top).' '.
+    $this->_unitValue($right).' '.
+    $this->_unitValue($bottom).' '.
+    $this->_unitValue($left);
   }
 
   private function _getSlickSetup($item) {
@@ -87,6 +114,10 @@
   private function _getPageUrl($id) {
    $_page = $this->_pageRepository->getById($id);
    return $this->_storeManager->getStore()->getUrl($_page->getIdentifier()); 
+  }
+
+  public function getDateTimeZone($date) {
+   return $this->_timezoneInterface->date(new \DateTime($date))->format('m/d/y H:i:s');
   }
 
   /* Data */
@@ -164,116 +195,142 @@
  
   /* Styles */
 
-  public function getContainerCss($data, $styles) {
-   $display = 'display:block;';
-   if($this->isUnslick($data)) {
-    $display = 'display:flex; flex-wrap:wrap;';
-   }
+  public function getInstanceCss($data) {
+   $container = $this->getStyles($data)['container'];
+   $width = $container['width']['value'];
+   $margin = $container['margin'];
+   $padding = $container['padding'];
+   $background = $container['background'];
+   $border = $container['border'];
    return
-    '#' . $this->getId() . '{'
-     . $display . '
-     width:' . $this->_getCssPropValue($styles['width']) . ';
-     margin:'
-      . $this->_getCssPropValue($styles['margin']['top']) . ' '
-      . $this->_getCssPropValue($styles['margin']['right']) . ' '
-      . $this->_getCssPropValue($styles['margin']['bottom']) . ' '
-      . $this->_getCssPropValue($styles['margin']['left']) . ';
-    }';
-  }
-
-  public function getColumnCss($data, $styles) {
-   $width = 'width: 100%;';
-   if($this->isUnslick($data)) {
-    $width = 'width: calc(100%/' . $styles['count'] . '); flex: 0 0 auto;';
-   }
-   $style = $styles['styles'];
-   return
-    '#' . $this->getId() . ' > div {' . 
-      $width . '
-      margin:'
-       . $this->_getCssPropValue($style['margin']['top']) . ' '
-       . $this->_getCssPropValue($style['margin']['right']) . ' '
-       . $this->_getCssPropValue($style['margin']['bottom']) . ' '
-       . $this->_getCssPropValue($style['margin']['left']) .';
-      padding:'
-       . $this->_getCssPropValue($style['padding']['top']) . ' '
-       . $this->_getCssPropValue($style['padding']['right']) . ' '
-       . $this->_getCssPropValue($style['padding']['bottom']) . ' '
-       . $this->_getCssPropValue($style['padding']['left']) .';
-    }';
-  }
-
-  public function getSlideContainerCss($key, $index) {
-   $container = $key['container'];
-   return '
-    #' . $this->getId() . ' .usslick__slide' . $index . '{
-     height:' . $this->_getCssPropValue($container['height']) . ';
-    }
-   ';
-  }
-
-  public function getSlideImageCss($key, $index) {
-   $image = $key['image'];
-   $x = $image['object-position']['x']['value'];
-   $y = $image['object-position']['y']['value'];
-   return '
-    #' . $this->getId() . ' .usslick__slide' . $index . ' .usslick__slide--image {
-     width:' . $this->_getCssPropValue($image['width']) . ';
-     height:' . $this->_getCssPropValue($image['height']) . ';
-     object-fit:' . $image['object-fit']['value'] . ';
-     object-position:'. $x['length'] . $x['unit'] .' '. $y['length'] . $y['unit'] .';
-    }
-   ';
-  }
-
-  public function getSlideCss() {
-   $container = array();
-   $images = array();
-   $breakpoints = array();
-   foreach($this->getSlidesStyles() as $index=>$key){
-    $container[] = $this->getSlideContainerCss($key,$index);
-    $images[] = $this->getSlideImageCss($key,$index);
-    $isResponsive = $key['is_responsive'];
-    $isMobileFirst = $key['is_mobile_first'];
-    $responsive = $this->_sortPosition($key['responsive']);
-    if($isResponsive) {
-     $mediafeature = ($isMobileFirst) ? 'min-width' : 'max-width';
-     foreach($responsive as $i=>$res){
-      $breakpoints[] = ' 
-       @media('.$mediafeature.':' . $this->_getCssUnitValue($res['breakpoint']) . '){'
-        . $this->getSlideContainerCss($res['styles'],$index)
-        . $this->getSlideImageCss($res['styles'],$index)
-        . '
-       }';
-     }
-    }
-   }
-   return implode('', $container) . implode('', $images) . implode('', $breakpoints);
+    '#' . $this->getId() . '{
+    width:' . $this->_unitValue($width) . ';
+    margin:'. $this->_getBoxValue($margin['top']['value'], $margin['right']['value'], $margin['bottom']['value'], $margin['left']['value']) .';
+    padding:'. $this->_getBoxValue($padding['top']['value'], $padding['right']['value'], $padding['bottom']['value'], $padding['left']['value']) .';
+    background-color:'.$this->_colorValue($background['color']['value']).';
+    border:'.$this->_borderValue($border['width']['value'],$border['style']['value'],$this->_colorValue($border['color']['value'])).';
+    border-radius:'. $this->_unitValue($border['radius']['value']) .';
+    }'
+   ;
   }
 
   public function getStylesheets() {
-   $data = $this->getParentData();
-   $breakpoints = array();
-   if($this->isResponsive()) {
-    $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
-    foreach($this->getResponsiveData() as $responsive){
-     $breakpoints[] = '
-      @media('.$mediafeature.':' . $responsive['breakpoint'] . 'px){'
-       . $this->getContainerCss($responsive, $this->getStyles($responsive))
-       . $this->getColumnCss($responsive, $this->getColumns($responsive)) . '
-      }';
-    }
-   }
-   $style =
-    '<style>'
-     . $this->getContainerCss($data, $this->getStyles($data))
-     . $this->getColumnCss($data, $this->getColumns($data))
-     . implode('', $breakpoints)
-     . $this->getSlideCss() .
-    '</style>'
-   ;
-   return trim(preg_replace('/\s+/', ' ', $style));
+   return $this->getInstanceCss($this->getParentData());
   }
+
+
+  
+
+  // public function getContainerCss($data, $styles) {
+  //  $display = 'display:block;';
+  //  if($this->isUnslick($data)) {
+  //   $display = 'display:flex; flex-wrap:wrap;';
+  //  }
+  //  return
+  //   '#' . $this->getId() . '{'
+  //    . $display . '
+  //    width:' . $this->_getCssPropValue($styles['width']) . ';
+  //    margin:'
+  //     . $this->_getCssPropValue($styles['margin']['top']) . ' '
+  //     . $this->_getCssPropValue($styles['margin']['right']) . ' '
+  //     . $this->_getCssPropValue($styles['margin']['bottom']) . ' '
+  //     . $this->_getCssPropValue($styles['margin']['left']) . ';
+  //   }';
+  // }
+
+  // public function getColumnCss($data, $styles) {
+  //  $width = 'width: 100%;';
+  //  if($this->isUnslick($data)) {
+  //   $width = 'width: calc(100%/' . $styles['count'] . '); flex: 0 0 auto;';
+  //  }
+  //  $style = $styles['styles'];
+  //  return
+  //   '#' . $this->getId() . ' > div {' . 
+  //     $width . '
+  //     margin:'
+  //      . $this->_getCssPropValue($style['margin']['top']) . ' '
+  //      . $this->_getCssPropValue($style['margin']['right']) . ' '
+  //      . $this->_getCssPropValue($style['margin']['bottom']) . ' '
+  //      . $this->_getCssPropValue($style['margin']['left']) .';
+  //     padding:'
+  //      . $this->_getCssPropValue($style['padding']['top']) . ' '
+  //      . $this->_getCssPropValue($style['padding']['right']) . ' '
+  //      . $this->_getCssPropValue($style['padding']['bottom']) . ' '
+  //      . $this->_getCssPropValue($style['padding']['left']) .';
+  //   }';
+  // }
+
+  // public function getSlideContainerCss($key, $index) {
+  //  $container = $key['container'];
+  //  return '
+  //   #' . $this->getId() . ' .usslick__slide' . $index . '{
+  //    height:' . $this->_getCssPropValue($container['height']) . ';
+  //   }
+  //  ';
+  // }
+
+  // public function getSlideImageCss($key, $index) {
+  //  $image = $key['image'];
+  //  $x = $image['object-position']['x']['value'];
+  //  $y = $image['object-position']['y']['value'];
+  //  return '
+  //   #' . $this->getId() . ' .usslick__slide' . $index . ' .usslick__slide--image {
+  //    width:' . $this->_getCssPropValue($image['width']) . ';
+  //    height:' . $this->_getCssPropValue($image['height']) . ';
+  //    object-fit:' . $image['object-fit']['value'] . ';
+  //    object-position:'. $x['length'] . $x['unit'] .' '. $y['length'] . $y['unit'] .';
+  //   }
+  //  ';
+  // }
+
+  // public function getSlideCss() {
+  //  $container = array();
+  //  $images = array();
+  //  $breakpoints = array();
+  //  foreach($this->getSlidesStyles() as $index=>$key){
+  //   $container[] = $this->getSlideContainerCss($key,$index);
+  //   $images[] = $this->getSlideImageCss($key,$index);
+  //   $isResponsive = $key['is_responsive'];
+  //   $isMobileFirst = $key['is_mobile_first'];
+  //   $responsive = $this->_sortPosition($key['responsive']);
+  //   if($isResponsive) {
+  //    $mediafeature = ($isMobileFirst) ? 'min-width' : 'max-width';
+  //    foreach($responsive as $i=>$res){
+  //     $breakpoints[] = ' 
+  //      @media('.$mediafeature.':' . $this->_getCssUnitValue($res['breakpoint']) . '){'
+  //       . $this->getSlideContainerCss($res['styles'],$index)
+  //       . $this->getSlideImageCss($res['styles'],$index)
+  //       . '
+  //      }';
+  //    }
+  //   }
+  //  }
+  //  return implode('', $container) . implode('', $images) . implode('', $breakpoints);
+  // }
+
+  // public function getStylesheets() {
+  //  $data = $this->getParentData();
+  //  $breakpoints = array();
+  //  if($this->isResponsive()) {
+  //   $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
+  //   foreach($this->getResponsiveData() as $responsive){
+  //    $breakpoints[] = '
+  //     @media('.$mediafeature.':' . $responsive['breakpoint'] . 'px){'
+  //      . $this->getContainerCss($responsive, $this->getStyles($responsive))
+  //      . $this->getColumnCss($responsive, $this->getColumns($responsive)) . '
+  //     }';
+  //   }
+  //  }
+  //  $style =
+  //   '<style>'
+  //    . $this->getContainerCss($data, $this->getStyles($data))
+  //    . $this->getColumnCss($data, $this->getColumns($data))
+  //    . implode('', $breakpoints)
+  //    . $this->getSlideCss() .
+  //   '</style>'
+  //  ;
+  //  return trim(preg_replace('/\s+/', ' ', $style));
+  // }
 
   /* Scripts */
   

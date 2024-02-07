@@ -1397,18 +1397,104 @@
        <argument name="data" xsi:type="array">
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
-          <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+          <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
          </item>
          <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
          <item name="default" xsi:type="string">0</item>
          <item name="dataScope" xsi:type="string">value.length</item>
-         <item name="placeholder" xsi:type="string">auto</item>
         </item>
        </argument>
        <settings>
         <label>Width</label>
         <validation>
          <rule name="validate-number" xsi:type="boolean">true</rule>
+         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+         <rule name="no-whitespace" xsi:type="boolean">true</rule>
+        </validation>
+        <dataType>number</dataType>
+        <switcherConfig>
+         <rules>
+          <rule name="0">
+           <value>0</value>
+           <actions>
+            <action name="0">
+             <target>${ $.parentName}.unit</target>
+             <callback>hide</callback>
+            </action>
+           </actions>
+          </rule>
+          <rule name="1">
+           <value></value>
+           <actions>
+            <action name="0">
+             <target>${ $.parentName}.unit</target>
+             <callback>hide</callback>
+            </action>
+           </actions>
+          </rule>
+         </rules>
+         <enabled>true</enabled>
+        </switcherConfig>
+       </settings>
+      </field>
+      <field name="unit" formElement="select">
+       <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+         <item name="additionalClasses" xsi:type="array">
+          <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+         </item>
+         <item name="default" xsi:type="string">px</item>
+         <item name="dataScope" xsi:type="string">value.unit</item>
+        </item>
+       </argument>
+       <settings>
+        <label />
+        <dataType>text</dataType>
+       </settings>
+       <formElements>
+        <select>
+         <settings>
+          <options>
+           <option name="2" xsi:type="array">
+            <item name="value" xsi:type="string">px</item>
+            <item name="label" xsi:type="string">px</item>
+           </option>
+           <option name="1" xsi:type="array">
+            <item name="value" xsi:type="string">%</item>
+            <item name="label" xsi:type="string">%</item>
+           </option>
+          </options>
+         </settings>
+        </select>
+       </formElements>
+      </field>
+     </container>
+     <container name="radius" component="Magento_Ui/js/form/components/group">
+      <argument name="data" xsi:type="array">
+       <item name="type" xsi:type="string">group</item>
+       <item name="config" xsi:type="array">
+        <item name="additionalClasses" xsi:type="array">
+         <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+        </item>
+        <item name="dataScope" xsi:type="string">radius</item>
+       </item>
+      </argument>
+      <field name="length" formElement="input">
+       <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+         <item name="additionalClasses" xsi:type="array">
+          <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+         </item>
+         <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+         <item name="default" xsi:type="string">0</item>
+         <item name="dataScope" xsi:type="string">value.length</item>
+        </item>
+       </argument>
+       <settings>
+        <label>Radius</label>
+        <validation>
+         <rule name="validate-number" xsi:type="boolean">true</rule>
+         <rule name="validate-no-empty" xsi:type="boolean">true</rule>
          <rule name="no-whitespace" xsi:type="boolean">true</rule>
         </validation>
         <dataType>number</dataType>
@@ -1562,365 +1648,6 @@
        </settings>
       </field>
      </container>
-     <fieldset name="radius">
-      <argument name="data" xsi:type="array">
-       <item name="config" xsi:type="array">
-        <item name="dataScope" xsi:type="string">radius</item>
-       </item>
-      </argument>
-      <settings>
-       <label>Radius</label>
-       <collapsible>false</collapsible>
-       <opened>true</opened>
-       <additionalClasses>
-        <class name="us-admin__fieldset-neph">true</class>
-       </additionalClasses>
-      </settings>
-      <container name="top" component="Magento_Ui/js/form/components/group">
-       <argument name="data" xsi:type="array">
-        <item name="type" xsi:type="string">group</item>
-        <item name="config" xsi:type="array">
-         <item name="additionalClasses" xsi:type="array">
-          <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-         </item>
-         <item name="dataScope" xsi:type="string">top</item>
-        </item>
-       </argument>
-       <field name="length" formElement="input">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-          </item>
-          <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-          <item name="default" xsi:type="string">0</item>
-          <item name="dataScope" xsi:type="string">value.length</item>
-         </item>
-        </argument>
-        <settings>
-         <label>Top</label>
-         <validation>
-          <rule name="validate-number" xsi:type="boolean">true</rule>
-          <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-          <rule name="no-whitespace" xsi:type="boolean">true</rule>
-         </validation>
-         <dataType>number</dataType>
-         <switcherConfig>
-          <rules>
-           <rule name="0">
-            <value>0</value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-           <rule name="1">
-            <value></value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-          </rules>
-          <enabled>true</enabled>
-         </switcherConfig>
-        </settings>
-       </field>
-       <field name="unit" formElement="select">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-          </item>
-          <item name="default" xsi:type="string">px</item>
-          <item name="dataScope" xsi:type="string">value.unit</item>
-         </item>
-        </argument>
-        <settings>
-         <label />
-         <dataType>text</dataType>
-        </settings>
-        <formElements>
-         <select>
-          <settings>
-           <options>
-            <option name="2" xsi:type="array">
-             <item name="value" xsi:type="string">px</item>
-             <item name="label" xsi:type="string">px</item>
-            </option>
-            <option name="1" xsi:type="array">
-             <item name="value" xsi:type="string">%</item>
-             <item name="label" xsi:type="string">%</item>
-            </option>
-           </options>
-          </settings>
-         </select>
-        </formElements>
-       </field>
-      </container>
-      <container name="right" component="Magento_Ui/js/form/components/group">
-       <argument name="data" xsi:type="array">
-        <item name="type" xsi:type="string">group</item>
-        <item name="config" xsi:type="array">
-         <item name="additionalClasses" xsi:type="array">
-          <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-         </item>
-         <item name="dataScope" xsi:type="string">right</item>
-        </item>
-       </argument>
-       <field name="length" formElement="input">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-          </item>
-          <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-          <item name="default" xsi:type="string">0</item>
-          <item name="dataScope" xsi:type="string">value.length</item>
-         </item>
-        </argument>
-        <settings>
-         <label>Right</label>
-         <validation>
-          <rule name="validate-number" xsi:type="boolean">true</rule>
-          <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-          <rule name="no-whitespace" xsi:type="boolean">true</rule>
-         </validation>
-         <dataType>number</dataType>
-         <switcherConfig>
-          <rules>
-           <rule name="0">
-            <value>0</value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-           <rule name="1">
-            <value></value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-          </rules>
-          <enabled>true</enabled>
-         </switcherConfig>
-        </settings>
-       </field>
-       <field name="unit" formElement="select">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-          </item>
-          <item name="default" xsi:type="string">px</item>
-          <item name="dataScope" xsi:type="string">value.unit</item>
-         </item>
-        </argument>
-        <settings>
-         <label />
-         <dataType>text</dataType>
-        </settings>
-        <formElements>
-         <select>
-          <settings>
-           <options>
-            <option name="2" xsi:type="array">
-             <item name="value" xsi:type="string">px</item>
-             <item name="label" xsi:type="string">px</item>
-            </option>
-            <option name="1" xsi:type="array">
-             <item name="value" xsi:type="string">%</item>
-             <item name="label" xsi:type="string">%</item>
-            </option>
-           </options>
-          </settings>
-         </select>
-        </formElements>
-       </field>
-      </container>
-      <container name="bottom" component="Magento_Ui/js/form/components/group">
-       <argument name="data" xsi:type="array">
-        <item name="type" xsi:type="string">group</item>
-        <item name="config" xsi:type="array">
-         <item name="additionalClasses" xsi:type="array">
-          <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-         </item>
-         <item name="dataScope" xsi:type="string">bottom</item>
-        </item>
-       </argument>
-       <field name="length" formElement="input">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-          </item>
-          <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-          <item name="default" xsi:type="string">0</item>
-          <item name="dataScope" xsi:type="string">value.length</item>
-         </item>
-        </argument>
-        <settings>
-         <label>Bottom</label>
-         <validation>
-          <rule name="validate-number" xsi:type="boolean">true</rule>
-          <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-          <rule name="no-whitespace" xsi:type="boolean">true</rule>
-         </validation>
-         <dataType>number</dataType>
-         <switcherConfig>
-          <rules>
-           <rule name="0">
-            <value>0</value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-           <rule name="1">
-            <value></value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-          </rules>
-          <enabled>true</enabled>
-         </switcherConfig>
-        </settings>
-       </field>
-       <field name="unit" formElement="select">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-          </item>
-          <item name="default" xsi:type="string">px</item>
-          <item name="dataScope" xsi:type="string">value.unit</item>
-         </item>
-        </argument>
-        <settings>
-         <label />
-         <dataType>text</dataType>
-        </settings>
-        <formElements>
-         <select>
-          <settings>
-           <options>
-            <option name="2" xsi:type="array">
-             <item name="value" xsi:type="string">px</item>
-             <item name="label" xsi:type="string">px</item>
-            </option>
-            <option name="1" xsi:type="array">
-             <item name="value" xsi:type="string">%</item>
-             <item name="label" xsi:type="string">%</item>
-            </option>
-           </options>
-          </settings>
-         </select>
-        </formElements>
-       </field>
-      </container>
-      <container name="left" component="Magento_Ui/js/form/components/group">
-       <argument name="data" xsi:type="array">
-        <item name="type" xsi:type="string">group</item>
-        <item name="config" xsi:type="array">
-         <item name="additionalClasses" xsi:type="array">
-          <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-         </item>
-         <item name="dataScope" xsi:type="string">left</item>
-        </item>
-       </argument>
-       <field name="length" formElement="input">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-          </item>
-          <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-          <item name="default" xsi:type="string">0</item>
-          <item name="dataScope" xsi:type="string">value.length</item>
-         </item>
-        </argument>
-        <settings>
-         <label>Left</label>
-         <validation>
-          <rule name="validate-number" xsi:type="boolean">true</rule>
-          <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-          <rule name="no-whitespace" xsi:type="boolean">true</rule>
-         </validation>
-         <dataType>number</dataType>
-         <switcherConfig>
-          <rules>
-           <rule name="0">
-            <value>0</value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-           <rule name="1">
-            <value></value>
-            <actions>
-             <action name="0">
-              <target>${ $.parentName}.unit</target>
-              <callback>hide</callback>
-             </action>
-            </actions>
-           </rule>
-          </rules>
-          <enabled>true</enabled>
-         </switcherConfig>
-        </settings>
-       </field>
-       <field name="unit" formElement="select">
-        <argument name="data" xsi:type="array">
-         <item name="config" xsi:type="array">
-          <item name="additionalClasses" xsi:type="array">
-           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-          </item>
-          <item name="default" xsi:type="string">px</item>
-          <item name="dataScope" xsi:type="string">value.unit</item>
-         </item>
-        </argument>
-        <settings>
-         <label />
-         <dataType>text</dataType>
-        </settings>
-        <formElements>
-         <select>
-          <settings>
-           <options>
-            <option name="2" xsi:type="array">
-             <item name="value" xsi:type="string">px</item>
-             <item name="label" xsi:type="string">px</item>
-            </option>
-            <option name="1" xsi:type="array">
-             <item name="value" xsi:type="string">%</item>
-             <item name="label" xsi:type="string">%</item>
-            </option>
-           </options>
-          </settings>
-         </select>
-        </formElements>
-       </field>
-      </container>
-     </fieldset>
     </fieldset>
    </fieldset>
    <fieldset name="columns">
@@ -4005,18 +3732,104 @@
             <argument name="data" xsi:type="array">
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
-               <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+               <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
               </item>
               <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
               <item name="default" xsi:type="string">0</item>
               <item name="dataScope" xsi:type="string">value.length</item>
-              <item name="placeholder" xsi:type="string">auto</item>
              </item>
             </argument>
             <settings>
              <label>Width</label>
              <validation>
               <rule name="validate-number" xsi:type="boolean">true</rule>
+              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+              <rule name="no-whitespace" xsi:type="boolean">true</rule>
+             </validation>
+             <dataType>number</dataType>
+             <switcherConfig>
+              <rules>
+               <rule name="0">
+                <value>0</value>
+                <actions>
+                 <action name="0">
+                  <target>${ $.parentName}.unit</target>
+                  <callback>hide</callback>
+                 </action>
+                </actions>
+               </rule>
+               <rule name="1">
+                <value></value>
+                <actions>
+                 <action name="0">
+                  <target>${ $.parentName}.unit</target>
+                  <callback>hide</callback>
+                 </action>
+                </actions>
+               </rule>
+              </rules>
+              <enabled>true</enabled>
+             </switcherConfig>
+            </settings>
+           </field>
+           <field name="unit" formElement="select">
+            <argument name="data" xsi:type="array">
+             <item name="config" xsi:type="array">
+              <item name="additionalClasses" xsi:type="array">
+               <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+              </item>
+              <item name="default" xsi:type="string">px</item>
+              <item name="dataScope" xsi:type="string">value.unit</item>
+             </item>
+            </argument>
+            <settings>
+             <label />
+             <dataType>text</dataType>
+            </settings>
+            <formElements>
+             <select>
+              <settings>
+               <options>
+                <option name="2" xsi:type="array">
+                 <item name="value" xsi:type="string">px</item>
+                 <item name="label" xsi:type="string">px</item>
+                </option>
+                <option name="1" xsi:type="array">
+                 <item name="value" xsi:type="string">%</item>
+                 <item name="label" xsi:type="string">%</item>
+                </option>
+               </options>
+              </settings>
+             </select>
+            </formElements>
+           </field>
+          </container>
+          <container name="radius" component="Magento_Ui/js/form/components/group">
+           <argument name="data" xsi:type="array">
+            <item name="type" xsi:type="string">group</item>
+            <item name="config" xsi:type="array">
+             <item name="additionalClasses" xsi:type="array">
+              <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+             </item>
+             <item name="dataScope" xsi:type="string">radius</item>
+            </item>
+           </argument>
+           <field name="length" formElement="input">
+            <argument name="data" xsi:type="array">
+             <item name="config" xsi:type="array">
+              <item name="additionalClasses" xsi:type="array">
+               <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+              </item>
+              <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+              <item name="default" xsi:type="string">0</item>
+              <item name="dataScope" xsi:type="string">value.length</item>
+             </item>
+            </argument>
+            <settings>
+             <label>Radius</label>
+             <validation>
+              <rule name="validate-number" xsi:type="boolean">true</rule>
+              <rule name="validate-no-empty" xsi:type="boolean">true</rule>
               <rule name="no-whitespace" xsi:type="boolean">true</rule>
              </validation>
              <dataType>number</dataType>
@@ -4170,365 +3983,6 @@
             </settings>
            </field>
           </container>
-          <fieldset name="radius">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="dataScope" xsi:type="string">radius</item>
-            </item>
-           </argument>
-           <settings>
-            <label>Radius</label>
-            <collapsible>false</collapsible>
-            <opened>true</opened>
-            <additionalClasses>
-             <class name="us-admin__fieldset-neph">true</class>
-            </additionalClasses>
-           </settings>
-           <container name="top" component="Magento_Ui/js/form/components/group">
-            <argument name="data" xsi:type="array">
-             <item name="type" xsi:type="string">group</item>
-             <item name="config" xsi:type="array">
-              <item name="additionalClasses" xsi:type="array">
-               <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-              </item>
-              <item name="dataScope" xsi:type="string">top</item>
-             </item>
-            </argument>
-            <field name="length" formElement="input">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-               </item>
-               <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-               <item name="default" xsi:type="string">0</item>
-               <item name="dataScope" xsi:type="string">value.length</item>
-              </item>
-             </argument>
-             <settings>
-              <label>Top</label>
-              <validation>
-               <rule name="validate-number" xsi:type="boolean">true</rule>
-               <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-               <rule name="no-whitespace" xsi:type="boolean">true</rule>
-              </validation>
-              <dataType>number</dataType>
-              <switcherConfig>
-               <rules>
-                <rule name="0">
-                 <value>0</value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-                <rule name="1">
-                 <value></value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-               </rules>
-               <enabled>true</enabled>
-              </switcherConfig>
-             </settings>
-            </field>
-            <field name="unit" formElement="select">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-               </item>
-               <item name="default" xsi:type="string">px</item>
-               <item name="dataScope" xsi:type="string">value.unit</item>
-              </item>
-             </argument>
-             <settings>
-              <label />
-              <dataType>text</dataType>
-             </settings>
-             <formElements>
-              <select>
-               <settings>
-                <options>
-                 <option name="2" xsi:type="array">
-                  <item name="value" xsi:type="string">px</item>
-                  <item name="label" xsi:type="string">px</item>
-                 </option>
-                 <option name="1" xsi:type="array">
-                  <item name="value" xsi:type="string">%</item>
-                  <item name="label" xsi:type="string">%</item>
-                 </option>
-                </options>
-               </settings>
-              </select>
-             </formElements>
-            </field>
-           </container>
-           <container name="right" component="Magento_Ui/js/form/components/group">
-            <argument name="data" xsi:type="array">
-             <item name="type" xsi:type="string">group</item>
-             <item name="config" xsi:type="array">
-              <item name="additionalClasses" xsi:type="array">
-               <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-              </item>
-              <item name="dataScope" xsi:type="string">right</item>
-             </item>
-            </argument>
-            <field name="length" formElement="input">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-               </item>
-               <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-               <item name="default" xsi:type="string">0</item>
-               <item name="dataScope" xsi:type="string">value.length</item>
-              </item>
-             </argument>
-             <settings>
-              <label>Right</label>
-              <validation>
-               <rule name="validate-number" xsi:type="boolean">true</rule>
-               <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-               <rule name="no-whitespace" xsi:type="boolean">true</rule>
-              </validation>
-              <dataType>number</dataType>
-              <switcherConfig>
-               <rules>
-                <rule name="0">
-                 <value>0</value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-                <rule name="1">
-                 <value></value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-               </rules>
-               <enabled>true</enabled>
-              </switcherConfig>
-             </settings>
-            </field>
-            <field name="unit" formElement="select">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-               </item>
-               <item name="default" xsi:type="string">px</item>
-               <item name="dataScope" xsi:type="string">value.unit</item>
-              </item>
-             </argument>
-             <settings>
-              <label />
-              <dataType>text</dataType>
-             </settings>
-             <formElements>
-              <select>
-               <settings>
-                <options>
-                 <option name="2" xsi:type="array">
-                  <item name="value" xsi:type="string">px</item>
-                  <item name="label" xsi:type="string">px</item>
-                 </option>
-                 <option name="1" xsi:type="array">
-                  <item name="value" xsi:type="string">%</item>
-                  <item name="label" xsi:type="string">%</item>
-                 </option>
-                </options>
-               </settings>
-              </select>
-             </formElements>
-            </field>
-           </container>
-           <container name="bottom" component="Magento_Ui/js/form/components/group">
-            <argument name="data" xsi:type="array">
-             <item name="type" xsi:type="string">group</item>
-             <item name="config" xsi:type="array">
-              <item name="additionalClasses" xsi:type="array">
-               <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-              </item>
-              <item name="dataScope" xsi:type="string">bottom</item>
-             </item>
-            </argument>
-            <field name="length" formElement="input">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-               </item>
-               <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-               <item name="default" xsi:type="string">0</item>
-               <item name="dataScope" xsi:type="string">value.length</item>
-              </item>
-             </argument>
-             <settings>
-              <label>Bottom</label>
-              <validation>
-               <rule name="validate-number" xsi:type="boolean">true</rule>
-               <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-               <rule name="no-whitespace" xsi:type="boolean">true</rule>
-              </validation>
-              <dataType>number</dataType>
-              <switcherConfig>
-               <rules>
-                <rule name="0">
-                 <value>0</value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-                <rule name="1">
-                 <value></value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-               </rules>
-               <enabled>true</enabled>
-              </switcherConfig>
-             </settings>
-            </field>
-            <field name="unit" formElement="select">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-               </item>
-               <item name="default" xsi:type="string">px</item>
-               <item name="dataScope" xsi:type="string">value.unit</item>
-              </item>
-             </argument>
-             <settings>
-              <label />
-              <dataType>text</dataType>
-             </settings>
-             <formElements>
-              <select>
-               <settings>
-                <options>
-                 <option name="2" xsi:type="array">
-                  <item name="value" xsi:type="string">px</item>
-                  <item name="label" xsi:type="string">px</item>
-                 </option>
-                 <option name="1" xsi:type="array">
-                  <item name="value" xsi:type="string">%</item>
-                  <item name="label" xsi:type="string">%</item>
-                 </option>
-                </options>
-               </settings>
-              </select>
-             </formElements>
-            </field>
-           </container>
-           <container name="left" component="Magento_Ui/js/form/components/group">
-            <argument name="data" xsi:type="array">
-             <item name="type" xsi:type="string">group</item>
-             <item name="config" xsi:type="array">
-              <item name="additionalClasses" xsi:type="array">
-               <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-              </item>
-              <item name="dataScope" xsi:type="string">left</item>
-             </item>
-            </argument>
-            <field name="length" formElement="input">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-               </item>
-               <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-               <item name="default" xsi:type="string">0</item>
-               <item name="dataScope" xsi:type="string">value.length</item>
-              </item>
-             </argument>
-             <settings>
-              <label>Left</label>
-              <validation>
-               <rule name="validate-number" xsi:type="boolean">true</rule>
-               <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-               <rule name="no-whitespace" xsi:type="boolean">true</rule>
-              </validation>
-              <dataType>number</dataType>
-              <switcherConfig>
-               <rules>
-                <rule name="0">
-                 <value>0</value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-                <rule name="1">
-                 <value></value>
-                 <actions>
-                  <action name="0">
-                   <target>${ $.parentName}.unit</target>
-                   <callback>hide</callback>
-                  </action>
-                 </actions>
-                </rule>
-               </rules>
-               <enabled>true</enabled>
-              </switcherConfig>
-             </settings>
-            </field>
-            <field name="unit" formElement="select">
-             <argument name="data" xsi:type="array">
-              <item name="config" xsi:type="array">
-               <item name="additionalClasses" xsi:type="array">
-                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-               </item>
-               <item name="default" xsi:type="string">px</item>
-               <item name="dataScope" xsi:type="string">value.unit</item>
-              </item>
-             </argument>
-             <settings>
-              <label />
-              <dataType>text</dataType>
-             </settings>
-             <formElements>
-              <select>
-               <settings>
-                <options>
-                 <option name="2" xsi:type="array">
-                  <item name="value" xsi:type="string">px</item>
-                  <item name="label" xsi:type="string">px</item>
-                 </option>
-                 <option name="1" xsi:type="array">
-                  <item name="value" xsi:type="string">%</item>
-                  <item name="label" xsi:type="string">%</item>
-                 </option>
-                </options>
-               </settings>
-              </select>
-             </formElements>
-            </field>
-           </container>
-          </fieldset>
          </fieldset>
         </fieldset>
         <fieldset name="columns">
@@ -5340,10 +4794,10 @@
         <class name="us-admin__fieldset-child">true</class>
        </additionalClasses>
       </settings>
-      <field name="status" formElement="checkbox">
+      <field name="enabled" formElement="checkbox">
        <argument name="data" xsi:type="array">
         <item name="config" xsi:type="array">
-         <item name="default" xsi:type="number">1</item>
+         <item name="default" xsi:type="boolean">true</item>
         </item>
        </argument>
        <settings>
@@ -5357,28 +4811,13 @@
         <checkbox>
          <settings>
           <valueMap>
-           <map name="false" xsi:type="number">0</map>
-           <map name="true" xsi:type="number">1</map>
+           <map name="false" xsi:type="boolean">false</map>
+           <map name="true" xsi:type="boolean">true</map>
           </valueMap>
           <prefer>toggle</prefer>
          </settings>
         </checkbox>
        </formElements>
-      </field>
-      <field name="end_date" formElement="date">
-       <argument name="data" xsi:type="array">
-        <item name="config" xsi:type="array">
-         <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/toggler</item>
-        </item>
-       </argument>
-       <settings>
-        <validation>
-         <rule name="validate-date" xsi:type="boolean">true</rule>
-        </validation>
-        <dataType>text</dataType>
-        <label translate="true">End Date</label>
-        <visible>true</visible>
-       </settings>
       </field>
       <field name="image" formElement="imageUploader">
        <argument name="data" xsi:type="array">
@@ -6386,18 +5825,104 @@
           <argument name="data" xsi:type="array">
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
-             <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+             <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
             </item>
             <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
             <item name="default" xsi:type="string">0</item>
             <item name="dataScope" xsi:type="string">value.length</item>
-            <item name="placeholder" xsi:type="string">auto</item>
            </item>
           </argument>
           <settings>
            <label>Width</label>
            <validation>
             <rule name="validate-number" xsi:type="boolean">true</rule>
+            <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+            <rule name="no-whitespace" xsi:type="boolean">true</rule>
+           </validation>
+           <dataType>number</dataType>
+           <switcherConfig>
+            <rules>
+             <rule name="0">
+              <value>0</value>
+              <actions>
+               <action name="0">
+                <target>${ $.parentName}.unit</target>
+                <callback>hide</callback>
+               </action>
+              </actions>
+             </rule>
+             <rule name="1">
+              <value></value>
+              <actions>
+               <action name="0">
+                <target>${ $.parentName}.unit</target>
+                <callback>hide</callback>
+               </action>
+              </actions>
+             </rule>
+            </rules>
+            <enabled>true</enabled>
+           </switcherConfig>
+          </settings>
+         </field>
+         <field name="unit" formElement="select">
+          <argument name="data" xsi:type="array">
+           <item name="config" xsi:type="array">
+            <item name="additionalClasses" xsi:type="array">
+             <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+            </item>
+            <item name="default" xsi:type="string">px</item>
+            <item name="dataScope" xsi:type="string">value.unit</item>
+           </item>
+          </argument>
+          <settings>
+           <label />
+           <dataType>text</dataType>
+          </settings>
+          <formElements>
+           <select>
+            <settings>
+             <options>
+              <option name="2" xsi:type="array">
+               <item name="value" xsi:type="string">px</item>
+               <item name="label" xsi:type="string">px</item>
+              </option>
+              <option name="1" xsi:type="array">
+               <item name="value" xsi:type="string">%</item>
+               <item name="label" xsi:type="string">%</item>
+              </option>
+             </options>
+            </settings>
+           </select>
+          </formElements>
+         </field>
+        </container>
+        <container name="radius" component="Magento_Ui/js/form/components/group">
+         <argument name="data" xsi:type="array">
+          <item name="type" xsi:type="string">group</item>
+          <item name="config" xsi:type="array">
+           <item name="additionalClasses" xsi:type="array">
+            <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+           </item>
+           <item name="dataScope" xsi:type="string">radius</item>
+          </item>
+         </argument>
+         <field name="length" formElement="input">
+          <argument name="data" xsi:type="array">
+           <item name="config" xsi:type="array">
+            <item name="additionalClasses" xsi:type="array">
+             <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+            </item>
+            <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+            <item name="default" xsi:type="string">0</item>
+            <item name="dataScope" xsi:type="string">value.length</item>
+           </item>
+          </argument>
+          <settings>
+           <label>Radius</label>
+           <validation>
+            <rule name="validate-number" xsi:type="boolean">true</rule>
+            <rule name="validate-no-empty" xsi:type="boolean">true</rule>
             <rule name="no-whitespace" xsi:type="boolean">true</rule>
            </validation>
            <dataType>number</dataType>
@@ -6551,365 +6076,6 @@
           </settings>
          </field>
         </container>
-        <fieldset name="radius">
-         <argument name="data" xsi:type="array">
-          <item name="config" xsi:type="array">
-           <item name="dataScope" xsi:type="string">radius</item>
-          </item>
-         </argument>
-         <settings>
-          <label>Radius</label>
-          <collapsible>false</collapsible>
-          <opened>true</opened>
-          <additionalClasses>
-           <class name="us-admin__fieldset-neph">true</class>
-          </additionalClasses>
-         </settings>
-         <container name="top" component="Magento_Ui/js/form/components/group">
-          <argument name="data" xsi:type="array">
-           <item name="type" xsi:type="string">group</item>
-           <item name="config" xsi:type="array">
-            <item name="additionalClasses" xsi:type="array">
-             <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-            </item>
-            <item name="dataScope" xsi:type="string">top</item>
-           </item>
-          </argument>
-          <field name="length" formElement="input">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-             </item>
-             <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-             <item name="default" xsi:type="string">0</item>
-             <item name="dataScope" xsi:type="string">value.length</item>
-            </item>
-           </argument>
-           <settings>
-            <label>Top</label>
-            <validation>
-             <rule name="validate-number" xsi:type="boolean">true</rule>
-             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-             <rule name="no-whitespace" xsi:type="boolean">true</rule>
-            </validation>
-            <dataType>number</dataType>
-            <switcherConfig>
-             <rules>
-              <rule name="0">
-               <value>0</value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-              <rule name="1">
-               <value></value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-             </rules>
-             <enabled>true</enabled>
-            </switcherConfig>
-           </settings>
-          </field>
-          <field name="unit" formElement="select">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-             </item>
-             <item name="default" xsi:type="string">px</item>
-             <item name="dataScope" xsi:type="string">value.unit</item>
-            </item>
-           </argument>
-           <settings>
-            <label />
-            <dataType>text</dataType>
-           </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
-          </field>
-         </container>
-         <container name="right" component="Magento_Ui/js/form/components/group">
-          <argument name="data" xsi:type="array">
-           <item name="type" xsi:type="string">group</item>
-           <item name="config" xsi:type="array">
-            <item name="additionalClasses" xsi:type="array">
-             <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-            </item>
-            <item name="dataScope" xsi:type="string">right</item>
-           </item>
-          </argument>
-          <field name="length" formElement="input">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-             </item>
-             <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-             <item name="default" xsi:type="string">0</item>
-             <item name="dataScope" xsi:type="string">value.length</item>
-            </item>
-           </argument>
-           <settings>
-            <label>Right</label>
-            <validation>
-             <rule name="validate-number" xsi:type="boolean">true</rule>
-             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-             <rule name="no-whitespace" xsi:type="boolean">true</rule>
-            </validation>
-            <dataType>number</dataType>
-            <switcherConfig>
-             <rules>
-              <rule name="0">
-               <value>0</value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-              <rule name="1">
-               <value></value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-             </rules>
-             <enabled>true</enabled>
-            </switcherConfig>
-           </settings>
-          </field>
-          <field name="unit" formElement="select">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-             </item>
-             <item name="default" xsi:type="string">px</item>
-             <item name="dataScope" xsi:type="string">value.unit</item>
-            </item>
-           </argument>
-           <settings>
-            <label />
-            <dataType>text</dataType>
-           </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
-          </field>
-         </container>
-         <container name="bottom" component="Magento_Ui/js/form/components/group">
-          <argument name="data" xsi:type="array">
-           <item name="type" xsi:type="string">group</item>
-           <item name="config" xsi:type="array">
-            <item name="additionalClasses" xsi:type="array">
-             <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-            </item>
-            <item name="dataScope" xsi:type="string">bottom</item>
-           </item>
-          </argument>
-          <field name="length" formElement="input">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-             </item>
-             <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-             <item name="default" xsi:type="string">0</item>
-             <item name="dataScope" xsi:type="string">value.length</item>
-            </item>
-           </argument>
-           <settings>
-            <label>Bottom</label>
-            <validation>
-             <rule name="validate-number" xsi:type="boolean">true</rule>
-             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-             <rule name="no-whitespace" xsi:type="boolean">true</rule>
-            </validation>
-            <dataType>number</dataType>
-            <switcherConfig>
-             <rules>
-              <rule name="0">
-               <value>0</value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-              <rule name="1">
-               <value></value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-             </rules>
-             <enabled>true</enabled>
-            </switcherConfig>
-           </settings>
-          </field>
-          <field name="unit" formElement="select">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-             </item>
-             <item name="default" xsi:type="string">px</item>
-             <item name="dataScope" xsi:type="string">value.unit</item>
-            </item>
-           </argument>
-           <settings>
-            <label />
-            <dataType>text</dataType>
-           </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
-          </field>
-         </container>
-         <container name="left" component="Magento_Ui/js/form/components/group">
-          <argument name="data" xsi:type="array">
-           <item name="type" xsi:type="string">group</item>
-           <item name="config" xsi:type="array">
-            <item name="additionalClasses" xsi:type="array">
-             <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-            </item>
-            <item name="dataScope" xsi:type="string">left</item>
-           </item>
-          </argument>
-          <field name="length" formElement="input">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-             </item>
-             <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-             <item name="default" xsi:type="string">0</item>
-             <item name="dataScope" xsi:type="string">value.length</item>
-            </item>
-           </argument>
-           <settings>
-            <label>Left</label>
-            <validation>
-             <rule name="validate-number" xsi:type="boolean">true</rule>
-             <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-             <rule name="no-whitespace" xsi:type="boolean">true</rule>
-            </validation>
-            <dataType>number</dataType>
-            <switcherConfig>
-             <rules>
-              <rule name="0">
-               <value>0</value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-              <rule name="1">
-               <value></value>
-               <actions>
-                <action name="0">
-                 <target>${ $.parentName}.unit</target>
-                 <callback>hide</callback>
-                </action>
-               </actions>
-              </rule>
-             </rules>
-             <enabled>true</enabled>
-            </switcherConfig>
-           </settings>
-          </field>
-          <field name="unit" formElement="select">
-           <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-             <item name="additionalClasses" xsi:type="array">
-              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-             </item>
-             <item name="default" xsi:type="string">px</item>
-             <item name="dataScope" xsi:type="string">value.unit</item>
-            </item>
-           </argument>
-           <settings>
-            <label />
-            <dataType>text</dataType>
-           </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
-          </field>
-         </container>
-        </fieldset>
        </fieldset>
       </fieldset>
       <fieldset name="image">
@@ -8411,18 +7577,104 @@
                 <argument name="data" xsi:type="array">
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
-                   <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+                   <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
                   </item>
                   <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
                   <item name="default" xsi:type="string">0</item>
                   <item name="dataScope" xsi:type="string">value.length</item>
-                  <item name="placeholder" xsi:type="string">auto</item>
                  </item>
                 </argument>
                 <settings>
                  <label>Width</label>
                  <validation>
                   <rule name="validate-number" xsi:type="boolean">true</rule>
+                  <rule name="validate-no-empty" xsi:type="boolean">true</rule>
+                  <rule name="no-whitespace" xsi:type="boolean">true</rule>
+                 </validation>
+                 <dataType>number</dataType>
+                 <switcherConfig>
+                  <rules>
+                   <rule name="0">
+                    <value>0</value>
+                    <actions>
+                     <action name="0">
+                      <target>${ $.parentName}.unit</target>
+                      <callback>hide</callback>
+                     </action>
+                    </actions>
+                   </rule>
+                   <rule name="1">
+                    <value></value>
+                    <actions>
+                     <action name="0">
+                      <target>${ $.parentName}.unit</target>
+                      <callback>hide</callback>
+                     </action>
+                    </actions>
+                   </rule>
+                  </rules>
+                  <enabled>true</enabled>
+                 </switcherConfig>
+                </settings>
+               </field>
+               <field name="unit" formElement="select">
+                <argument name="data" xsi:type="array">
+                 <item name="config" xsi:type="array">
+                  <item name="additionalClasses" xsi:type="array">
+                   <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+                  </item>
+                  <item name="default" xsi:type="string">px</item>
+                  <item name="dataScope" xsi:type="string">value.unit</item>
+                 </item>
+                </argument>
+                <settings>
+                 <label />
+                 <dataType>text</dataType>
+                </settings>
+                <formElements>
+                 <select>
+                  <settings>
+                   <options>
+                    <option name="2" xsi:type="array">
+                     <item name="value" xsi:type="string">px</item>
+                     <item name="label" xsi:type="string">px</item>
+                    </option>
+                    <option name="1" xsi:type="array">
+                     <item name="value" xsi:type="string">%</item>
+                     <item name="label" xsi:type="string">%</item>
+                    </option>
+                   </options>
+                  </settings>
+                 </select>
+                </formElements>
+               </field>
+              </container>
+              <container name="radius" component="Magento_Ui/js/form/components/group">
+               <argument name="data" xsi:type="array">
+                <item name="type" xsi:type="string">group</item>
+                <item name="config" xsi:type="array">
+                 <item name="additionalClasses" xsi:type="array">
+                  <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+                 </item>
+                 <item name="dataScope" xsi:type="string">radius</item>
+                </item>
+               </argument>
+               <field name="length" formElement="input">
+                <argument name="data" xsi:type="array">
+                 <item name="config" xsi:type="array">
+                  <item name="additionalClasses" xsi:type="array">
+                   <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+                  </item>
+                  <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+                  <item name="default" xsi:type="string">0</item>
+                  <item name="dataScope" xsi:type="string">value.length</item>
+                 </item>
+                </argument>
+                <settings>
+                 <label>Radius</label>
+                 <validation>
+                  <rule name="validate-number" xsi:type="boolean">true</rule>
+                  <rule name="validate-no-empty" xsi:type="boolean">true</rule>
                   <rule name="no-whitespace" xsi:type="boolean">true</rule>
                  </validation>
                  <dataType>number</dataType>
@@ -8576,365 +7828,6 @@
                 </settings>
                </field>
               </container>
-              <fieldset name="radius">
-               <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                 <item name="dataScope" xsi:type="string">radius</item>
-                </item>
-               </argument>
-               <settings>
-                <label>Radius</label>
-                <collapsible>false</collapsible>
-                <opened>true</opened>
-                <additionalClasses>
-                 <class name="us-admin__fieldset-neph">true</class>
-                </additionalClasses>
-               </settings>
-               <container name="top" component="Magento_Ui/js/form/components/group">
-                <argument name="data" xsi:type="array">
-                 <item name="type" xsi:type="string">group</item>
-                 <item name="config" xsi:type="array">
-                  <item name="additionalClasses" xsi:type="array">
-                   <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-                  </item>
-                  <item name="dataScope" xsi:type="string">top</item>
-                 </item>
-                </argument>
-                <field name="length" formElement="input">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-                   <item name="default" xsi:type="string">0</item>
-                   <item name="dataScope" xsi:type="string">value.length</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label>Top</label>
-                  <validation>
-                   <rule name="validate-number" xsi:type="boolean">true</rule>
-                   <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-                   <rule name="no-whitespace" xsi:type="boolean">true</rule>
-                  </validation>
-                  <dataType>number</dataType>
-                  <switcherConfig>
-                   <rules>
-                    <rule name="0">
-                     <value>0</value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                    <rule name="1">
-                     <value></value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                   </rules>
-                   <enabled>true</enabled>
-                  </switcherConfig>
-                 </settings>
-                </field>
-                <field name="unit" formElement="select">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="default" xsi:type="string">px</item>
-                   <item name="dataScope" xsi:type="string">value.unit</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label />
-                  <dataType>text</dataType>
-                 </settings>
-                 <formElements>
-                  <select>
-                   <settings>
-                    <options>
-                     <option name="2" xsi:type="array">
-                      <item name="value" xsi:type="string">px</item>
-                      <item name="label" xsi:type="string">px</item>
-                     </option>
-                     <option name="1" xsi:type="array">
-                      <item name="value" xsi:type="string">%</item>
-                      <item name="label" xsi:type="string">%</item>
-                     </option>
-                    </options>
-                   </settings>
-                  </select>
-                 </formElements>
-                </field>
-               </container>
-               <container name="right" component="Magento_Ui/js/form/components/group">
-                <argument name="data" xsi:type="array">
-                 <item name="type" xsi:type="string">group</item>
-                 <item name="config" xsi:type="array">
-                  <item name="additionalClasses" xsi:type="array">
-                   <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-                  </item>
-                  <item name="dataScope" xsi:type="string">right</item>
-                 </item>
-                </argument>
-                <field name="length" formElement="input">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-                   <item name="default" xsi:type="string">0</item>
-                   <item name="dataScope" xsi:type="string">value.length</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label>Right</label>
-                  <validation>
-                   <rule name="validate-number" xsi:type="boolean">true</rule>
-                   <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-                   <rule name="no-whitespace" xsi:type="boolean">true</rule>
-                  </validation>
-                  <dataType>number</dataType>
-                  <switcherConfig>
-                   <rules>
-                    <rule name="0">
-                     <value>0</value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                    <rule name="1">
-                     <value></value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                   </rules>
-                   <enabled>true</enabled>
-                  </switcherConfig>
-                 </settings>
-                </field>
-                <field name="unit" formElement="select">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="default" xsi:type="string">px</item>
-                   <item name="dataScope" xsi:type="string">value.unit</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label />
-                  <dataType>text</dataType>
-                 </settings>
-                 <formElements>
-                  <select>
-                   <settings>
-                    <options>
-                     <option name="2" xsi:type="array">
-                      <item name="value" xsi:type="string">px</item>
-                      <item name="label" xsi:type="string">px</item>
-                     </option>
-                     <option name="1" xsi:type="array">
-                      <item name="value" xsi:type="string">%</item>
-                      <item name="label" xsi:type="string">%</item>
-                     </option>
-                    </options>
-                   </settings>
-                  </select>
-                 </formElements>
-                </field>
-               </container>
-               <container name="bottom" component="Magento_Ui/js/form/components/group">
-                <argument name="data" xsi:type="array">
-                 <item name="type" xsi:type="string">group</item>
-                 <item name="config" xsi:type="array">
-                  <item name="additionalClasses" xsi:type="array">
-                   <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-                  </item>
-                  <item name="dataScope" xsi:type="string">bottom</item>
-                 </item>
-                </argument>
-                <field name="length" formElement="input">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-                   <item name="default" xsi:type="string">0</item>
-                   <item name="dataScope" xsi:type="string">value.length</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label>Bottom</label>
-                  <validation>
-                   <rule name="validate-number" xsi:type="boolean">true</rule>
-                   <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-                   <rule name="no-whitespace" xsi:type="boolean">true</rule>
-                  </validation>
-                  <dataType>number</dataType>
-                  <switcherConfig>
-                   <rules>
-                    <rule name="0">
-                     <value>0</value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                    <rule name="1">
-                     <value></value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                   </rules>
-                   <enabled>true</enabled>
-                  </switcherConfig>
-                 </settings>
-                </field>
-                <field name="unit" formElement="select">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="default" xsi:type="string">px</item>
-                   <item name="dataScope" xsi:type="string">value.unit</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label />
-                  <dataType>text</dataType>
-                 </settings>
-                 <formElements>
-                  <select>
-                   <settings>
-                    <options>
-                     <option name="2" xsi:type="array">
-                      <item name="value" xsi:type="string">px</item>
-                      <item name="label" xsi:type="string">px</item>
-                     </option>
-                     <option name="1" xsi:type="array">
-                      <item name="value" xsi:type="string">%</item>
-                      <item name="label" xsi:type="string">%</item>
-                     </option>
-                    </options>
-                   </settings>
-                  </select>
-                 </formElements>
-                </field>
-               </container>
-               <container name="left" component="Magento_Ui/js/form/components/group">
-                <argument name="data" xsi:type="array">
-                 <item name="type" xsi:type="string">group</item>
-                 <item name="config" xsi:type="array">
-                  <item name="additionalClasses" xsi:type="array">
-                   <item name="us-admin__groupfields" xsi:type="boolean">true</item>
-                  </item>
-                  <item name="dataScope" xsi:type="string">left</item>
-                 </item>
-                </argument>
-                <field name="length" formElement="input">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--length us-admin__groupfield--text-small" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
-                   <item name="default" xsi:type="string">0</item>
-                   <item name="dataScope" xsi:type="string">value.length</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label>Left</label>
-                  <validation>
-                   <rule name="validate-number" xsi:type="boolean">true</rule>
-                   <rule name="validate-no-empty" xsi:type="boolean">true</rule>
-                   <rule name="no-whitespace" xsi:type="boolean">true</rule>
-                  </validation>
-                  <dataType>number</dataType>
-                  <switcherConfig>
-                   <rules>
-                    <rule name="0">
-                     <value>0</value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                    <rule name="1">
-                     <value></value>
-                     <actions>
-                      <action name="0">
-                       <target>${ $.parentName}.unit</target>
-                       <callback>hide</callback>
-                      </action>
-                     </actions>
-                    </rule>
-                   </rules>
-                   <enabled>true</enabled>
-                  </switcherConfig>
-                 </settings>
-                </field>
-                <field name="unit" formElement="select">
-                 <argument name="data" xsi:type="array">
-                  <item name="config" xsi:type="array">
-                   <item name="additionalClasses" xsi:type="array">
-                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
-                   </item>
-                   <item name="default" xsi:type="string">px</item>
-                   <item name="dataScope" xsi:type="string">value.unit</item>
-                  </item>
-                 </argument>
-                 <settings>
-                  <label />
-                  <dataType>text</dataType>
-                 </settings>
-                 <formElements>
-                  <select>
-                   <settings>
-                    <options>
-                     <option name="2" xsi:type="array">
-                      <item name="value" xsi:type="string">px</item>
-                      <item name="label" xsi:type="string">px</item>
-                     </option>
-                     <option name="1" xsi:type="array">
-                      <item name="value" xsi:type="string">%</item>
-                      <item name="label" xsi:type="string">%</item>
-                     </option>
-                    </options>
-                   </settings>
-                  </select>
-                 </formElements>
-                </field>
-               </container>
-              </fieldset>
              </fieldset>
             </fieldset>
             <fieldset name="image">

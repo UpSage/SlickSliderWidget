@@ -1,4 +1,9 @@
-<pre><?= json_encode($block->getRawData(),JSON_PRETTY_PRINT); ?></pre>
+<pre><?= json_encode($block->getParentData(),JSON_PRETTY_PRINT); ?></pre>
+<br />
+<pre>
+ <?= $block->getStylesheets() ?>
+</pre>
+
 <?php
  $slides = $block->getSlidesData();
  if(count($slides)):
@@ -8,7 +13,7 @@
 
   <?php
    foreach($slides as $index=>$slide):
-    $status = $slide['status'];
+    $enabled = $slide['enabled'];
     $title = $slide['title'];
     $alt = $slide['alt'];
     $link = $slide['link'];
@@ -17,10 +22,11 @@
     $getTarget = $block->getTarget($link);
     $getImage = $block->getImage($image);
    ?>
-   
-  <?php if($status && $image): ?>
+
+  <?php if($enabled && $image): ?>
+
   <div class="usslick__slide<?= $index ?> usslick__slide">
-    
+   
    <?php if($getLink) : ?>
    <a href="<?= $getLink ?>" title="<?= $title ?>" class="usslick__slide--link" <?= $getTarget ?>>
    <?php else: ?>
