@@ -1,0 +1,7 @@
+.usslick__slider * { box-sizing: border-box; }
+.usslick__slider
+.usslick__slide--link,
+.usslick__slide--image { display: block; }
+.usslick__slide--link,
+.usslick__slide--unlink { height: 100%; }
+.usslick__slider .slick-slide { height: auto; }

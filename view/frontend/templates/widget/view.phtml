@@ -1,0 +1,73 @@
+<pre><?= json_encode($block->getSlidesStyles(),JSON_PRETTY_PRINT); ?></pre>
+<br />
+
+<?= $block->getStylesheets() ?>
+
+<?php
+ $slides = $block->getSlidesData();
+ if(count($slides)):
+?>
+
+ <div id="<?= $block->getId() ?>" class="usslick__slider">
+
+  <?php
+   foreach($slides as $index=>$slide):
+    $enabled = $slide['enabled'];
+    $title = $slide['title'];
+    $alt = $slide['alt'];
+    $link = $slide['link'];
+    $image = $slide['image'];
+    $getLink = $block->getLink($link);
+    $getTarget = $block->getTarget($link);
+    $getImage = $block->getImage($image);
+   ?>
+
+  <?php if($enabled && $image): ?>
+
+  <div class="usslick__slide<?= $index ?> usslick__slide">
+   
+   <?php if($getLink) : ?>
+   <a href="<?= $getLink ?>" title="<?= $title ?>" class="usslick__slide--link" <?= $getTarget ?>>
+   <?php else: ?>
+   <div class="usslick__slide--unlink">
+   <?php endif; ?>
+
+    <img src="<?= $getImage ?>" alt="<?= $alt ?>" title="<?= $title ?>" class="usslick__slide--image" />
+
+   <?php if($getLink) : ?>
+   </a>
+   <?php else: ?>
+   </div>
+   <?php endif; ?>
+
+  </div>
+  <?php endif; ?>
+
+  <?php endforeach; ?>
+
+ </div>
+
+ <?php if(!$block->isResponsive() && $block->isUnslick($block->getParentData())): ?>
+  <script>
+   require([
+    'jquery'
+   ], function($) {
+    $(document).ready(function() {
+     console.log('unslick');
+    });
+   });
+  </script>
+ <?php else: ?>
+  <script>
+   require([
+    'jquery',
+    'slick'
+   ], function($) {
+    $(document).ready(function() {
+     $("#<?= $block->getId() ?>").slick(<?= $block->getSlickSettings() ?>);
+    });
+   });
+  </script>
+ <?php endif ?>
+
+<?php endif; ?>
