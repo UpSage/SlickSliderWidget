@@ -5231,6 +5231,7 @@
            </item>
            <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
            <item name="dataScope" xsi:type="string">value.length</item>
+           <item name="default" xsi:type="string">100</item>
            <item name="placeholder" xsi:type="string">auto</item>
           </item>
          </argument>
@@ -5272,7 +5273,7 @@
            <item name="additionalClasses" xsi:type="array">
             <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
            </item>
-           <item name="default" xsi:type="string">px</item>
+           <item name="default" xsi:type="string">%</item>
            <item name="dataScope" xsi:type="string">value.unit</item>
           </item>
          </argument>
@@ -7065,6 +7066,7 @@
                  </item>
                  <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
                  <item name="dataScope" xsi:type="string">value.length</item>
+                 <item name="default" xsi:type="string">100</item>
                  <item name="placeholder" xsi:type="string">auto</item>
                 </item>
                </argument>
@@ -7106,7 +7108,7 @@
                  <item name="additionalClasses" xsi:type="array">
                   <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
                  </item>
-                 <item name="default" xsi:type="string">px</item>
+                 <item name="default" xsi:type="string">%</item>
                  <item name="dataScope" xsi:type="string">value.unit</item>
                 </item>
                </argument>
