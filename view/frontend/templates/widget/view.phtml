@@ -1,22 +1,21 @@
-<pre><?= json_encode($block->getSlidesStyles(),JSON_PRETTY_PRINT); ?></pre>
-<br />
-
-<?= $block->getStylesheets() ?>
-
 <?php
  $slides = $block->getSlidesData();
  if(count($slides)):
 ?>
 
+ <?= $block->getStylesheets() ?>
+
  <div id="<?= $block->getId() ?>" class="usslick__slider">
 
   <?php
-   foreach($slides as $index=>$slide):
-    $enabled = $slide['enabled'];
-    $title = $slide['title'];
-    $alt = $slide['alt'];
-    $link = $slide['link'];
-    $image = $slide['image'];
+   foreach($slides as $slide):
+    $index = $slide['id'];
+    $data = $slide['data'];
+    $enabled = $data['enabled'];
+    $title = $data['title'];
+    $alt = $data['alt'];
+    $link = $data['link'];
+    $image = $data['image'];
     $getLink = $block->getLink($link);
     $getTarget = $block->getTarget($link);
     $getImage = $block->getImage($image);

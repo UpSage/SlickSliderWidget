@@ -613,6 +613,91 @@
       </formElements>
      </field>
     </container>
+    <container name="height" component="Magento_Ui/js/form/components/group">
+     <argument name="data" xsi:type="array">
+      <item name="type" xsi:type="string">group</item>
+      <item name="config" xsi:type="array">
+       <item name="additionalClasses" xsi:type="array">
+        <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+       </item>
+       <item name="dataScope" xsi:type="string">height</item>
+      </item>
+     </argument>
+     <field name="length" formElement="input">
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="additionalClasses" xsi:type="array">
+         <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+        </item>
+        <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+        <item name="dataScope" xsi:type="string">value.length</item>
+        <item name="placeholder" xsi:type="string">auto</item>
+       </item>
+      </argument>
+      <settings>
+       <label>Height</label>
+       <validation>
+        <rule name="validate-number" xsi:type="boolean">true</rule>
+        <rule name="no-whitespace" xsi:type="boolean">true</rule>
+       </validation>
+       <dataType>number</dataType>
+       <switcherConfig>
+        <rules>
+         <rule name="0">
+          <value>0</value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+         <rule name="1">
+          <value></value>
+          <actions>
+           <action name="0">
+            <target>${ $.parentName}.unit</target>
+            <callback>hide</callback>
+           </action>
+          </actions>
+         </rule>
+        </rules>
+        <enabled>true</enabled>
+       </switcherConfig>
+      </settings>
+     </field>
+     <field name="unit" formElement="select">
+      <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+        <item name="additionalClasses" xsi:type="array">
+         <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+        </item>
+        <item name="default" xsi:type="string">px</item>
+        <item name="dataScope" xsi:type="string">value.unit</item>
+       </item>
+      </argument>
+      <settings>
+       <label />
+       <dataType>text</dataType>
+      </settings>
+      <formElements>
+       <select>
+        <settings>
+         <options>
+          <option name="2" xsi:type="array">
+           <item name="value" xsi:type="string">px</item>
+           <item name="label" xsi:type="string">px</item>
+          </option>
+          <option name="1" xsi:type="array">
+           <item name="value" xsi:type="string">%</item>
+           <item name="label" xsi:type="string">%</item>
+          </option>
+         </options>
+        </settings>
+       </select>
+      </formElements>
+     </field>
+    </container>
     <fieldset name="margin">
      <argument name="data" xsi:type="array">
       <item name="config" xsi:type="array">
@@ -2947,6 +3032,91 @@
            </formElements>
           </field>
          </container>
+         <container name="height" component="Magento_Ui/js/form/components/group">
+          <argument name="data" xsi:type="array">
+           <item name="type" xsi:type="string">group</item>
+           <item name="config" xsi:type="array">
+            <item name="additionalClasses" xsi:type="array">
+             <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+            </item>
+            <item name="dataScope" xsi:type="string">height</item>
+           </item>
+          </argument>
+          <field name="length" formElement="input">
+           <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+             <item name="additionalClasses" xsi:type="array">
+              <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+             </item>
+             <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+             <item name="dataScope" xsi:type="string">value.length</item>
+             <item name="placeholder" xsi:type="string">auto</item>
+            </item>
+           </argument>
+           <settings>
+            <label>Height</label>
+            <validation>
+             <rule name="validate-number" xsi:type="boolean">true</rule>
+             <rule name="no-whitespace" xsi:type="boolean">true</rule>
+            </validation>
+            <dataType>number</dataType>
+            <switcherConfig>
+             <rules>
+              <rule name="0">
+               <value>0</value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+              <rule name="1">
+               <value></value>
+               <actions>
+                <action name="0">
+                 <target>${ $.parentName}.unit</target>
+                 <callback>hide</callback>
+                </action>
+               </actions>
+              </rule>
+             </rules>
+             <enabled>true</enabled>
+            </switcherConfig>
+           </settings>
+          </field>
+          <field name="unit" formElement="select">
+           <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+             <item name="additionalClasses" xsi:type="array">
+              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+             </item>
+             <item name="default" xsi:type="string">px</item>
+             <item name="dataScope" xsi:type="string">value.unit</item>
+            </item>
+           </argument>
+           <settings>
+            <label />
+            <dataType>text</dataType>
+           </settings>
+           <formElements>
+            <select>
+             <settings>
+              <options>
+               <option name="2" xsi:type="array">
+                <item name="value" xsi:type="string">px</item>
+                <item name="label" xsi:type="string">px</item>
+               </option>
+               <option name="1" xsi:type="array">
+                <item name="value" xsi:type="string">%</item>
+                <item name="label" xsi:type="string">%</item>
+               </option>
+              </options>
+             </settings>
+            </select>
+           </formElements>
+          </field>
+         </container>
          <fieldset name="margin">
           <argument name="data" xsi:type="array">
            <item name="config" xsi:type="array">
@@ -4821,6 +4991,10 @@
        <argument name="data" xsi:type="array">
         <item name="config" xsi:type="array">
          <item name="template" xsi:type="string">UpSage_SlickSliderWidget/form/element/uploader/image</item>
+         <item name="required" xsi:type="boolean">true</item>
+         <item name="validation" xsi:type="array">
+          <item name="required-entry" xsi:type="boolean">true</item>
+         </item>
         </item>
        </argument>
        <settings>
@@ -4954,6 +5128,91 @@
          <class name="us-admin__fieldset-neph">true</class>
         </additionalClasses>
        </settings>
+       <container name="width" component="Magento_Ui/js/form/components/group">
+        <argument name="data" xsi:type="array">
+         <item name="type" xsi:type="string">group</item>
+         <item name="config" xsi:type="array">
+          <item name="additionalClasses" xsi:type="array">
+           <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+          </item>
+          <item name="dataScope" xsi:type="string">width</item>
+         </item>
+        </argument>
+        <field name="length" formElement="input">
+         <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+           <item name="additionalClasses" xsi:type="array">
+            <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+           </item>
+           <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+           <item name="dataScope" xsi:type="string">value.length</item>
+           <item name="placeholder" xsi:type="string">auto</item>
+          </item>
+         </argument>
+         <settings>
+          <label>Width</label>
+          <validation>
+           <rule name="validate-number" xsi:type="boolean">true</rule>
+           <rule name="no-whitespace" xsi:type="boolean">true</rule>
+          </validation>
+          <dataType>number</dataType>
+          <switcherConfig>
+           <rules>
+            <rule name="0">
+             <value>0</value>
+             <actions>
+              <action name="0">
+               <target>${ $.parentName}.unit</target>
+               <callback>hide</callback>
+              </action>
+             </actions>
+            </rule>
+            <rule name="1">
+             <value></value>
+             <actions>
+              <action name="0">
+               <target>${ $.parentName}.unit</target>
+               <callback>hide</callback>
+              </action>
+             </actions>
+            </rule>
+           </rules>
+           <enabled>true</enabled>
+          </switcherConfig>
+         </settings>
+        </field>
+        <field name="unit" formElement="select">
+         <argument name="data" xsi:type="array">
+          <item name="config" xsi:type="array">
+           <item name="additionalClasses" xsi:type="array">
+            <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+           </item>
+           <item name="default" xsi:type="string">px</item>
+           <item name="dataScope" xsi:type="string">value.unit</item>
+          </item>
+         </argument>
+         <settings>
+          <label />
+          <dataType>text</dataType>
+         </settings>
+         <formElements>
+          <select>
+           <settings>
+            <options>
+             <option name="2" xsi:type="array">
+              <item name="value" xsi:type="string">px</item>
+              <item name="label" xsi:type="string">px</item>
+             </option>
+             <option name="1" xsi:type="array">
+              <item name="value" xsi:type="string">%</item>
+              <item name="label" xsi:type="string">%</item>
+             </option>
+            </options>
+           </settings>
+          </select>
+         </formElements>
+        </field>
+       </container>
        <container name="height" component="Magento_Ui/js/form/components/group">
         <argument name="data" xsi:type="array">
          <item name="type" xsi:type="string">group</item>
@@ -6703,6 +6962,91 @@
                <class name="us-admin__fieldset-modal-neph">true</class>
               </additionalClasses>
              </settings>
+             <container name="width" component="Magento_Ui/js/form/components/group">
+              <argument name="data" xsi:type="array">
+               <item name="type" xsi:type="string">group</item>
+               <item name="config" xsi:type="array">
+                <item name="additionalClasses" xsi:type="array">
+                 <item name="us-admin__groupfields" xsi:type="boolean">true</item>
+                </item>
+                <item name="dataScope" xsi:type="string">width</item>
+               </item>
+              </argument>
+              <field name="length" formElement="input">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="additionalClasses" xsi:type="array">
+                  <item name="us-admin__groupfield--text-small" xsi:type="boolean">true</item>
+                 </item>
+                 <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/element/length</item>
+                 <item name="dataScope" xsi:type="string">value.length</item>
+                 <item name="placeholder" xsi:type="string">auto</item>
+                </item>
+               </argument>
+               <settings>
+                <label>Width</label>
+                <validation>
+                 <rule name="validate-number" xsi:type="boolean">true</rule>
+                 <rule name="no-whitespace" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <switcherConfig>
+                 <rules>
+                  <rule name="0">
+                   <value>0</value>
+                   <actions>
+                    <action name="0">
+                     <target>${ $.parentName}.unit</target>
+                     <callback>hide</callback>
+                    </action>
+                   </actions>
+                  </rule>
+                  <rule name="1">
+                   <value></value>
+                   <actions>
+                    <action name="0">
+                     <target>${ $.parentName}.unit</target>
+                     <callback>hide</callback>
+                    </action>
+                   </actions>
+                  </rule>
+                 </rules>
+                 <enabled>true</enabled>
+                </switcherConfig>
+               </settings>
+              </field>
+              <field name="unit" formElement="select">
+               <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                 <item name="additionalClasses" xsi:type="array">
+                  <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
+                 </item>
+                 <item name="default" xsi:type="string">px</item>
+                 <item name="dataScope" xsi:type="string">value.unit</item>
+                </item>
+               </argument>
+               <settings>
+                <label />
+                <dataType>text</dataType>
+               </settings>
+               <formElements>
+                <select>
+                 <settings>
+                  <options>
+                   <option name="2" xsi:type="array">
+                    <item name="value" xsi:type="string">px</item>
+                    <item name="label" xsi:type="string">px</item>
+                   </option>
+                   <option name="1" xsi:type="array">
+                    <item name="value" xsi:type="string">%</item>
+                    <item name="label" xsi:type="string">%</item>
+                   </option>
+                  </options>
+                 </settings>
+                </select>
+               </formElements>
+              </field>
+             </container>
              <container name="height" component="Magento_Ui/js/form/components/group">
               <argument name="data" xsi:type="array">
                <item name="type" xsi:type="string">group</item>
