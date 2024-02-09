@@ -1,3 +1,4 @@
+.usslick__slider { overflow: hidden; }
 .usslick__slider * { box-sizing: border-box; }
 
 /* Fallback */
