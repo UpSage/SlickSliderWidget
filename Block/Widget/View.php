@@ -138,7 +138,10 @@
     width:'.$this->_unitValue($width).';
     height:'.$this->_unitValue($height).';
     object-fit:'.$object['fit']['value'].';
-    object-position:'.$this->_unitValue($object['position']['x']). ' ' .$this->_unitValue($object['position']['y']).';
+    object-position:'.
+     $this->_unitValue($object['position']['x']).' '.
+     $this->_unitValue($object['position']['y']).
+    ';
    ';
   }
 
@@ -337,7 +340,7 @@
     )
    ;
    return '
-    #' . $this->getId() . ' .usslick__slide' . $index . '{'
+    #' . $this->getId() . ' .usslick__slide' . $index . ' .usslick__slide--inner {'
      .$container.
     '}'
    ;
