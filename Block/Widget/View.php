@@ -237,8 +237,6 @@
    return $this->_sortPosition($this->getRawData()['slides']);
   }
 
-  /* Slides */
-
   public function getSlidesData() {
    $data = array();
    foreach($this->getSlides() as $key=>$slide){
