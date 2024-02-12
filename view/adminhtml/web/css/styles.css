@@ -1,0 +1,23 @@
+.us-admin__fieldset-parent { border: none !important; }
+.us-admin__fieldset-parent > .admin__fieldset-wrapper-content > .admin__fieldset { padding: 0 !important; }
+.us-admin__fieldset-child { margin-top: 0 !important; margin-bottom: 0.5rem !important; margin-left: 0 !important; border-bottom-width: 1px !important; }
+.us-admin__fieldset-child > .fieldset-wrapper-title { background: #f5f5f5 !important; }
+.us-admin__fieldset-child > .fieldset-wrapper-title > .admin__collapsible-title { padding-left: 0 !important; }
+.us-admin__fieldset-child > .fieldset-wrapper-title > .admin__collapsible-title:before { right: 1.3rem; left: auto; }
+.us-admin__fieldset-neph > .fieldset-wrapper-title { background: #f5f5f5 !important; padding: 1rem !important; }
+.us-admin__fieldset-neph > .fieldset-wrapper-title > .title { padding: 0 !important; }
+.us-admin__button { margin-bottom: 3rem; }
+
+.us-admin__groupfields { display: flex; }
+.us-admin__groupfields > .admin__field { margin-top: 0 !important; margin-right: 1rem; }
+.us-admin__groupfields > .admin__field.us-admin__groupfield--text-small { width: 60px; }
+
+.us-admin__fieldset-modal { margin-bottom: 0.5rem !important; border: 1px solid #ccc !important; background: #fff; }
+.us-admin__fieldset-modal > .fieldset-wrapper-title { background: #f5f5f5 !important; border-bottom: 1px solid #ccc !important; }
+.us-admin__fieldset-modal > .fieldset-wrapper-title > .admin__collapsible-title { padding: 1.5rem 2.8rem 1.5rem 1.5rem !important; font-size: 1.5rem !important; }
+.us-admin__fieldset-modal > .fieldset-wrapper-title > .admin__collapsible-title:before { top: 1.5rem !important; }
+.us-admin__fieldset-modal > .admin__fieldset-wrapper-content > .admin__fieldset { padding-right: 1.5rem !important; padding-left: 1.5rem !important; }
+.us-admin__fieldset-modal-child > .fieldset-wrapper-title { padding: 0 1.5rem !important; }
+.us-admin__fieldset-modal-neph { margin-bottom: 5px; border: 1px solid #ccc; }
+.us-admin__fieldset-modal-neph > .fieldset-wrapper-title { background: #f5f5f5; padding: 1rem !important; }
+.us-admin__fieldset-modal-neph .us-admin__fieldset-neph { margin-right: 15px; margin-left: 15px; }

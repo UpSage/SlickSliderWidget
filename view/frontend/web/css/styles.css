@@ -1,0 +1,11 @@
+.usslick__slider { overflow: hidden; }
+.usslick__slider * { box-sizing: border-box; }
+
+/* Fallback */
+.usslick__slide--link,
+.usslick__slide--image { display: block; }
+.usslick__slide--inner,
+.usslick__slide--link,
+.usslick__slide--unlink { height: 100%; }
+.usslick__slider .slick-slide { height: auto; }
+.usslick__slide--inner { overflow: hidden; }
