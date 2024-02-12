@@ -228,6 +228,10 @@
    return $source['is_unslick'];
   }
 
+  public function isInherit($source) {
+   return $source['is_inherit'];
+  }
+
   public function isResponsive() {
    return $this->getRawData()['is_responsive'];
   }
@@ -380,11 +384,13 @@
      foreach($responsive as $res){
       $container = $this->getStyles($res)['container'];
       $image = $this->getStyles($res)['image'];
-      $breakpoints[] = ' 
-       @media('.$mediafeature.':' .$this->_unitValue($res['breakpoint']).'){'
-        .$this->getSlideItemCss($id, $container)
-        .$this->getSlideItemImageCss($id, $image).
-       '}';
+      if(!$this->isInherit($res)){
+       $breakpoints[] = ' 
+        @media('.$mediafeature.':' .$this->_unitValue($res['breakpoint']).'){'
+         .$this->getSlideItemCss($id, $container)
+         .$this->getSlideItemImageCss($id, $image).
+        '}';
+      }
      }
     }
    }
@@ -401,11 +407,13 @@
    if($this->isResponsive()) {
     $mediafeature = ($this->isMobileFirst()) ? 'min-width' : 'max-width';
     foreach($this->getResponsiveData() as $child){
-     $breakpoints[] = '
-      @media('.$mediafeature.':'.$child['breakpoint'].'px){'
-       .$this->getInstanceCss($child)
-       .$this->getColumnsCss($child).
-      '}';
+     if(!$this->isInherit($child)){
+      $breakpoints[] = '
+       @media('.$mediafeature.':'.$child['breakpoint'].'px){'
+        .$this->getInstanceCss($child)
+        .$this->getColumnsCss($child).
+       '}';
+     }
     }
    }
    $style =
@@ -466,6 +474,27 @@
     $settings['responsive'] = $this->getResponsiveSlickSettings();
    }
    return json_encode($settings);
+  }
+
+  public function getScript() {
+   $js;
+   if(!$this->isResponsive() && $this->isUnslick($this->getParentData())) {
+    $js = '';
+   } else {
+    $js = '
+     <script>
+      require([
+       "jquery",
+       "slick"
+      ], function($) {
+       $(document).ready(function() {
+        $("#'.$this->getId().'").slick('.$this->getSlickSettings().');
+       });
+      });
+     </script>
+    ';
+   }
+   return trim(preg_replace('/\s+/', ' ', $js));
   }
 
   /* Slides */

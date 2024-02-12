@@ -50,27 +50,6 @@
 
  </div>
 
- <?php if(!$block->isResponsive() && $block->isUnslick($block->getParentData())): ?>
-  <script>
-   require([
-    'jquery'
-   ], function($) {
-    $(document).ready(function() {
-     console.log('unslick');
-    });
-   });
-  </script>
- <?php else: ?>
-  <script>
-   require([
-    'jquery',
-    'slick'
-   ], function($) {
-    $(document).ready(function() {
-     $("#<?= $block->getId() ?>").slick(<?= $block->getSlickSettings() ?>);
-    });
-   });
-  </script>
- <?php endif ?>
+ <?= $block->getScript() ?>
 
 <?php endif; ?>

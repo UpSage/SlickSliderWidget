@@ -2597,6 +2597,54 @@
          </checkbox>
         </formElements>
        </field>
+       <field name="is_inherit" formElement="checkbox">
+        <argument name="data" xsi:type="array">
+         <item name="config" xsi:type="array">
+          <item name="default" xsi:type="boolean">true</item>
+         </item>
+        </argument>
+        <settings>
+         <dataType>boolean</dataType>
+         <label translate="true">Inherit Styles</label>
+         <tooltip>
+          <description translate="true">Inherit styles from last breakpoint</description>
+         </tooltip>
+         <switcherConfig>
+          <rules>
+           <rule name="0">
+            <value>0</value>
+            <actions>
+             <action name="0">
+              <target>${ $.parentName}.styles</target>
+              <callback>show</callback>
+             </action>
+            </actions>
+           </rule>
+           <rule name="1">
+            <value>1</value>
+            <actions>
+             <action name="0">
+              <target>${ $.parentName}.styles</target>
+              <callback>hide</callback>
+             </action>
+            </actions>
+           </rule>
+          </rules>
+          <enabled>true</enabled>
+         </switcherConfig>
+        </settings>
+        <formElements>
+         <checkbox>
+          <settings>
+           <valueMap>
+            <map name="false" xsi:type="boolean">false</map>
+            <map name="true" xsi:type="boolean">true</map>
+           </valueMap>
+           <prefer>toggle</prefer>
+          </settings>
+         </checkbox>
+        </formElements>
+       </field>
        <field name="columns" formElement="input">
         <argument name="data" xsi:type="array">
          <item name="config" xsi:type="array">
@@ -6935,9 +6983,58 @@
              </formElements>
             </field>
            </container>
+           <field name="is_inherit" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+             <item name="config" xsi:type="array">
+              <item name="default" xsi:type="boolean">true</item>
+             </item>
+            </argument>
+            <settings>
+             <dataType>boolean</dataType>
+             <label translate="true">Inherit Styles</label>
+             <tooltip>
+              <description translate="true">Inherit styles from last breakpoint</description>
+             </tooltip>
+             <switcherConfig>
+              <rules>
+               <rule name="0">
+                <value>0</value>
+                <actions>
+                 <action name="0">
+                  <target>${ $.parentName}.styles</target>
+                  <callback>show</callback>
+                 </action>
+                </actions>
+               </rule>
+               <rule name="1">
+                <value>1</value>
+                <actions>
+                 <action name="0">
+                  <target>${ $.parentName}.styles</target>
+                  <callback>hide</callback>
+                 </action>
+                </actions>
+               </rule>
+              </rules>
+              <enabled>true</enabled>
+             </switcherConfig>
+            </settings>
+            <formElements>
+             <checkbox>
+              <settings>
+               <valueMap>
+                <map name="false" xsi:type="boolean">false</map>
+                <map name="true" xsi:type="boolean">true</map>
+               </valueMap>
+               <prefer>toggle</prefer>
+              </settings>
+             </checkbox>
+            </formElements>
+           </field>
            <fieldset name="styles">
             <argument name="data" xsi:type="array">
              <item name="config" xsi:type="array">
+              <item name="component" xsi:type="string">UpSage_SlickSliderWidget/js/form/components/fieldset</item>
               <item name="dataScope" xsi:type="string">styles</item>
              </item>
             </argument>
