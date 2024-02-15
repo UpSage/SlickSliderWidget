@@ -454,6 +454,7 @@
     </field>
     <field name="unit" formElement="select">
      <argument name="data" xsi:type="array">
+      <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
       <item name="config" xsi:type="array">
        <item name="default" xsi:type="string">px</item>
        <item name="dataScope" xsi:type="string">value.unit</item>
@@ -463,22 +464,6 @@
       <label />
       <dataType>text</dataType>
      </settings>
-     <formElements>
-      <select>
-       <settings>
-        <options>
-         <option name="2" xsi:type="array">
-          <item name="value" xsi:type="string">px</item>
-          <item name="label" xsi:type="string">px</item>
-         </option>
-         <option name="1" xsi:type="array">
-          <item name="value" xsi:type="string">%</item>
-          <item name="label" xsi:type="string">%</item>
-         </option>
-        </options>
-       </settings>
-      </select>
-     </formElements>
     </field>
    </container>
    <field name="adaptiveHeight" formElement="checkbox">
@@ -583,6 +568,7 @@
      </field>
      <field name="unit" formElement="select">
       <argument name="data" xsi:type="array">
+       <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
        <item name="config" xsi:type="array">
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -595,22 +581,6 @@
        <label />
        <dataType>text</dataType>
       </settings>
-      <formElements>
-       <select>
-        <settings>
-         <options>
-          <option name="2" xsi:type="array">
-           <item name="value" xsi:type="string">px</item>
-           <item name="label" xsi:type="string">px</item>
-          </option>
-          <option name="1" xsi:type="array">
-           <item name="value" xsi:type="string">%</item>
-           <item name="label" xsi:type="string">%</item>
-          </option>
-         </options>
-        </settings>
-       </select>
-      </formElements>
      </field>
     </container>
     <container name="height" component="Magento_Ui/js/form/components/group">
@@ -668,6 +638,7 @@
      </field>
      <field name="unit" formElement="select">
       <argument name="data" xsi:type="array">
+       <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
        <item name="config" xsi:type="array">
         <item name="additionalClasses" xsi:type="array">
          <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -680,22 +651,6 @@
        <label />
        <dataType>text</dataType>
       </settings>
-      <formElements>
-       <select>
-        <settings>
-         <options>
-          <option name="2" xsi:type="array">
-           <item name="value" xsi:type="string">px</item>
-           <item name="label" xsi:type="string">px</item>
-          </option>
-          <option name="1" xsi:type="array">
-           <item name="value" xsi:type="string">%</item>
-           <item name="label" xsi:type="string">%</item>
-          </option>
-         </options>
-        </settings>
-       </select>
-      </formElements>
      </field>
     </container>
     <fieldset name="margin">
@@ -768,6 +723,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -780,22 +736,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="right" component="Magento_Ui/js/form/components/group">
@@ -854,6 +794,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -866,22 +807,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -940,6 +865,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -952,22 +878,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="left" component="Magento_Ui/js/form/components/group">
@@ -1026,6 +936,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1038,22 +949,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
     </fieldset>
@@ -1127,6 +1022,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1139,22 +1035,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="right" component="Magento_Ui/js/form/components/group">
@@ -1213,6 +1093,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1225,22 +1106,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -1299,6 +1164,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1311,22 +1177,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="left" component="Magento_Ui/js/form/components/group">
@@ -1385,6 +1235,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1397,22 +1248,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
     </fieldset>
@@ -1523,6 +1358,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1535,22 +1371,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="radius" component="Magento_Ui/js/form/components/group">
@@ -1609,6 +1429,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1621,22 +1442,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="style" component="Magento_Ui/js/form/components/group">
@@ -1652,6 +1457,7 @@
       </argument>
       <field name="value" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Border\Style</item>
         <item name="config" xsi:type="array">
          <item name="default" xsi:type="string">none</item>
         </item>
@@ -1660,54 +1466,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">none</item>
-            <item name="label" xsi:type="string">None</item>
-           </option>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">solid</item>
-            <item name="label" xsi:type="string">Solid</item>
-           </option>
-           <option name="3" xsi:type="array">
-            <item name="value" xsi:type="string">dotted</item>
-            <item name="label" xsi:type="string">Dotted</item>
-           </option>
-           <option name="4" xsi:type="array">
-            <item name="value" xsi:type="string">dashed</item>
-            <item name="label" xsi:type="string">Dashed</item>
-           </option>
-           <option name="5" xsi:type="array">
-            <item name="value" xsi:type="string">inset</item>
-            <item name="label" xsi:type="string">Inset</item>
-           </option>
-           <option name="6" xsi:type="array">
-            <item name="value" xsi:type="string">outset</item>
-            <item name="label" xsi:type="string">Outset</item>
-           </option>
-           <option name="7" xsi:type="array">
-            <item name="value" xsi:type="string">ridge</item>
-            <item name="label" xsi:type="string">Ridge</item>
-           </option>
-           <option name="8" xsi:type="array">
-            <item name="value" xsi:type="string">groove</item>
-            <item name="label" xsi:type="string">Groove</item>
-           </option>
-           <option name="9" xsi:type="array">
-            <item name="value" xsi:type="string">double</item>
-            <item name="label" xsi:type="string">Double</item>
-           </option>
-           <option name="10" xsi:type="array">
-            <item name="value" xsi:type="string">hidden</item>
-            <item name="label" xsi:type="string">Hidden</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="color" component="Magento_Ui/js/form/components/group">
@@ -1819,6 +1577,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1831,22 +1590,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="right" component="Magento_Ui/js/form/components/group">
@@ -1905,6 +1648,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -1917,22 +1661,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -1991,6 +1719,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -2003,22 +1732,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="left" component="Magento_Ui/js/form/components/group">
@@ -2077,6 +1790,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -2089,22 +1803,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
     </fieldset>
@@ -2178,6 +1876,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -2190,22 +1889,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="right" component="Magento_Ui/js/form/components/group">
@@ -2264,6 +1947,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -2276,22 +1960,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -2350,6 +2018,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -2362,22 +2031,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
      <container name="left" component="Magento_Ui/js/form/components/group">
@@ -2436,6 +2089,7 @@
       </field>
       <field name="unit" formElement="select">
        <argument name="data" xsi:type="array">
+        <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
         <item name="config" xsi:type="array">
          <item name="additionalClasses" xsi:type="array">
           <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -2448,22 +2102,6 @@
         <label />
         <dataType>text</dataType>
        </settings>
-       <formElements>
-        <select>
-         <settings>
-          <options>
-           <option name="2" xsi:type="array">
-            <item name="value" xsi:type="string">px</item>
-            <item name="label" xsi:type="string">px</item>
-           </option>
-           <option name="1" xsi:type="array">
-            <item name="value" xsi:type="string">%</item>
-            <item name="label" xsi:type="string">%</item>
-           </option>
-          </options>
-         </settings>
-        </select>
-       </formElements>
       </field>
      </container>
     </fieldset>
@@ -2921,6 +2559,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="default" xsi:type="string">px</item>
             <item name="dataScope" xsi:type="string">value.unit</item>
@@ -2930,22 +2569,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <field name="adaptiveHeight" formElement="checkbox">
@@ -3050,6 +2673,7 @@
           </field>
           <field name="unit" formElement="select">
            <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
             <item name="config" xsi:type="array">
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3062,22 +2686,6 @@
             <label />
             <dataType>text</dataType>
            </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
           </field>
          </container>
          <container name="height" component="Magento_Ui/js/form/components/group">
@@ -3135,6 +2743,7 @@
           </field>
           <field name="unit" formElement="select">
            <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
             <item name="config" xsi:type="array">
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3147,22 +2756,6 @@
             <label />
             <dataType>text</dataType>
            </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
           </field>
          </container>
          <fieldset name="margin">
@@ -3235,6 +2828,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3247,22 +2841,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="right" component="Magento_Ui/js/form/components/group">
@@ -3321,6 +2899,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3333,22 +2912,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -3407,6 +2970,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3419,22 +2983,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="left" component="Magento_Ui/js/form/components/group">
@@ -3493,6 +3041,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3505,22 +3054,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
          </fieldset>
@@ -3594,6 +3127,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3606,22 +3140,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="right" component="Magento_Ui/js/form/components/group">
@@ -3680,6 +3198,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3692,22 +3211,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -3766,6 +3269,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3778,22 +3282,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="left" component="Magento_Ui/js/form/components/group">
@@ -3852,6 +3340,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -3864,22 +3353,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
          </fieldset>
@@ -3990,6 +3463,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4002,22 +3476,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="radius" component="Magento_Ui/js/form/components/group">
@@ -4076,6 +3534,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4088,22 +3547,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="style" component="Magento_Ui/js/form/components/group">
@@ -4119,6 +3562,7 @@
            </argument>
            <field name="value" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Border\Style</item>
              <item name="config" xsi:type="array">
               <item name="default" xsi:type="string">none</item>
              </item>
@@ -4127,54 +3571,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">none</item>
-                 <item name="label" xsi:type="string">None</item>
-                </option>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">solid</item>
-                 <item name="label" xsi:type="string">Solid</item>
-                </option>
-                <option name="3" xsi:type="array">
-                 <item name="value" xsi:type="string">dotted</item>
-                 <item name="label" xsi:type="string">Dotted</item>
-                </option>
-                <option name="4" xsi:type="array">
-                 <item name="value" xsi:type="string">dashed</item>
-                 <item name="label" xsi:type="string">Dashed</item>
-                </option>
-                <option name="5" xsi:type="array">
-                 <item name="value" xsi:type="string">inset</item>
-                 <item name="label" xsi:type="string">Inset</item>
-                </option>
-                <option name="6" xsi:type="array">
-                 <item name="value" xsi:type="string">outset</item>
-                 <item name="label" xsi:type="string">Outset</item>
-                </option>
-                <option name="7" xsi:type="array">
-                 <item name="value" xsi:type="string">ridge</item>
-                 <item name="label" xsi:type="string">Ridge</item>
-                </option>
-                <option name="8" xsi:type="array">
-                 <item name="value" xsi:type="string">groove</item>
-                 <item name="label" xsi:type="string">Groove</item>
-                </option>
-                <option name="9" xsi:type="array">
-                 <item name="value" xsi:type="string">double</item>
-                 <item name="label" xsi:type="string">Double</item>
-                </option>
-                <option name="10" xsi:type="array">
-                 <item name="value" xsi:type="string">hidden</item>
-                 <item name="label" xsi:type="string">Hidden</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="color" component="Magento_Ui/js/form/components/group">
@@ -4286,6 +3682,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4298,22 +3695,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="right" component="Magento_Ui/js/form/components/group">
@@ -4372,6 +3753,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4384,22 +3766,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -4458,6 +3824,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4470,22 +3837,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="left" component="Magento_Ui/js/form/components/group">
@@ -4544,6 +3895,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4556,22 +3908,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
          </fieldset>
@@ -4645,6 +3981,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4657,22 +3994,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="right" component="Magento_Ui/js/form/components/group">
@@ -4731,6 +4052,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4743,22 +4065,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -4817,6 +4123,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4829,22 +4136,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
           <container name="left" component="Magento_Ui/js/form/components/group">
@@ -4903,6 +4194,7 @@
            </field>
            <field name="unit" formElement="select">
             <argument name="data" xsi:type="array">
+             <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
              <item name="config" xsi:type="array">
               <item name="additionalClasses" xsi:type="array">
                <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -4915,22 +4207,6 @@
              <label />
              <dataType>text</dataType>
             </settings>
-            <formElements>
-             <select>
-              <settings>
-               <options>
-                <option name="2" xsi:type="array">
-                 <item name="value" xsi:type="string">px</item>
-                 <item name="label" xsi:type="string">px</item>
-                </option>
-                <option name="1" xsi:type="array">
-                 <item name="value" xsi:type="string">%</item>
-                 <item name="label" xsi:type="string">%</item>
-                </option>
-               </options>
-              </settings>
-             </select>
-            </formElements>
            </field>
           </container>
          </fieldset>
@@ -5231,6 +4507,7 @@
         </field>
         <field name="unit" formElement="select">
          <argument name="data" xsi:type="array">
+          <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
           <item name="config" xsi:type="array">
            <item name="additionalClasses" xsi:type="array">
             <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5243,22 +4520,6 @@
           <label />
           <dataType>text</dataType>
          </settings>
-         <formElements>
-          <select>
-           <settings>
-            <options>
-             <option name="2" xsi:type="array">
-              <item name="value" xsi:type="string">px</item>
-              <item name="label" xsi:type="string">px</item>
-             </option>
-             <option name="1" xsi:type="array">
-              <item name="value" xsi:type="string">%</item>
-              <item name="label" xsi:type="string">%</item>
-             </option>
-            </options>
-           </settings>
-          </select>
-         </formElements>
         </field>
        </container>
        <container name="height" component="Magento_Ui/js/form/components/group">
@@ -5317,6 +4578,7 @@
         </field>
         <field name="unit" formElement="select">
          <argument name="data" xsi:type="array">
+          <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
           <item name="config" xsi:type="array">
            <item name="additionalClasses" xsi:type="array">
             <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5329,22 +4591,6 @@
           <label />
           <dataType>text</dataType>
          </settings>
-         <formElements>
-          <select>
-           <settings>
-            <options>
-             <option name="2" xsi:type="array">
-              <item name="value" xsi:type="string">px</item>
-              <item name="label" xsi:type="string">px</item>
-             </option>
-             <option name="1" xsi:type="array">
-              <item name="value" xsi:type="string">%</item>
-              <item name="label" xsi:type="string">%</item>
-             </option>
-            </options>
-           </settings>
-          </select>
-         </formElements>
         </field>
        </container>
        <fieldset name="margin">
@@ -5417,6 +4663,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5429,22 +4676,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="right" component="Magento_Ui/js/form/components/group">
@@ -5503,6 +4734,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5515,22 +4747,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -5589,6 +4805,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5601,22 +4818,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="left" component="Magento_Ui/js/form/components/group">
@@ -5675,6 +4876,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5687,22 +4889,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
        </fieldset>
@@ -5776,6 +4962,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5788,22 +4975,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="right" component="Magento_Ui/js/form/components/group">
@@ -5862,6 +5033,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5874,22 +5046,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -5948,6 +5104,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -5960,22 +5117,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="left" component="Magento_Ui/js/form/components/group">
@@ -6034,6 +5175,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6046,22 +5188,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
        </fieldset>
@@ -6172,6 +5298,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6184,22 +5311,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="radius" component="Magento_Ui/js/form/components/group">
@@ -6258,6 +5369,7 @@
          </field>
          <field name="unit" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
            <item name="config" xsi:type="array">
             <item name="additionalClasses" xsi:type="array">
              <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6270,22 +5382,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">px</item>
-               <item name="label" xsi:type="string">px</item>
-              </option>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">%</item>
-               <item name="label" xsi:type="string">%</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="style" component="Magento_Ui/js/form/components/group">
@@ -6301,6 +5397,7 @@
          </argument>
          <field name="value" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Border\Style</item>
            <item name="config" xsi:type="array">
             <item name="default" xsi:type="string">none</item>
            </item>
@@ -6309,54 +5406,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">none</item>
-               <item name="label" xsi:type="string">None</item>
-              </option>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">solid</item>
-               <item name="label" xsi:type="string">Solid</item>
-              </option>
-              <option name="3" xsi:type="array">
-               <item name="value" xsi:type="string">dotted</item>
-               <item name="label" xsi:type="string">Dotted</item>
-              </option>
-              <option name="4" xsi:type="array">
-               <item name="value" xsi:type="string">dashed</item>
-               <item name="label" xsi:type="string">Dashed</item>
-              </option>
-              <option name="5" xsi:type="array">
-               <item name="value" xsi:type="string">inset</item>
-               <item name="label" xsi:type="string">Inset</item>
-              </option>
-              <option name="6" xsi:type="array">
-               <item name="value" xsi:type="string">outset</item>
-               <item name="label" xsi:type="string">Outset</item>
-              </option>
-              <option name="7" xsi:type="array">
-               <item name="value" xsi:type="string">ridge</item>
-               <item name="label" xsi:type="string">Ridge</item>
-              </option>
-              <option name="8" xsi:type="array">
-               <item name="value" xsi:type="string">groove</item>
-               <item name="label" xsi:type="string">Groove</item>
-              </option>
-              <option name="9" xsi:type="array">
-               <item name="value" xsi:type="string">double</item>
-               <item name="label" xsi:type="string">Double</item>
-              </option>
-              <option name="10" xsi:type="array">
-               <item name="value" xsi:type="string">hidden</item>
-               <item name="label" xsi:type="string">Hidden</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <container name="color" component="Magento_Ui/js/form/components/group">
@@ -6452,6 +5501,7 @@
         </field>
         <field name="unit" formElement="select">
          <argument name="data" xsi:type="array">
+          <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
           <item name="config" xsi:type="array">
            <item name="additionalClasses" xsi:type="array">
             <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6464,22 +5514,6 @@
           <label />
           <dataType>text</dataType>
          </settings>
-         <formElements>
-          <select>
-           <settings>
-            <options>
-             <option name="2" xsi:type="array">
-              <item name="value" xsi:type="string">px</item>
-              <item name="label" xsi:type="string">px</item>
-             </option>
-             <option name="1" xsi:type="array">
-              <item name="value" xsi:type="string">%</item>
-              <item name="label" xsi:type="string">%</item>
-             </option>
-            </options>
-           </settings>
-          </select>
-         </formElements>
         </field>
        </container>
        <container name="height" component="Magento_Ui/js/form/components/group">
@@ -6537,6 +5571,7 @@
         </field>
         <field name="unit" formElement="select">
          <argument name="data" xsi:type="array">
+          <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
           <item name="config" xsi:type="array">
            <item name="additionalClasses" xsi:type="array">
             <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6549,22 +5584,6 @@
           <label />
           <dataType>text</dataType>
          </settings>
-         <formElements>
-          <select>
-           <settings>
-            <options>
-             <option name="2" xsi:type="array">
-              <item name="value" xsi:type="string">px</item>
-              <item name="label" xsi:type="string">px</item>
-             </option>
-             <option name="1" xsi:type="array">
-              <item name="value" xsi:type="string">%</item>
-              <item name="label" xsi:type="string">%</item>
-             </option>
-            </options>
-           </settings>
-          </select>
-         </formElements>
         </field>
        </container>
        <fieldset name="object">
@@ -6594,6 +5613,7 @@
          </argument>
          <field name="value" formElement="select">
           <argument name="data" xsi:type="array">
+           <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Object\Fit</item>
            <item name="config" xsi:type="array">
             <item name="default" xsi:type="string">fill</item>
            </item>
@@ -6602,34 +5622,6 @@
            <label />
            <dataType>text</dataType>
           </settings>
-          <formElements>
-           <select>
-            <settings>
-             <options>
-              <option name="1" xsi:type="array">
-               <item name="value" xsi:type="string">fill</item>
-               <item name="label" xsi:type="string">Fill</item>
-              </option>
-              <option name="2" xsi:type="array">
-               <item name="value" xsi:type="string">contain</item>
-               <item name="label" xsi:type="string">Contain</item>
-              </option>
-              <option name="3" xsi:type="array">
-               <item name="value" xsi:type="string">cover</item>
-               <item name="label" xsi:type="string">Cover</item>
-              </option>
-              <option name="4" xsi:type="array">
-               <item name="value" xsi:type="string">none</item>
-               <item name="label" xsi:type="string">None</item>
-              </option>
-              <option name="5" xsi:type="array">
-               <item name="value" xsi:type="string">scale-down</item>
-               <item name="label" xsi:type="string">Scale Down</item>
-              </option>
-             </options>
-            </settings>
-           </select>
-          </formElements>
          </field>
         </container>
         <fieldset name="position">
@@ -6702,6 +5694,7 @@
           </field>
           <field name="unit" formElement="select">
            <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
             <item name="config" xsi:type="array">
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6714,22 +5707,6 @@
             <label />
             <dataType>text</dataType>
            </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
           </field>
          </container>
          <container name="y" component="Magento_Ui/js/form/components/group">
@@ -6788,6 +5765,7 @@
           </field>
           <field name="unit" formElement="select">
            <argument name="data" xsi:type="array">
+            <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
             <item name="config" xsi:type="array">
              <item name="additionalClasses" xsi:type="array">
               <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6800,22 +5778,6 @@
             <label />
             <dataType>text</dataType>
            </settings>
-           <formElements>
-            <select>
-             <settings>
-              <options>
-               <option name="2" xsi:type="array">
-                <item name="value" xsi:type="string">px</item>
-                <item name="label" xsi:type="string">px</item>
-               </option>
-               <option name="1" xsi:type="array">
-                <item name="value" xsi:type="string">%</item>
-                <item name="label" xsi:type="string">%</item>
-               </option>
-              </options>
-             </settings>
-            </select>
-           </formElements>
           </field>
          </container>
         </fieldset>
@@ -6953,6 +5915,7 @@
             </field>
             <field name="unit" formElement="select">
              <argument name="data" xsi:type="array">
+              <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
               <item name="config" xsi:type="array">
                <item name="additionalClasses" xsi:type="array">
                 <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -6965,22 +5928,6 @@
               <label />
               <dataType>text</dataType>
              </settings>
-             <formElements>
-              <select>
-               <settings>
-                <options>
-                 <option name="2" xsi:type="array">
-                  <item name="value" xsi:type="string">px</item>
-                  <item name="label" xsi:type="string">px</item>
-                 </option>
-                 <option name="1" xsi:type="array">
-                  <item name="value" xsi:type="string">%</item>
-                  <item name="label" xsi:type="string">%</item>
-                 </option>
-                </options>
-               </settings>
-              </select>
-             </formElements>
             </field>
            </container>
            <field name="is_inherit" formElement="checkbox">
@@ -7115,6 +6062,7 @@
               </field>
               <field name="unit" formElement="select">
                <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                 <item name="config" xsi:type="array">
                  <item name="additionalClasses" xsi:type="array">
                   <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7127,22 +6075,6 @@
                 <label />
                 <dataType>text</dataType>
                </settings>
-               <formElements>
-                <select>
-                 <settings>
-                  <options>
-                   <option name="2" xsi:type="array">
-                    <item name="value" xsi:type="string">px</item>
-                    <item name="label" xsi:type="string">px</item>
-                   </option>
-                   <option name="1" xsi:type="array">
-                    <item name="value" xsi:type="string">%</item>
-                    <item name="label" xsi:type="string">%</item>
-                   </option>
-                  </options>
-                 </settings>
-                </select>
-               </formElements>
               </field>
              </container>
              <container name="height" component="Magento_Ui/js/form/components/group">
@@ -7201,6 +6133,7 @@
               </field>
               <field name="unit" formElement="select">
                <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                 <item name="config" xsi:type="array">
                  <item name="additionalClasses" xsi:type="array">
                   <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7213,22 +6146,6 @@
                 <label />
                 <dataType>text</dataType>
                </settings>
-               <formElements>
-                <select>
-                 <settings>
-                  <options>
-                   <option name="2" xsi:type="array">
-                    <item name="value" xsi:type="string">px</item>
-                    <item name="label" xsi:type="string">px</item>
-                   </option>
-                   <option name="1" xsi:type="array">
-                    <item name="value" xsi:type="string">%</item>
-                    <item name="label" xsi:type="string">%</item>
-                   </option>
-                  </options>
-                 </settings>
-                </select>
-               </formElements>
               </field>
              </container>
              <fieldset name="margin">
@@ -7301,6 +6218,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7313,22 +6231,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="right" component="Magento_Ui/js/form/components/group">
@@ -7387,6 +6289,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7399,22 +6302,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -7473,6 +6360,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7485,22 +6373,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="left" component="Magento_Ui/js/form/components/group">
@@ -7559,6 +6431,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7571,22 +6444,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
              </fieldset>
@@ -7660,6 +6517,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7672,22 +6530,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="right" component="Magento_Ui/js/form/components/group">
@@ -7746,6 +6588,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7758,22 +6601,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="bottom" component="Magento_Ui/js/form/components/group">
@@ -7832,6 +6659,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7844,22 +6672,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="left" component="Magento_Ui/js/form/components/group">
@@ -7918,6 +6730,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -7930,22 +6743,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
              </fieldset>
@@ -8056,6 +6853,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -8068,22 +6866,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="radius" component="Magento_Ui/js/form/components/group">
@@ -8142,6 +6924,7 @@
                </field>
                <field name="unit" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                  <item name="config" xsi:type="array">
                   <item name="additionalClasses" xsi:type="array">
                    <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -8154,22 +6937,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">px</item>
-                     <item name="label" xsi:type="string">px</item>
-                    </option>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">%</item>
-                     <item name="label" xsi:type="string">%</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="style" component="Magento_Ui/js/form/components/group">
@@ -8185,6 +6952,7 @@
                </argument>
                <field name="value" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Border\Style</item>
                  <item name="config" xsi:type="array">
                   <item name="default" xsi:type="string">none</item>
                  </item>
@@ -8193,54 +6961,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">none</item>
-                     <item name="label" xsi:type="string">None</item>
-                    </option>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">solid</item>
-                     <item name="label" xsi:type="string">Solid</item>
-                    </option>
-                    <option name="3" xsi:type="array">
-                     <item name="value" xsi:type="string">dotted</item>
-                     <item name="label" xsi:type="string">Dotted</item>
-                    </option>
-                    <option name="4" xsi:type="array">
-                     <item name="value" xsi:type="string">dashed</item>
-                     <item name="label" xsi:type="string">Dashed</item>
-                    </option>
-                    <option name="5" xsi:type="array">
-                     <item name="value" xsi:type="string">inset</item>
-                     <item name="label" xsi:type="string">Inset</item>
-                    </option>
-                    <option name="6" xsi:type="array">
-                     <item name="value" xsi:type="string">outset</item>
-                     <item name="label" xsi:type="string">Outset</item>
-                    </option>
-                    <option name="7" xsi:type="array">
-                     <item name="value" xsi:type="string">ridge</item>
-                     <item name="label" xsi:type="string">Ridge</item>
-                    </option>
-                    <option name="8" xsi:type="array">
-                     <item name="value" xsi:type="string">groove</item>
-                     <item name="label" xsi:type="string">Groove</item>
-                    </option>
-                    <option name="9" xsi:type="array">
-                     <item name="value" xsi:type="string">double</item>
-                     <item name="label" xsi:type="string">Double</item>
-                    </option>
-                    <option name="10" xsi:type="array">
-                     <item name="value" xsi:type="string">hidden</item>
-                     <item name="label" xsi:type="string">Hidden</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <container name="color" component="Magento_Ui/js/form/components/group">
@@ -8336,6 +7056,7 @@
               </field>
               <field name="unit" formElement="select">
                <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                 <item name="config" xsi:type="array">
                  <item name="additionalClasses" xsi:type="array">
                   <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -8348,22 +7069,6 @@
                 <label />
                 <dataType>text</dataType>
                </settings>
-               <formElements>
-                <select>
-                 <settings>
-                  <options>
-                   <option name="2" xsi:type="array">
-                    <item name="value" xsi:type="string">px</item>
-                    <item name="label" xsi:type="string">px</item>
-                   </option>
-                   <option name="1" xsi:type="array">
-                    <item name="value" xsi:type="string">%</item>
-                    <item name="label" xsi:type="string">%</item>
-                   </option>
-                  </options>
-                 </settings>
-                </select>
-               </formElements>
               </field>
              </container>
              <container name="height" component="Magento_Ui/js/form/components/group">
@@ -8421,6 +7126,7 @@
               </field>
               <field name="unit" formElement="select">
                <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                 <item name="config" xsi:type="array">
                  <item name="additionalClasses" xsi:type="array">
                   <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -8433,22 +7139,6 @@
                 <label />
                 <dataType>text</dataType>
                </settings>
-               <formElements>
-                <select>
-                 <settings>
-                  <options>
-                   <option name="2" xsi:type="array">
-                    <item name="value" xsi:type="string">px</item>
-                    <item name="label" xsi:type="string">px</item>
-                   </option>
-                   <option name="1" xsi:type="array">
-                    <item name="value" xsi:type="string">%</item>
-                    <item name="label" xsi:type="string">%</item>
-                   </option>
-                  </options>
-                 </settings>
-                </select>
-               </formElements>
               </field>
              </container>
              <fieldset name="object">
@@ -8478,6 +7168,7 @@
                </argument>
                <field name="value" formElement="select">
                 <argument name="data" xsi:type="array">
+                 <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Object\Fit</item>
                  <item name="config" xsi:type="array">
                   <item name="default" xsi:type="string">fill</item>
                  </item>
@@ -8486,34 +7177,6 @@
                  <label />
                  <dataType>text</dataType>
                 </settings>
-                <formElements>
-                 <select>
-                  <settings>
-                   <options>
-                    <option name="1" xsi:type="array">
-                     <item name="value" xsi:type="string">fill</item>
-                     <item name="label" xsi:type="string">Fill</item>
-                    </option>
-                    <option name="2" xsi:type="array">
-                     <item name="value" xsi:type="string">contain</item>
-                     <item name="label" xsi:type="string">Contain</item>
-                    </option>
-                    <option name="3" xsi:type="array">
-                     <item name="value" xsi:type="string">cover</item>
-                     <item name="label" xsi:type="string">Cover</item>
-                    </option>
-                    <option name="4" xsi:type="array">
-                     <item name="value" xsi:type="string">none</item>
-                     <item name="label" xsi:type="string">None</item>
-                    </option>
-                    <option name="5" xsi:type="array">
-                     <item name="value" xsi:type="string">scale-down</item>
-                     <item name="label" xsi:type="string">Scale Down</item>
-                    </option>
-                   </options>
-                  </settings>
-                 </select>
-                </formElements>
                </field>
               </container>
               <fieldset name="position">
@@ -8586,6 +7249,7 @@
                 </field>
                 <field name="unit" formElement="select">
                  <argument name="data" xsi:type="array">
+                  <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                   <item name="config" xsi:type="array">
                    <item name="additionalClasses" xsi:type="array">
                     <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -8598,22 +7262,6 @@
                   <label />
                   <dataType>text</dataType>
                  </settings>
-                 <formElements>
-                  <select>
-                   <settings>
-                    <options>
-                     <option name="2" xsi:type="array">
-                      <item name="value" xsi:type="string">px</item>
-                      <item name="label" xsi:type="string">px</item>
-                     </option>
-                     <option name="1" xsi:type="array">
-                      <item name="value" xsi:type="string">%</item>
-                      <item name="label" xsi:type="string">%</item>
-                     </option>
-                    </options>
-                   </settings>
-                  </select>
-                 </formElements>
                 </field>
                </container>
                <container name="y" component="Magento_Ui/js/form/components/group">
@@ -8672,6 +7320,7 @@
                 </field>
                 <field name="unit" formElement="select">
                  <argument name="data" xsi:type="array">
+                  <item name="options" xsi:type="object">UpSage\SlickSliderWidget\Model\Config\Source\Units</item>
                   <item name="config" xsi:type="array">
                    <item name="additionalClasses" xsi:type="array">
                     <item name="us-admin__groupfield--unit" xsi:type="boolean">true</item>
@@ -8684,22 +7333,6 @@
                   <label />
                   <dataType>text</dataType>
                  </settings>
-                 <formElements>
-                  <select>
-                   <settings>
-                    <options>
-                     <option name="2" xsi:type="array">
-                      <item name="value" xsi:type="string">px</item>
-                      <item name="label" xsi:type="string">px</item>
-                     </option>
-                     <option name="1" xsi:type="array">
-                      <item name="value" xsi:type="string">%</item>
-                      <item name="label" xsi:type="string">%</item>
-                     </option>
-                    </options>
-                   </settings>
-                  </select>
-                 </formElements>
                 </field>
                </container>
               </fieldset>
